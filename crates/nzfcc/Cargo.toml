@@ -1,0 +1,17 @@
+[package]
+name = "nzfcc"
+version = "0.1.0"
+edition = "2021"
+authors = ["Josiah Bull"]
+license = "MIT OR Apache-2.0"
+description = "New Zealand Financial Category Codes (NZFCC) library"
+repository = "https://github.com/josiahbull/nzfcc"
+keywords = ["nzfcc", "finance", "categories", "new-zealand"]
+categories = ["data-structures"]
+
+[dependencies]
+serde = { version = "1", features = ["derive"], optional = true }
+
+[features]
+default = []
+serde = ["dep:serde"]
