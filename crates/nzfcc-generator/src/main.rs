@@ -11,7 +11,7 @@ use std::process::Command;
 
 const CATEGORIES_URL: &str = "https://nzfcc.org/downloads/categories.json";
 
-#[derive(Debug, serde::Deserialize, Clone)]
+#[derive(Debug, serde::Deserialize, serde::Serialize, Clone)]
 #[serde(deny_unknown_fields)]
 struct Category {
     #[serde(rename = "_id")]
@@ -20,13 +20,13 @@ struct Category {
     groups: Groups,
 }
 
-#[derive(Debug, serde::Deserialize, Clone)]
+#[derive(Debug, serde::Deserialize, serde::Serialize, Clone)]
 #[serde(deny_unknown_fields)]
 struct Groups {
     personal_finance: Group,
 }
 
-#[derive(Debug, serde::Deserialize, Clone)]
+#[derive(Debug, serde::Deserialize, serde::Serialize, Clone)]
 #[serde(deny_unknown_fields)]
 struct Group {
     #[serde(rename = "_id")]
@@ -152,6 +152,16 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let categories: Vec<Category> = serde_json::from_str(&categories_json)?;
     println!("Successfully downloaded {} categories", categories.len());
 
+    // Determine workspace root early
+    let manifest_dir = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
+    let workspace_root = manifest_dir.parent().unwrap().parent().unwrap();
+
+    // Save formatted JSON to repository for version tracking
+    let categories_json_path = workspace_root.join("categories.json");
+    let formatted_json = serde_json::to_string_pretty(&categories)?;
+    std::fs::write(&categories_json_path, formatted_json)?;
+    println!("  ✓ Saved categories.json to repository");
+
     // Find all unique group names
     let mut seen_groups = HashSet::new();
     let filtered_groups = categories
@@ -168,8 +178,6 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let nzfcc_enum = construct_nzfcc_code_enum(&categories);
 
     // Determine output directory
-    let manifest_dir = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
-    let workspace_root = manifest_dir.parent().unwrap().parent().unwrap();
     let output_dir = workspace_root.join("crates/nzfcc/src/generated");
 
     // Write files
