@@ -22,6 +22,15 @@
 //! // Access NZFCC code IDs
 //! let code_id = NzfccCode::CafesAndRestaurants.id();
 //! assert!(code_id.starts_with("nzfcc_"));
+//!
+//! // Get the category group for an NZFCC code
+//! let group = NzfccCode::CafesAndRestaurants.group();
+//! assert_eq!(group, CategoryGroup::Lifestyle);
+//!
+//! // Get all codes in a category group
+//! let lifestyle_codes = CategoryGroup::Lifestyle.codes();
+//! assert!(lifestyle_codes.contains(&NzfccCode::CafesAndRestaurants));
+//! assert!(lifestyle_codes.len() > 0);
 //! ```
 
 // Include generated code

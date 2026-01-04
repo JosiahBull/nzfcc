@@ -971,4 +971,225 @@ impl NzfccCode {
             Self::WineriesBreweriesAndDistilleries => "nzfcc_ckphrdp9f000008ml5t9g7d0m",
         }
     }
+
+    /// Returns the category group that this NZFCC code belongs to.
+    pub const fn group(&self) -> super::CategoryGroup {
+        match self {
+            Self::AccountancyBookkeepingAuditingAndTaxServices => {
+                super::CategoryGroup::ProfessionalServices
+            }
+            Self::AdvertisingAndMarketingServices => super::CategoryGroup::ProfessionalServices,
+            Self::AgriculturalSupplies => super::CategoryGroup::Household,
+            Self::AirTransportServices => super::CategoryGroup::Lifestyle,
+            Self::Airports => super::CategoryGroup::Lifestyle,
+            Self::AntiqueStoresAndRepair => super::CategoryGroup::Household,
+            Self::ApparelAndAccessoryStores => super::CategoryGroup::Appearance,
+            Self::ApplianceAndFurnitureRentals => super::CategoryGroup::Household,
+            Self::ApplianceRepairAndServices => super::CategoryGroup::Household,
+            Self::ArchitectEngineeringAndSurveyingServices => {
+                super::CategoryGroup::ProfessionalServices
+            }
+            Self::ArtAndCraftSupplies => super::CategoryGroup::Lifestyle,
+            Self::ArtStoresDealersAndGalleries => super::CategoryGroup::Lifestyle,
+            Self::AttractionsMuseumsZoosAmusementParksCircusesExhibits => {
+                super::CategoryGroup::Lifestyle
+            }
+            Self::AutomotiveBodyRepairAndPaintingServices => super::CategoryGroup::Transport,
+            Self::AutomotivePartsAndAccessories => super::CategoryGroup::Transport,
+            Self::AutomotiveRepairAndServicing => super::CategoryGroup::Transport,
+            Self::Bakeries => super::CategoryGroup::Food,
+            Self::BarsPubsNightclubs => super::CategoryGroup::Lifestyle,
+            Self::BicycleStoresRentalsAndRepairs => super::CategoryGroup::Transport,
+            Self::BoatDealers => super::CategoryGroup::Lifestyle,
+            Self::BoatRentals => super::CategoryGroup::Lifestyle,
+            Self::BoatTransportServices => super::CategoryGroup::Transport,
+            Self::BodyCorporate => super::CategoryGroup::Housing,
+            Self::BookStores => super::CategoryGroup::Education,
+            Self::BuildingAndCarpentryServices => super::CategoryGroup::Household,
+            Self::BuildingSupplies => super::CategoryGroup::Household,
+            Self::BusAndShuttleTransportServices => super::CategoryGroup::Transport,
+            Self::BusinessServicesnotElsewhereClassified => {
+                super::CategoryGroup::ProfessionalServices
+            }
+            Self::BusinessSoftwareAndCloudServices => super::CategoryGroup::ProfessionalServices,
+            Self::CafesAndRestaurants => super::CategoryGroup::Lifestyle,
+            Self::CarAndMotorcycleRentals => super::CategoryGroup::Transport,
+            Self::CarTruckAndMotorcycleDealers => super::CategoryGroup::Transport,
+            Self::CashWithdrawals => super::CategoryGroup::Lifestyle,
+            Self::CasinoLotteryAndOtherGamblingServices => super::CategoryGroup::Lifestyle,
+            Self::Caterers => super::CategoryGroup::Lifestyle,
+            Self::ChemicalProductsAndServices => super::CategoryGroup::Household,
+            Self::ChildAndInfantClothing => super::CategoryGroup::Appearance,
+            Self::ChildSupport => super::CategoryGroup::Household,
+            Self::ChildcareServices => super::CategoryGroup::Education,
+            Self::ChiropodistsAndPodiatrists => super::CategoryGroup::Health,
+            Self::ChiropractorsAndOsteopaths => super::CategoryGroup::Health,
+            Self::CigaretteVapeAndOtherSmokingProducts => super::CategoryGroup::Lifestyle,
+            Self::Cinemas => super::CategoryGroup::Lifestyle,
+            Self::CleaningSanitationAndPestControlServices => super::CategoryGroup::Household,
+            Self::ClothingAlterationAndRepair => super::CategoryGroup::Appearance,
+            Self::ClothingRental => super::CategoryGroup::Appearance,
+            Self::ClothingStores => super::CategoryGroup::Appearance,
+            Self::ComputerEquipment => super::CategoryGroup::Household,
+            Self::ConcreteServices => super::CategoryGroup::Household,
+            Self::ConsumerElectronicsRepairAndServices => super::CategoryGroup::Household,
+            Self::ConvenienceStores => super::CategoryGroup::Food,
+            Self::CosmeticSupplies => super::CategoryGroup::Appearance,
+            Self::CosmeticHealthSpasAndRelaxationMassageServices => super::CategoryGroup::Lifestyle,
+            Self::CourierAndFreightDeliveryServices => super::CategoryGroup::ProfessionalServices,
+            Self::CurtainsBlindsAndWindowCoverings => super::CategoryGroup::Household,
+            Self::DatingAndMatchmakingServices => super::CategoryGroup::Lifestyle,
+            Self::DebtRepayments => super::CategoryGroup::ProfessionalServices,
+            Self::DentalAndMedicalLaboratories => super::CategoryGroup::Health,
+            Self::DentalServices => super::CategoryGroup::Health,
+            Self::DigitalGamingProductsAndServices => super::CategoryGroup::Lifestyle,
+            Self::DoctorsAndPhysicians => super::CategoryGroup::Health,
+            Self::DutyFreeStores => super::CategoryGroup::Lifestyle,
+            Self::EducationnotElsewhereClassified => super::CategoryGroup::Education,
+            Self::ElectricVehicleChargingServices => super::CategoryGroup::Transport,
+            Self::ElectricalSuppliesAndServices => super::CategoryGroup::Household,
+            Self::ElectricityAndGasServices => super::CategoryGroup::Utilities,
+            Self::ElectricityServices => super::CategoryGroup::Utilities,
+            Self::ElectronicAndApplianceStores => super::CategoryGroup::Household,
+            Self::EmploymentAndCareerServices => super::CategoryGroup::ProfessionalServices,
+            Self::EntertainmentnotElsewhereClassified => super::CategoryGroup::Lifestyle,
+            Self::EventVenueAndEquipmentRental => super::CategoryGroup::ProfessionalServices,
+            Self::EventsAndTicketsnotElsewhereClassified => super::CategoryGroup::Lifestyle,
+            Self::FabricSewingKnittingAndRelatedSupplies => super::CategoryGroup::Appearance,
+            Self::FastFoodStores => super::CategoryGroup::Lifestyle,
+            Self::FinancialAdviceAndWealthManagement => super::CategoryGroup::ProfessionalServices,
+            Self::FinancialAssetBrokersExchangesAndManagedFunds => {
+                super::CategoryGroup::ProfessionalServices
+            }
+            Self::FinancialServicesnotElsewhereClassified => {
+                super::CategoryGroup::ProfessionalServices
+            }
+            Self::FireplacesAndSupplies => super::CategoryGroup::Household,
+            Self::FishAndSeafoodSupplies => super::CategoryGroup::Food,
+            Self::FloorCoveringStores => super::CategoryGroup::Household,
+            Self::FloralSuppliesAndServices => super::CategoryGroup::Lifestyle,
+            Self::ForeignExchangeAndMoneyTransferServices => {
+                super::CategoryGroup::ProfessionalServices
+            }
+            Self::FuelStations => super::CategoryGroup::Transport,
+            Self::FuneralDeathAndMemorialServices => super::CategoryGroup::ProfessionalServices,
+            Self::GasServices => super::CategoryGroup::Utilities,
+            Self::GeneralRetailStores => super::CategoryGroup::Household,
+            Self::GiftAndSouvenirStores => super::CategoryGroup::Lifestyle,
+            Self::GolfCourses => super::CategoryGroup::Lifestyle,
+            Self::GymsFitnessAquaticFacilitiesYogaPilates => super::CategoryGroup::Health,
+            Self::HaircutsAndTreatments => super::CategoryGroup::Appearance,
+            Self::HardwareEquipmentAndSupplies => super::CategoryGroup::Household,
+            Self::HeatingCoolingAndVentilationEquipmentAndServices => {
+                super::CategoryGroup::Household
+            }
+            Self::HobbyToyAndPhysicalGameStores => super::CategoryGroup::Lifestyle,
+            Self::HomeFurnishingAndRepairStores => super::CategoryGroup::Household,
+            Self::Hospices => super::CategoryGroup::Health,
+            Self::HospitalsAndEmergencyCare => super::CategoryGroup::Health,
+            Self::HotelsMotelsAndOtherTemporaryAccommodation => super::CategoryGroup::Lifestyle,
+            Self::ITAndSoftwareDevelopmentServices => super::CategoryGroup::ProfessionalServices,
+            Self::IceCreamGelatoNutAndConfectionaryStores => super::CategoryGroup::Food,
+            Self::IndustrialAndCommercialSuppliesnotElsewhereClassified => {
+                super::CategoryGroup::Household
+            }
+            Self::Insurance => super::CategoryGroup::Household,
+            Self::InternetServices => super::CategoryGroup::Utilities,
+            Self::LandscapingGardenAndHorticulturalServices => super::CategoryGroup::Household,
+            Self::LaundryAndDrycleaning => super::CategoryGroup::Household,
+            Self::LegalServices => super::CategoryGroup::ProfessionalServices,
+            Self::LendingServices => super::CategoryGroup::ProfessionalServices,
+            Self::Libraries => super::CategoryGroup::Education,
+            Self::LiquorStores => super::CategoryGroup::Lifestyle,
+            Self::LocalGovernment => super::CategoryGroup::Housing,
+            Self::ManagementConsulting => super::CategoryGroup::ProfessionalServices,
+            Self::MarinasMarineSuppliesAndMarineServices => super::CategoryGroup::Lifestyle,
+            Self::MasonryStoneworkTilingPlasteringAndInsulationServices => {
+                super::CategoryGroup::Household
+            }
+            Self::MealKitStores => super::CategoryGroup::Food,
+            Self::MeatSupplies => super::CategoryGroup::Food,
+            Self::MediaAndEntertainmentStreamingServices => super::CategoryGroup::Lifestyle,
+            Self::MedicalProductsAndSuppliesnotElsewhereClassified => super::CategoryGroup::Health,
+            Self::MedicalServicesnotElsewhereClassified => super::CategoryGroup::Health,
+            Self::MembershipOrganisationsnotElsewhereClassified => {
+                super::CategoryGroup::ProfessionalServices
+            }
+            Self::MotorParksCampgroundsHolidayParksRecreationalCamps => {
+                super::CategoryGroup::Lifestyle
+            }
+            Self::MusicalEquipmentRecordingsAndSupplies => super::CategoryGroup::Lifestyle,
+            Self::NationalGovernmentServices => super::CategoryGroup::ProfessionalServices,
+            Self::NewspapersMagazinesAndLiterarySubscriptions => super::CategoryGroup::Education,
+            Self::NurseriesAndGardenSupplies => super::CategoryGroup::Household,
+            Self::OptometristsAndEyewear => super::CategoryGroup::Health,
+            Self::PaintingSuppliesAndServices => super::CategoryGroup::Household,
+            Self::ParkingServices => super::CategoryGroup::Transport,
+            Self::PerformingArtTraining => super::CategoryGroup::Education,
+            Self::PersonalSoftwarenotElsewhereClassified => {
+                super::CategoryGroup::ProfessionalServices
+            }
+            Self::PetsAndRelatedSuppliesAccommodationAndServices => super::CategoryGroup::Household,
+            Self::Pharmacies => super::CategoryGroup::Health,
+            Self::PhotographyEquipmentAndServices => super::CategoryGroup::Lifestyle,
+            Self::PhysiotherapyAndMassageTherapy => super::CategoryGroup::Health,
+            Self::PlumbingAndGasfittingSuppliesAndServices => super::CategoryGroup::Household,
+            Self::PoliticalOrganisations => super::CategoryGroup::ProfessionalServices,
+            Self::PostalServices => super::CategoryGroup::ProfessionalServices,
+            Self::PrimaryAndSecondarySchools => super::CategoryGroup::Education,
+            Self::PrintingPublishingAndSignmakingServices => {
+                super::CategoryGroup::ProfessionalServices
+            }
+            Self::ProfessionalServicesnotElsewhereClassified => {
+                super::CategoryGroup::ProfessionalServices
+            }
+            Self::PsychologyPsychiatricCounsellingAndOtherMentalHealthServices => {
+                super::CategoryGroup::Health
+            }
+            Self::RealEstateServices => super::CategoryGroup::ProfessionalServices,
+            Self::ReligiousOrganisations => super::CategoryGroup::ProfessionalServices,
+            Self::RentForPermanentAccommodation => super::CategoryGroup::Housing,
+            Self::RepairAndServicingnotElsewhereClassified => super::CategoryGroup::Household,
+            Self::RetirementAccommodation => super::CategoryGroup::Housing,
+            Self::RoofingServices => super::CategoryGroup::Household,
+            Self::SecondhandAndOpportunityStores => super::CategoryGroup::Appearance,
+            Self::SecurityStoresAndServices => super::CategoryGroup::ProfessionalServices,
+            Self::ShoeAndLeatherRepairKeycuttingOrEngraving => super::CategoryGroup::Household,
+            Self::ShoeStores => super::CategoryGroup::Appearance,
+            Self::SpecialtyFoodStores => super::CategoryGroup::Food,
+            Self::SpecialtyRetailStoresnotElsewhereClassified => super::CategoryGroup::Household,
+            Self::SportsAndAthleticClubs => super::CategoryGroup::Health,
+            Self::SportsEquipmentAndSupplies => super::CategoryGroup::Lifestyle,
+            Self::StationeryAndOfficeSupplies => super::CategoryGroup::Household,
+            Self::StorageFacilities => super::CategoryGroup::Household,
+            Self::SupermarketsAndGroceryStores => super::CategoryGroup::Food,
+            Self::SwimmingPoolsSuppliesAndServices => super::CategoryGroup::Household,
+            Self::TaxPayments => super::CategoryGroup::ProfessionalServices,
+            Self::TaxiRideshareAndOndemandTransportServices => super::CategoryGroup::Transport,
+            Self::TelecommunicationServices => super::CategoryGroup::Utilities,
+            Self::TestingLaboratoriesnonMedical => super::CategoryGroup::ProfessionalServices,
+            Self::TheatreConcertsAndOtherArtisticPerformances => super::CategoryGroup::Lifestyle,
+            Self::TollFees => super::CategoryGroup::Transport,
+            Self::TowingServices => super::CategoryGroup::Transport,
+            Self::TradeServicesnotElsewhereClassified => super::CategoryGroup::Household,
+            Self::TrainAndRailTransportServices => super::CategoryGroup::Transport,
+            Self::TransportServicesnotElsewhereClassified => super::CategoryGroup::Transport,
+            Self::TravelAgenciesAndTourOperators => super::CategoryGroup::Lifestyle,
+            Self::TruckTrailerMachineryAndEquipmentRentals => super::CategoryGroup::Transport,
+            Self::TyreStores => super::CategoryGroup::Transport,
+            Self::UniformsAndCommercialClothing => super::CategoryGroup::Appearance,
+            Self::UniversitiesProfessionalSchoolsAndOtherTertiaryEducation => {
+                super::CategoryGroup::Education
+            }
+            Self::VarietyStores => super::CategoryGroup::Household,
+            Self::VehicleDealersnotElsewhereClassified => super::CategoryGroup::Transport,
+            Self::VeterinaryServices => super::CategoryGroup::Health,
+            Self::WasteAndRecyclingServices => super::CategoryGroup::Household,
+            Self::WatchClockAndJewelleryStoresAndServices => super::CategoryGroup::Appearance,
+            Self::WaterAndSanitationServices => super::CategoryGroup::Utilities,
+            Self::WeldingFabricationAndMetalServices => super::CategoryGroup::Household,
+            Self::WelfareAndCharity => super::CategoryGroup::Lifestyle,
+            Self::WineriesBreweriesAndDistilleries => super::CategoryGroup::Lifestyle,
+        }
+    }
 }
