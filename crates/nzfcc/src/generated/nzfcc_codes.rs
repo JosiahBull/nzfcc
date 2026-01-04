@@ -3,759 +3,369 @@
 
 /// All possible New Zealand Financial Category Codes (NZFCC) codes, as defined by the NZFCC org [https://nzfcc.org/explore/](https://nzfcc.org/explore/).
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-#[cfg_attr(feature = "serde", serde(deny_unknown_fields))]
 #[non_exhaustive]
 pub enum NzfccCode {
     /// The "Accountancy, bookkeeping, auditing, and tax services" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Accountancy, bookkeeping, auditing, and tax services")
-    )]
     AccountancyBookkeepingAuditingAndTaxServices,
     /// The "Advertising and marketing services" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Advertising and marketing services")
-    )]
     AdvertisingAndMarketingServices,
     /// The "Agricultural supplies" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Agricultural supplies"))]
     AgriculturalSupplies,
     /// The "Air transport services" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Air transport services"))]
     AirTransportServices,
     /// The "Airports" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Airports"))]
     Airports,
     /// The "Antique stores and repair" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Antique stores and repair"))]
     AntiqueStoresAndRepair,
     /// The "Apparel and accessory stores" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Apparel and accessory stores"))]
     ApparelAndAccessoryStores,
     /// The "Appliance and furniture rentals" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Appliance and furniture rentals"))]
     ApplianceAndFurnitureRentals,
     /// The "Appliance repair and services" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Appliance repair and services"))]
     ApplianceRepairAndServices,
     /// The "Architect, engineering, and surveying services" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Architect, engineering, and surveying services")
-    )]
     ArchitectEngineeringAndSurveyingServices,
     /// The "Art and craft supplies" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Art and craft supplies"))]
     ArtAndCraftSupplies,
     /// The "Art stores, dealers, and galleries" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Art stores, dealers, and galleries")
-    )]
     ArtStoresDealersAndGalleries,
     /// The "Attractions, museums, zoos, amusement parks, circuses, exhibits" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Attractions, museums, zoos, amusement parks, circuses, exhibits")
-    )]
     AttractionsMuseumsZoosAmusementParksCircusesExhibits,
     /// The "Automotive body repair and painting services" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Automotive body repair and painting services")
-    )]
     AutomotiveBodyRepairAndPaintingServices,
     /// The "Automotive parts and accessories" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Automotive parts and accessories"))]
     AutomotivePartsAndAccessories,
     /// The "Automotive repair and servicing" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Automotive repair and servicing"))]
     AutomotiveRepairAndServicing,
     /// The "Bakeries" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Bakeries"))]
     Bakeries,
     /// The "Bars, pubs, nightclubs" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Bars, pubs, nightclubs"))]
     BarsPubsNightclubs,
     /// The "Bicycle stores, rentals, and repairs" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Bicycle stores, rentals, and repairs")
-    )]
     BicycleStoresRentalsAndRepairs,
     /// The "Boat dealers" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Boat dealers"))]
     BoatDealers,
     /// The "Boat rentals" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Boat rentals"))]
     BoatRentals,
     /// The "Boat transport services" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Boat transport services"))]
     BoatTransportServices,
     /// The "Body corporate" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Body corporate"))]
     BodyCorporate,
     /// The "Book stores" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Book stores"))]
     BookStores,
     /// The "Building and carpentry services" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Building and carpentry services"))]
     BuildingAndCarpentryServices,
     /// The "Building supplies" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Building supplies"))]
     BuildingSupplies,
     /// The "Bus and shuttle transport services" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Bus and shuttle transport services")
-    )]
     BusAndShuttleTransportServices,
     /// The "Business services (not elsewhere classified)" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Business services (not elsewhere classified)")
-    )]
     BusinessServicesnotElsewhereClassified,
     /// The "Business software and cloud services" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Business software and cloud services")
-    )]
     BusinessSoftwareAndCloudServices,
     /// The "Cafes and restaurants" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Cafes and restaurants"))]
     CafesAndRestaurants,
     /// The "Car and motorcycle rentals" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Car and motorcycle rentals"))]
     CarAndMotorcycleRentals,
     /// The "Car, truck, and motorcycle dealers" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Car, truck, and motorcycle dealers")
-    )]
     CarTruckAndMotorcycleDealers,
     /// The "Cash withdrawals" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Cash withdrawals"))]
     CashWithdrawals,
     /// The "Casino, lottery, and other gambling services" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Casino, lottery, and other gambling services")
-    )]
     CasinoLotteryAndOtherGamblingServices,
     /// The "Caterers" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Caterers"))]
     Caterers,
     /// The "Chemical products and services" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Chemical products and services"))]
     ChemicalProductsAndServices,
     /// The "Child and infant clothing" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Child and infant clothing"))]
     ChildAndInfantClothing,
     /// The "Child support" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Child support"))]
     ChildSupport,
     /// The "Childcare services" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Childcare services"))]
     ChildcareServices,
     /// The "Chiropodists and podiatrists" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Chiropodists and podiatrists"))]
     ChiropodistsAndPodiatrists,
     /// The "Chiropractors and osteopaths" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Chiropractors and osteopaths"))]
     ChiropractorsAndOsteopaths,
     /// The "Cigarette, vape, and other smoking products" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Cigarette, vape, and other smoking products")
-    )]
     CigaretteVapeAndOtherSmokingProducts,
     /// The "Cinemas" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Cinemas"))]
     Cinemas,
     /// The "Cleaning, sanitation, and pest control services" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Cleaning, sanitation, and pest control services")
-    )]
     CleaningSanitationAndPestControlServices,
     /// The "Clothing alteration and repair" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Clothing alteration and repair"))]
     ClothingAlterationAndRepair,
     /// The "Clothing rental" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Clothing rental"))]
     ClothingRental,
     /// The "Clothing stores" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Clothing stores"))]
     ClothingStores,
     /// The "Computer equipment" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Computer equipment"))]
     ComputerEquipment,
     /// The "Concrete services" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Concrete services"))]
     ConcreteServices,
     /// The "Consumer electronics repair and services" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Consumer electronics repair and services")
-    )]
     ConsumerElectronicsRepairAndServices,
     /// The "Convenience stores" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Convenience stores"))]
     ConvenienceStores,
     /// The "Cosmetic supplies" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Cosmetic supplies"))]
     CosmeticSupplies,
     /// The "Cosmetic, health spas, and relaxation massage services" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Cosmetic, health spas, and relaxation massage services")
-    )]
     CosmeticHealthSpasAndRelaxationMassageServices,
     /// The "Courier and freight delivery services" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Courier and freight delivery services")
-    )]
     CourierAndFreightDeliveryServices,
     /// The "Curtains, blinds, and window coverings" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Curtains, blinds, and window coverings")
-    )]
     CurtainsBlindsAndWindowCoverings,
     /// The "Dating and matchmaking services" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Dating and matchmaking services"))]
     DatingAndMatchmakingServices,
     /// The "Debt repayments" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Debt repayments"))]
     DebtRepayments,
     /// The "Dental and medical laboratories" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Dental and medical laboratories"))]
     DentalAndMedicalLaboratories,
     /// The "Dental services" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Dental services"))]
     DentalServices,
     /// The "Digital gaming products and services" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Digital gaming products and services")
-    )]
     DigitalGamingProductsAndServices,
     /// The "Doctors and physicians" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Doctors and physicians"))]
     DoctorsAndPhysicians,
     /// The "Duty free stores" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Duty free stores"))]
     DutyFreeStores,
     /// The "Education (not elsewhere classified)" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Education (not elsewhere classified)")
-    )]
     EducationnotElsewhereClassified,
     /// The "Electric vehicle charging services" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Electric vehicle charging services")
-    )]
     ElectricVehicleChargingServices,
     /// The "Electrical supplies and services" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Electrical supplies and services"))]
     ElectricalSuppliesAndServices,
     /// The "Electricity and gas services" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Electricity and gas services"))]
     ElectricityAndGasServices,
     /// The "Electricity services" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Electricity services"))]
     ElectricityServices,
     /// The "Electronic and appliance stores" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Electronic and appliance stores"))]
     ElectronicAndApplianceStores,
     /// The "Employment and career services" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Employment and career services"))]
     EmploymentAndCareerServices,
     /// The "Entertainment (not elsewhere classified)" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Entertainment (not elsewhere classified)")
-    )]
     EntertainmentnotElsewhereClassified,
     /// The "Event venue and equipment rental" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Event venue and equipment rental"))]
     EventVenueAndEquipmentRental,
     /// The "Events and tickets (not elsewhere classified)" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Events and tickets (not elsewhere classified)")
-    )]
     EventsAndTicketsnotElsewhereClassified,
     /// The "Fabric, sewing, knitting, and related supplies" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Fabric, sewing, knitting, and related supplies")
-    )]
     FabricSewingKnittingAndRelatedSupplies,
     /// The "Fast food stores" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Fast food stores"))]
     FastFoodStores,
     /// The "Financial advice and wealth management" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Financial advice and wealth management")
-    )]
     FinancialAdviceAndWealthManagement,
     /// The "Financial asset brokers, exchanges, and managed funds" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Financial asset brokers, exchanges, and managed funds")
-    )]
     FinancialAssetBrokersExchangesAndManagedFunds,
     /// The "Financial services (not elsewhere classified)" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Financial services (not elsewhere classified)")
-    )]
     FinancialServicesnotElsewhereClassified,
     /// The "Fireplaces and supplies" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Fireplaces and supplies"))]
     FireplacesAndSupplies,
     /// The "Fish and seafood supplies" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Fish and seafood supplies"))]
     FishAndSeafoodSupplies,
     /// The "Floor covering stores" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Floor covering stores"))]
     FloorCoveringStores,
     /// The "Floral supplies and services" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Floral supplies and services"))]
     FloralSuppliesAndServices,
     /// The "Foreign exchange and money transfer services" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Foreign exchange and money transfer services")
-    )]
     ForeignExchangeAndMoneyTransferServices,
     /// The "Fuel stations" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Fuel stations"))]
     FuelStations,
     /// The "Funeral, death, and memorial services" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Funeral, death, and memorial services")
-    )]
     FuneralDeathAndMemorialServices,
     /// The "Gas services" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Gas services"))]
     GasServices,
     /// The "General retail stores" category.
-    #[cfg_attr(feature = "serde", serde(rename = "General retail stores"))]
     GeneralRetailStores,
     /// The "Gift and souvenir stores" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Gift and souvenir stores"))]
     GiftAndSouvenirStores,
     /// The "Golf courses" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Golf courses"))]
     GolfCourses,
     /// The "Gyms, fitness, aquatic facilities, yoga, pilates" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Gyms, fitness, aquatic facilities, yoga, pilates")
-    )]
     GymsFitnessAquaticFacilitiesYogaPilates,
     /// The "Haircuts and treatments" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Haircuts and treatments"))]
     HaircutsAndTreatments,
     /// The "Hardware equipment and supplies" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Hardware equipment and supplies"))]
     HardwareEquipmentAndSupplies,
     /// The "Heating, cooling, and ventilation equipment and services" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Heating, cooling, and ventilation equipment and services")
-    )]
     HeatingCoolingAndVentilationEquipmentAndServices,
     /// The "Hobby, toy, and physical game stores" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Hobby, toy, and physical game stores")
-    )]
     HobbyToyAndPhysicalGameStores,
     /// The "Home furnishing and repair stores" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Home furnishing and repair stores"))]
     HomeFurnishingAndRepairStores,
     /// The "Hospices" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Hospices"))]
     Hospices,
     /// The "Hospitals and emergency care" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Hospitals and emergency care"))]
     HospitalsAndEmergencyCare,
     /// The "Hotels, motels, and other temporary accommodation" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Hotels, motels, and other temporary accommodation")
-    )]
     HotelsMotelsAndOtherTemporaryAccommodation,
     /// The "IT and software development services" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "IT and software development services")
-    )]
     ITAndSoftwareDevelopmentServices,
     /// The "Ice cream, gelato, nut, and confectionary stores" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Ice cream, gelato, nut, and confectionary stores")
-    )]
     IceCreamGelatoNutAndConfectionaryStores,
     /// The "Industrial and commercial supplies (not elsewhere classified)" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Industrial and commercial supplies (not elsewhere classified)")
-    )]
     IndustrialAndCommercialSuppliesnotElsewhereClassified,
     /// The "Insurance" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Insurance"))]
     Insurance,
     /// The "Internet services" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Internet services"))]
     InternetServices,
     /// The "Landscaping, garden, and horticultural services" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Landscaping, garden, and horticultural services")
-    )]
     LandscapingGardenAndHorticulturalServices,
     /// The "Laundry and drycleaning" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Laundry and drycleaning"))]
     LaundryAndDrycleaning,
     /// The "Legal services" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Legal services"))]
     LegalServices,
     /// The "Lending services" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Lending services"))]
     LendingServices,
     /// The "Libraries" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Libraries"))]
     Libraries,
     /// The "Liquor stores" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Liquor stores"))]
     LiquorStores,
     /// The "Local government" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Local government"))]
     LocalGovernment,
     /// The "Management consulting" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Management consulting"))]
     ManagementConsulting,
     /// The "Marinas, marine supplies, and marine services" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Marinas, marine supplies, and marine services")
-    )]
     MarinasMarineSuppliesAndMarineServices,
     /// The "Masonry, stonework, tiling, plastering, and insulation services" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Masonry, stonework, tiling, plastering, and insulation services")
-    )]
     MasonryStoneworkTilingPlasteringAndInsulationServices,
     /// The "Meal kit stores" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Meal kit stores"))]
     MealKitStores,
     /// The "Meat supplies" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Meat supplies"))]
     MeatSupplies,
     /// The "Media and entertainment streaming services" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Media and entertainment streaming services")
-    )]
     MediaAndEntertainmentStreamingServices,
     /// The "Medical products and supplies (not elsewhere classified)" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Medical products and supplies (not elsewhere classified)")
-    )]
     MedicalProductsAndSuppliesnotElsewhereClassified,
     /// The "Medical services (not elsewhere classified)" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Medical services (not elsewhere classified)")
-    )]
     MedicalServicesnotElsewhereClassified,
     /// The "Membership organisations (not elsewhere classified)" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Membership organisations (not elsewhere classified)")
-    )]
     MembershipOrganisationsnotElsewhereClassified,
     /// The "Motor parks, campgrounds, holiday parks, recreational camps" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Motor parks, campgrounds, holiday parks, recreational camps")
-    )]
     MotorParksCampgroundsHolidayParksRecreationalCamps,
     /// The "Musical equipment, recordings, and supplies" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Musical equipment, recordings, and supplies")
-    )]
     MusicalEquipmentRecordingsAndSupplies,
     /// The "National government services" category.
-    #[cfg_attr(feature = "serde", serde(rename = "National government services"))]
     NationalGovernmentServices,
     /// The "Newspapers, magazines, and literary subscriptions" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Newspapers, magazines, and literary subscriptions")
-    )]
     NewspapersMagazinesAndLiterarySubscriptions,
     /// The "Nurseries and garden supplies" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Nurseries and garden supplies"))]
     NurseriesAndGardenSupplies,
     /// The "Optometrists and eyewear" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Optometrists and eyewear"))]
     OptometristsAndEyewear,
     /// The "Painting supplies and services" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Painting supplies and services"))]
     PaintingSuppliesAndServices,
     /// The "Parking services" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Parking services"))]
     ParkingServices,
     /// The "Performing art training" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Performing art training"))]
     PerformingArtTraining,
     /// The "Personal software (not elsewhere classified)" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Personal software (not elsewhere classified)")
-    )]
     PersonalSoftwarenotElsewhereClassified,
     /// The "Pets and related supplies, accommodation, and services" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Pets and related supplies, accommodation, and services")
-    )]
     PetsAndRelatedSuppliesAccommodationAndServices,
     /// The "Pharmacies" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Pharmacies"))]
     Pharmacies,
     /// The "Photography equipment and services" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Photography equipment and services")
-    )]
     PhotographyEquipmentAndServices,
     /// The "Physiotherapy and massage therapy" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Physiotherapy and massage therapy"))]
     PhysiotherapyAndMassageTherapy,
     /// The "Plumbing and gasfitting supplies and services" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Plumbing and gasfitting supplies and services")
-    )]
     PlumbingAndGasfittingSuppliesAndServices,
     /// The "Political organisations" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Political organisations"))]
     PoliticalOrganisations,
     /// The "Postal services" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Postal services"))]
     PostalServices,
     /// The "Primary and secondary schools" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Primary and secondary schools"))]
     PrimaryAndSecondarySchools,
     /// The "Printing, publishing, and signmaking services" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Printing, publishing, and signmaking services")
-    )]
     PrintingPublishingAndSignmakingServices,
     /// The "Professional services (not elsewhere classified)" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Professional services (not elsewhere classified)")
-    )]
     ProfessionalServicesnotElsewhereClassified,
     /// The "Psychology, psychiatric, counselling, and other mental health services" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Psychology, psychiatric, counselling, and other mental health services")
-    )]
     PsychologyPsychiatricCounsellingAndOtherMentalHealthServices,
     /// The "Real estate services" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Real estate services"))]
     RealEstateServices,
     /// The "Religious organisations" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Religious organisations"))]
     ReligiousOrganisations,
     /// The "Rent for permanent accommodation" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Rent for permanent accommodation"))]
     RentForPermanentAccommodation,
     /// The "Repair and servicing (not elsewhere classified)" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Repair and servicing (not elsewhere classified)")
-    )]
     RepairAndServicingnotElsewhereClassified,
     /// The "Retirement accommodation" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Retirement accommodation"))]
     RetirementAccommodation,
     /// The "Roofing services" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Roofing services"))]
     RoofingServices,
     /// The "Secondhand and opportunity stores" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Secondhand and opportunity stores"))]
     SecondhandAndOpportunityStores,
     /// The "Security stores and services" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Security stores and services"))]
     SecurityStoresAndServices,
     /// The "Shoe and leather repair, keycutting, or engraving" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Shoe and leather repair, keycutting, or engraving")
-    )]
     ShoeAndLeatherRepairKeycuttingOrEngraving,
     /// The "Shoe stores" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Shoe stores"))]
     ShoeStores,
     /// The "Specialty food stores" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Specialty food stores"))]
     SpecialtyFoodStores,
     /// The "Specialty retail stores (not elsewhere classified)" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Specialty retail stores (not elsewhere classified)")
-    )]
     SpecialtyRetailStoresnotElsewhereClassified,
     /// The "Sports and athletic clubs" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Sports and athletic clubs"))]
     SportsAndAthleticClubs,
     /// The "Sports equipment and supplies" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Sports equipment and supplies"))]
     SportsEquipmentAndSupplies,
     /// The "Stationery and office supplies" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Stationery and office supplies"))]
     StationeryAndOfficeSupplies,
     /// The "Storage facilities" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Storage facilities"))]
     StorageFacilities,
     /// The "Supermarkets and grocery stores" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Supermarkets and grocery stores"))]
     SupermarketsAndGroceryStores,
     /// The "Swimming pools, supplies, and services" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Swimming pools, supplies, and services")
-    )]
     SwimmingPoolsSuppliesAndServices,
     /// The "Tax payments" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Tax payments"))]
     TaxPayments,
     /// The "Taxi, rideshare, and on-demand transport services" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Taxi, rideshare, and on-demand transport services")
-    )]
     TaxiRideshareAndOndemandTransportServices,
     /// The "Telecommunication services" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Telecommunication services"))]
     TelecommunicationServices,
     /// The "Testing laboratories (non medical)" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Testing laboratories (non medical)")
-    )]
     TestingLaboratoriesnonMedical,
     /// The "Theatre, concerts, and other artistic performances" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Theatre, concerts, and other artistic performances")
-    )]
     TheatreConcertsAndOtherArtisticPerformances,
     /// The "Toll fees" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Toll fees"))]
     TollFees,
     /// The "Towing services" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Towing services"))]
     TowingServices,
     /// The "Trade services (not elsewhere classified)" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Trade services (not elsewhere classified)")
-    )]
     TradeServicesnotElsewhereClassified,
     /// The "Train and rail transport services" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Train and rail transport services"))]
     TrainAndRailTransportServices,
     /// The "Transport services (not elsewhere classified)" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Transport services (not elsewhere classified)")
-    )]
     TransportServicesnotElsewhereClassified,
     /// The "Travel agencies and tour operators" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Travel agencies and tour operators")
-    )]
     TravelAgenciesAndTourOperators,
     /// The "Truck, trailer, machinery, and equipment rentals" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Truck, trailer, machinery, and equipment rentals")
-    )]
     TruckTrailerMachineryAndEquipmentRentals,
     /// The "Tyre stores" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Tyre stores"))]
     TyreStores,
     /// The "Uniforms and commercial clothing" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Uniforms and commercial clothing"))]
     UniformsAndCommercialClothing,
     /// The "Universities, professional schools, and other tertiary education" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Universities, professional schools, and other tertiary education")
-    )]
     UniversitiesProfessionalSchoolsAndOtherTertiaryEducation,
     /// The "Variety stores" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Variety stores"))]
     VarietyStores,
     /// The "Vehicle dealers (not elsewhere classified)" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Vehicle dealers (not elsewhere classified)")
-    )]
     VehicleDealersnotElsewhereClassified,
     /// The "Veterinary services" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Veterinary services"))]
     VeterinaryServices,
     /// The "Waste and recycling services" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Waste and recycling services"))]
     WasteAndRecyclingServices,
     /// The "Watch, clock, and jewellery stores and services" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Watch, clock, and jewellery stores and services")
-    )]
     WatchClockAndJewelleryStoresAndServices,
     /// The "Water and sanitation services" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Water and sanitation services"))]
     WaterAndSanitationServices,
     /// The "Welding, fabrication, and metal services" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Welding, fabrication, and metal services")
-    )]
     WeldingFabricationAndMetalServices,
     /// The "Welfare and charity" category.
-    #[cfg_attr(feature = "serde", serde(rename = "Welfare and charity"))]
     WelfareAndCharity,
     /// The "Wineries, breweries, and distilleries" category.
-    #[cfg_attr(
-        feature = "serde",
-        serde(rename = "Wineries, breweries, and distilleries")
-    )]
     WineriesBreweriesAndDistilleries,
 }
 
@@ -1190,6 +800,771 @@ impl NzfccCode {
             Self::WeldingFabricationAndMetalServices => super::CategoryGroup::Household,
             Self::WelfareAndCharity => super::CategoryGroup::Lifestyle,
             Self::WineriesBreweriesAndDistilleries => super::CategoryGroup::Lifestyle,
+        }
+    }
+}
+
+#[cfg(feature = "serde")]
+impl serde::Serialize for NzfccCode {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::Serializer,
+    {
+        serializer.serialize_str(match self {
+            Self::AccountancyBookkeepingAuditingAndTaxServices => {
+                "Accountancy, bookkeeping, auditing, and tax services"
+            }
+            Self::AdvertisingAndMarketingServices => "Advertising and marketing services",
+            Self::AgriculturalSupplies => "Agricultural supplies",
+            Self::AirTransportServices => "Air transport services",
+            Self::Airports => "Airports",
+            Self::AntiqueStoresAndRepair => "Antique stores and repair",
+            Self::ApparelAndAccessoryStores => "Apparel and accessory stores",
+            Self::ApplianceAndFurnitureRentals => "Appliance and furniture rentals",
+            Self::ApplianceRepairAndServices => "Appliance repair and services",
+            Self::ArchitectEngineeringAndSurveyingServices => {
+                "Architect, engineering, and surveying services"
+            }
+            Self::ArtAndCraftSupplies => "Art and craft supplies",
+            Self::ArtStoresDealersAndGalleries => "Art stores, dealers, and galleries",
+            Self::AttractionsMuseumsZoosAmusementParksCircusesExhibits => {
+                "Attractions, museums, zoos, amusement parks, circuses, exhibits"
+            }
+            Self::AutomotiveBodyRepairAndPaintingServices => {
+                "Automotive body repair and painting services"
+            }
+            Self::AutomotivePartsAndAccessories => "Automotive parts and accessories",
+            Self::AutomotiveRepairAndServicing => "Automotive repair and servicing",
+            Self::Bakeries => "Bakeries",
+            Self::BarsPubsNightclubs => "Bars, pubs, nightclubs",
+            Self::BicycleStoresRentalsAndRepairs => "Bicycle stores, rentals, and repairs",
+            Self::BoatDealers => "Boat dealers",
+            Self::BoatRentals => "Boat rentals",
+            Self::BoatTransportServices => "Boat transport services",
+            Self::BodyCorporate => "Body corporate",
+            Self::BookStores => "Book stores",
+            Self::BuildingAndCarpentryServices => "Building and carpentry services",
+            Self::BuildingSupplies => "Building supplies",
+            Self::BusAndShuttleTransportServices => "Bus and shuttle transport services",
+            Self::BusinessServicesnotElsewhereClassified => {
+                "Business services (not elsewhere classified)"
+            }
+            Self::BusinessSoftwareAndCloudServices => "Business software and cloud services",
+            Self::CafesAndRestaurants => "Cafes and restaurants",
+            Self::CarAndMotorcycleRentals => "Car and motorcycle rentals",
+            Self::CarTruckAndMotorcycleDealers => "Car, truck, and motorcycle dealers",
+            Self::CashWithdrawals => "Cash withdrawals",
+            Self::CasinoLotteryAndOtherGamblingServices => {
+                "Casino, lottery, and other gambling services"
+            }
+            Self::Caterers => "Caterers",
+            Self::ChemicalProductsAndServices => "Chemical products and services",
+            Self::ChildAndInfantClothing => "Child and infant clothing",
+            Self::ChildSupport => "Child support",
+            Self::ChildcareServices => "Childcare services",
+            Self::ChiropodistsAndPodiatrists => "Chiropodists and podiatrists",
+            Self::ChiropractorsAndOsteopaths => "Chiropractors and osteopaths",
+            Self::CigaretteVapeAndOtherSmokingProducts => {
+                "Cigarette, vape, and other smoking products"
+            }
+            Self::Cinemas => "Cinemas",
+            Self::CleaningSanitationAndPestControlServices => {
+                "Cleaning, sanitation, and pest control services"
+            }
+            Self::ClothingAlterationAndRepair => "Clothing alteration and repair",
+            Self::ClothingRental => "Clothing rental",
+            Self::ClothingStores => "Clothing stores",
+            Self::ComputerEquipment => "Computer equipment",
+            Self::ConcreteServices => "Concrete services",
+            Self::ConsumerElectronicsRepairAndServices => {
+                "Consumer electronics repair and services"
+            }
+            Self::ConvenienceStores => "Convenience stores",
+            Self::CosmeticSupplies => "Cosmetic supplies",
+            Self::CosmeticHealthSpasAndRelaxationMassageServices => {
+                "Cosmetic, health spas, and relaxation massage services"
+            }
+            Self::CourierAndFreightDeliveryServices => "Courier and freight delivery services",
+            Self::CurtainsBlindsAndWindowCoverings => "Curtains, blinds, and window coverings",
+            Self::DatingAndMatchmakingServices => "Dating and matchmaking services",
+            Self::DebtRepayments => "Debt repayments",
+            Self::DentalAndMedicalLaboratories => "Dental and medical laboratories",
+            Self::DentalServices => "Dental services",
+            Self::DigitalGamingProductsAndServices => "Digital gaming products and services",
+            Self::DoctorsAndPhysicians => "Doctors and physicians",
+            Self::DutyFreeStores => "Duty free stores",
+            Self::EducationnotElsewhereClassified => "Education (not elsewhere classified)",
+            Self::ElectricVehicleChargingServices => "Electric vehicle charging services",
+            Self::ElectricalSuppliesAndServices => "Electrical supplies and services",
+            Self::ElectricityAndGasServices => "Electricity and gas services",
+            Self::ElectricityServices => "Electricity services",
+            Self::ElectronicAndApplianceStores => "Electronic and appliance stores",
+            Self::EmploymentAndCareerServices => "Employment and career services",
+            Self::EntertainmentnotElsewhereClassified => "Entertainment (not elsewhere classified)",
+            Self::EventVenueAndEquipmentRental => "Event venue and equipment rental",
+            Self::EventsAndTicketsnotElsewhereClassified => {
+                "Events and tickets (not elsewhere classified)"
+            }
+            Self::FabricSewingKnittingAndRelatedSupplies => {
+                "Fabric, sewing, knitting, and related supplies"
+            }
+            Self::FastFoodStores => "Fast food stores",
+            Self::FinancialAdviceAndWealthManagement => "Financial advice and wealth management",
+            Self::FinancialAssetBrokersExchangesAndManagedFunds => {
+                "Financial asset brokers, exchanges, and managed funds"
+            }
+            Self::FinancialServicesnotElsewhereClassified => {
+                "Financial services (not elsewhere classified)"
+            }
+            Self::FireplacesAndSupplies => "Fireplaces and supplies",
+            Self::FishAndSeafoodSupplies => "Fish and seafood supplies",
+            Self::FloorCoveringStores => "Floor covering stores",
+            Self::FloralSuppliesAndServices => "Floral supplies and services",
+            Self::ForeignExchangeAndMoneyTransferServices => {
+                "Foreign exchange and money transfer services"
+            }
+            Self::FuelStations => "Fuel stations",
+            Self::FuneralDeathAndMemorialServices => "Funeral, death, and memorial services",
+            Self::GasServices => "Gas services",
+            Self::GeneralRetailStores => "General retail stores",
+            Self::GiftAndSouvenirStores => "Gift and souvenir stores",
+            Self::GolfCourses => "Golf courses",
+            Self::GymsFitnessAquaticFacilitiesYogaPilates => {
+                "Gyms, fitness, aquatic facilities, yoga, pilates"
+            }
+            Self::HaircutsAndTreatments => "Haircuts and treatments",
+            Self::HardwareEquipmentAndSupplies => "Hardware equipment and supplies",
+            Self::HeatingCoolingAndVentilationEquipmentAndServices => {
+                "Heating, cooling, and ventilation equipment and services"
+            }
+            Self::HobbyToyAndPhysicalGameStores => "Hobby, toy, and physical game stores",
+            Self::HomeFurnishingAndRepairStores => "Home furnishing and repair stores",
+            Self::Hospices => "Hospices",
+            Self::HospitalsAndEmergencyCare => "Hospitals and emergency care",
+            Self::HotelsMotelsAndOtherTemporaryAccommodation => {
+                "Hotels, motels, and other temporary accommodation"
+            }
+            Self::ITAndSoftwareDevelopmentServices => "IT and software development services",
+            Self::IceCreamGelatoNutAndConfectionaryStores => {
+                "Ice cream, gelato, nut, and confectionary stores"
+            }
+            Self::IndustrialAndCommercialSuppliesnotElsewhereClassified => {
+                "Industrial and commercial supplies (not elsewhere classified)"
+            }
+            Self::Insurance => "Insurance",
+            Self::InternetServices => "Internet services",
+            Self::LandscapingGardenAndHorticulturalServices => {
+                "Landscaping, garden, and horticultural services"
+            }
+            Self::LaundryAndDrycleaning => "Laundry and drycleaning",
+            Self::LegalServices => "Legal services",
+            Self::LendingServices => "Lending services",
+            Self::Libraries => "Libraries",
+            Self::LiquorStores => "Liquor stores",
+            Self::LocalGovernment => "Local government",
+            Self::ManagementConsulting => "Management consulting",
+            Self::MarinasMarineSuppliesAndMarineServices => {
+                "Marinas, marine supplies, and marine services"
+            }
+            Self::MasonryStoneworkTilingPlasteringAndInsulationServices => {
+                "Masonry, stonework, tiling, plastering, and insulation services"
+            }
+            Self::MealKitStores => "Meal kit stores",
+            Self::MeatSupplies => "Meat supplies",
+            Self::MediaAndEntertainmentStreamingServices => {
+                "Media and entertainment streaming services"
+            }
+            Self::MedicalProductsAndSuppliesnotElsewhereClassified => {
+                "Medical products and supplies (not elsewhere classified)"
+            }
+            Self::MedicalServicesnotElsewhereClassified => {
+                "Medical services (not elsewhere classified)"
+            }
+            Self::MembershipOrganisationsnotElsewhereClassified => {
+                "Membership organisations (not elsewhere classified)"
+            }
+            Self::MotorParksCampgroundsHolidayParksRecreationalCamps => {
+                "Motor parks, campgrounds, holiday parks, recreational camps"
+            }
+            Self::MusicalEquipmentRecordingsAndSupplies => {
+                "Musical equipment, recordings, and supplies"
+            }
+            Self::NationalGovernmentServices => "National government services",
+            Self::NewspapersMagazinesAndLiterarySubscriptions => {
+                "Newspapers, magazines, and literary subscriptions"
+            }
+            Self::NurseriesAndGardenSupplies => "Nurseries and garden supplies",
+            Self::OptometristsAndEyewear => "Optometrists and eyewear",
+            Self::PaintingSuppliesAndServices => "Painting supplies and services",
+            Self::ParkingServices => "Parking services",
+            Self::PerformingArtTraining => "Performing art training",
+            Self::PersonalSoftwarenotElsewhereClassified => {
+                "Personal software (not elsewhere classified)"
+            }
+            Self::PetsAndRelatedSuppliesAccommodationAndServices => {
+                "Pets and related supplies, accommodation, and services"
+            }
+            Self::Pharmacies => "Pharmacies",
+            Self::PhotographyEquipmentAndServices => "Photography equipment and services",
+            Self::PhysiotherapyAndMassageTherapy => "Physiotherapy and massage therapy",
+            Self::PlumbingAndGasfittingSuppliesAndServices => {
+                "Plumbing and gasfitting supplies and services"
+            }
+            Self::PoliticalOrganisations => "Political organisations",
+            Self::PostalServices => "Postal services",
+            Self::PrimaryAndSecondarySchools => "Primary and secondary schools",
+            Self::PrintingPublishingAndSignmakingServices => {
+                "Printing, publishing, and signmaking services"
+            }
+            Self::ProfessionalServicesnotElsewhereClassified => {
+                "Professional services (not elsewhere classified)"
+            }
+            Self::PsychologyPsychiatricCounsellingAndOtherMentalHealthServices => {
+                "Psychology, psychiatric, counselling, and other mental health services"
+            }
+            Self::RealEstateServices => "Real estate services",
+            Self::ReligiousOrganisations => "Religious organisations",
+            Self::RentForPermanentAccommodation => "Rent for permanent accommodation",
+            Self::RepairAndServicingnotElsewhereClassified => {
+                "Repair and servicing (not elsewhere classified)"
+            }
+            Self::RetirementAccommodation => "Retirement accommodation",
+            Self::RoofingServices => "Roofing services",
+            Self::SecondhandAndOpportunityStores => "Secondhand and opportunity stores",
+            Self::SecurityStoresAndServices => "Security stores and services",
+            Self::ShoeAndLeatherRepairKeycuttingOrEngraving => {
+                "Shoe and leather repair, keycutting, or engraving"
+            }
+            Self::ShoeStores => "Shoe stores",
+            Self::SpecialtyFoodStores => "Specialty food stores",
+            Self::SpecialtyRetailStoresnotElsewhereClassified => {
+                "Specialty retail stores (not elsewhere classified)"
+            }
+            Self::SportsAndAthleticClubs => "Sports and athletic clubs",
+            Self::SportsEquipmentAndSupplies => "Sports equipment and supplies",
+            Self::StationeryAndOfficeSupplies => "Stationery and office supplies",
+            Self::StorageFacilities => "Storage facilities",
+            Self::SupermarketsAndGroceryStores => "Supermarkets and grocery stores",
+            Self::SwimmingPoolsSuppliesAndServices => "Swimming pools, supplies, and services",
+            Self::TaxPayments => "Tax payments",
+            Self::TaxiRideshareAndOndemandTransportServices => {
+                "Taxi, rideshare, and on-demand transport services"
+            }
+            Self::TelecommunicationServices => "Telecommunication services",
+            Self::TestingLaboratoriesnonMedical => "Testing laboratories (non medical)",
+            Self::TheatreConcertsAndOtherArtisticPerformances => {
+                "Theatre, concerts, and other artistic performances"
+            }
+            Self::TollFees => "Toll fees",
+            Self::TowingServices => "Towing services",
+            Self::TradeServicesnotElsewhereClassified => {
+                "Trade services (not elsewhere classified)"
+            }
+            Self::TrainAndRailTransportServices => "Train and rail transport services",
+            Self::TransportServicesnotElsewhereClassified => {
+                "Transport services (not elsewhere classified)"
+            }
+            Self::TravelAgenciesAndTourOperators => "Travel agencies and tour operators",
+            Self::TruckTrailerMachineryAndEquipmentRentals => {
+                "Truck, trailer, machinery, and equipment rentals"
+            }
+            Self::TyreStores => "Tyre stores",
+            Self::UniformsAndCommercialClothing => "Uniforms and commercial clothing",
+            Self::UniversitiesProfessionalSchoolsAndOtherTertiaryEducation => {
+                "Universities, professional schools, and other tertiary education"
+            }
+            Self::VarietyStores => "Variety stores",
+            Self::VehicleDealersnotElsewhereClassified => {
+                "Vehicle dealers (not elsewhere classified)"
+            }
+            Self::VeterinaryServices => "Veterinary services",
+            Self::WasteAndRecyclingServices => "Waste and recycling services",
+            Self::WatchClockAndJewelleryStoresAndServices => {
+                "Watch, clock, and jewellery stores and services"
+            }
+            Self::WaterAndSanitationServices => "Water and sanitation services",
+            Self::WeldingFabricationAndMetalServices => "Welding, fabrication, and metal services",
+            Self::WelfareAndCharity => "Welfare and charity",
+            Self::WineriesBreweriesAndDistilleries => "Wineries, breweries, and distilleries",
+        })
+    }
+}
+
+#[cfg(feature = "serde")]
+impl<'de> serde::Deserialize<'de> for NzfccCode {
+    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    where
+        D: serde::Deserializer<'de>,
+    {
+        let s = <&str>::deserialize(deserializer)?;
+        match s {
+            "Accountancy, bookkeeping, auditing, and tax services" => {
+                Ok(Self::AccountancyBookkeepingAuditingAndTaxServices)
+            }
+            "Advertising and marketing services" => Ok(Self::AdvertisingAndMarketingServices),
+            "Agricultural supplies" => Ok(Self::AgriculturalSupplies),
+            "Air transport services" => Ok(Self::AirTransportServices),
+            "Airports" => Ok(Self::Airports),
+            "Antique stores and repair" => Ok(Self::AntiqueStoresAndRepair),
+            "Apparel and accessory stores" => Ok(Self::ApparelAndAccessoryStores),
+            "Appliance and furniture rentals" => Ok(Self::ApplianceAndFurnitureRentals),
+            "Appliance repair and services" => Ok(Self::ApplianceRepairAndServices),
+            "Architect, engineering, and surveying services" => {
+                Ok(Self::ArchitectEngineeringAndSurveyingServices)
+            }
+            "Art and craft supplies" => Ok(Self::ArtAndCraftSupplies),
+            "Art stores, dealers, and galleries" => Ok(Self::ArtStoresDealersAndGalleries),
+            "Attractions, museums, zoos, amusement parks, circuses, exhibits" => {
+                Ok(Self::AttractionsMuseumsZoosAmusementParksCircusesExhibits)
+            }
+            "Automotive body repair and painting services" => {
+                Ok(Self::AutomotiveBodyRepairAndPaintingServices)
+            }
+            "Automotive parts and accessories" => Ok(Self::AutomotivePartsAndAccessories),
+            "Automotive repair and servicing" => Ok(Self::AutomotiveRepairAndServicing),
+            "Bakeries" => Ok(Self::Bakeries),
+            "Bars, pubs, nightclubs" => Ok(Self::BarsPubsNightclubs),
+            "Bicycle stores, rentals, and repairs" => Ok(Self::BicycleStoresRentalsAndRepairs),
+            "Boat dealers" => Ok(Self::BoatDealers),
+            "Boat rentals" => Ok(Self::BoatRentals),
+            "Boat transport services" => Ok(Self::BoatTransportServices),
+            "Body corporate" => Ok(Self::BodyCorporate),
+            "Book stores" => Ok(Self::BookStores),
+            "Building and carpentry services" => Ok(Self::BuildingAndCarpentryServices),
+            "Building supplies" => Ok(Self::BuildingSupplies),
+            "Bus and shuttle transport services" => Ok(Self::BusAndShuttleTransportServices),
+            "Business services (not elsewhere classified)" => {
+                Ok(Self::BusinessServicesnotElsewhereClassified)
+            }
+            "Business software and cloud services" => Ok(Self::BusinessSoftwareAndCloudServices),
+            "Cafes and restaurants" => Ok(Self::CafesAndRestaurants),
+            "Car and motorcycle rentals" => Ok(Self::CarAndMotorcycleRentals),
+            "Car, truck, and motorcycle dealers" => Ok(Self::CarTruckAndMotorcycleDealers),
+            "Cash withdrawals" => Ok(Self::CashWithdrawals),
+            "Casino, lottery, and other gambling services" => {
+                Ok(Self::CasinoLotteryAndOtherGamblingServices)
+            }
+            "Caterers" => Ok(Self::Caterers),
+            "Chemical products and services" => Ok(Self::ChemicalProductsAndServices),
+            "Child and infant clothing" => Ok(Self::ChildAndInfantClothing),
+            "Child support" => Ok(Self::ChildSupport),
+            "Childcare services" => Ok(Self::ChildcareServices),
+            "Chiropodists and podiatrists" => Ok(Self::ChiropodistsAndPodiatrists),
+            "Chiropractors and osteopaths" => Ok(Self::ChiropractorsAndOsteopaths),
+            "Cigarette, vape, and other smoking products" => {
+                Ok(Self::CigaretteVapeAndOtherSmokingProducts)
+            }
+            "Cinemas" => Ok(Self::Cinemas),
+            "Cleaning, sanitation, and pest control services" => {
+                Ok(Self::CleaningSanitationAndPestControlServices)
+            }
+            "Clothing alteration and repair" => Ok(Self::ClothingAlterationAndRepair),
+            "Clothing rental" => Ok(Self::ClothingRental),
+            "Clothing stores" => Ok(Self::ClothingStores),
+            "Computer equipment" => Ok(Self::ComputerEquipment),
+            "Concrete services" => Ok(Self::ConcreteServices),
+            "Consumer electronics repair and services" => {
+                Ok(Self::ConsumerElectronicsRepairAndServices)
+            }
+            "Convenience stores" => Ok(Self::ConvenienceStores),
+            "Cosmetic supplies" => Ok(Self::CosmeticSupplies),
+            "Cosmetic, health spas, and relaxation massage services" => {
+                Ok(Self::CosmeticHealthSpasAndRelaxationMassageServices)
+            }
+            "Courier and freight delivery services" => Ok(Self::CourierAndFreightDeliveryServices),
+            "Curtains, blinds, and window coverings" => Ok(Self::CurtainsBlindsAndWindowCoverings),
+            "Dating and matchmaking services" => Ok(Self::DatingAndMatchmakingServices),
+            "Debt repayments" => Ok(Self::DebtRepayments),
+            "Dental and medical laboratories" => Ok(Self::DentalAndMedicalLaboratories),
+            "Dental services" => Ok(Self::DentalServices),
+            "Digital gaming products and services" => Ok(Self::DigitalGamingProductsAndServices),
+            "Doctors and physicians" => Ok(Self::DoctorsAndPhysicians),
+            "Duty free stores" => Ok(Self::DutyFreeStores),
+            "Education (not elsewhere classified)" => Ok(Self::EducationnotElsewhereClassified),
+            "Electric vehicle charging services" => Ok(Self::ElectricVehicleChargingServices),
+            "Electrical supplies and services" => Ok(Self::ElectricalSuppliesAndServices),
+            "Electricity and gas services" => Ok(Self::ElectricityAndGasServices),
+            "Electricity services" => Ok(Self::ElectricityServices),
+            "Electronic and appliance stores" => Ok(Self::ElectronicAndApplianceStores),
+            "Employment and career services" => Ok(Self::EmploymentAndCareerServices),
+            "Entertainment (not elsewhere classified)" => {
+                Ok(Self::EntertainmentnotElsewhereClassified)
+            }
+            "Event venue and equipment rental" => Ok(Self::EventVenueAndEquipmentRental),
+            "Events and tickets (not elsewhere classified)" => {
+                Ok(Self::EventsAndTicketsnotElsewhereClassified)
+            }
+            "Fabric, sewing, knitting, and related supplies" => {
+                Ok(Self::FabricSewingKnittingAndRelatedSupplies)
+            }
+            "Fast food stores" => Ok(Self::FastFoodStores),
+            "Financial advice and wealth management" => {
+                Ok(Self::FinancialAdviceAndWealthManagement)
+            }
+            "Financial asset brokers, exchanges, and managed funds" => {
+                Ok(Self::FinancialAssetBrokersExchangesAndManagedFunds)
+            }
+            "Financial services (not elsewhere classified)" => {
+                Ok(Self::FinancialServicesnotElsewhereClassified)
+            }
+            "Fireplaces and supplies" => Ok(Self::FireplacesAndSupplies),
+            "Fish and seafood supplies" => Ok(Self::FishAndSeafoodSupplies),
+            "Floor covering stores" => Ok(Self::FloorCoveringStores),
+            "Floral supplies and services" => Ok(Self::FloralSuppliesAndServices),
+            "Foreign exchange and money transfer services" => {
+                Ok(Self::ForeignExchangeAndMoneyTransferServices)
+            }
+            "Fuel stations" => Ok(Self::FuelStations),
+            "Funeral, death, and memorial services" => Ok(Self::FuneralDeathAndMemorialServices),
+            "Gas services" => Ok(Self::GasServices),
+            "General retail stores" => Ok(Self::GeneralRetailStores),
+            "Gift and souvenir stores" => Ok(Self::GiftAndSouvenirStores),
+            "Golf courses" => Ok(Self::GolfCourses),
+            "Gyms, fitness, aquatic facilities, yoga, pilates" => {
+                Ok(Self::GymsFitnessAquaticFacilitiesYogaPilates)
+            }
+            "Haircuts and treatments" => Ok(Self::HaircutsAndTreatments),
+            "Hardware equipment and supplies" => Ok(Self::HardwareEquipmentAndSupplies),
+            "Heating, cooling, and ventilation equipment and services" => {
+                Ok(Self::HeatingCoolingAndVentilationEquipmentAndServices)
+            }
+            "Hobby, toy, and physical game stores" => Ok(Self::HobbyToyAndPhysicalGameStores),
+            "Home furnishing and repair stores" => Ok(Self::HomeFurnishingAndRepairStores),
+            "Hospices" => Ok(Self::Hospices),
+            "Hospitals and emergency care" => Ok(Self::HospitalsAndEmergencyCare),
+            "Hotels, motels, and other temporary accommodation" => {
+                Ok(Self::HotelsMotelsAndOtherTemporaryAccommodation)
+            }
+            "IT and software development services" => Ok(Self::ITAndSoftwareDevelopmentServices),
+            "Ice cream, gelato, nut, and confectionary stores" => {
+                Ok(Self::IceCreamGelatoNutAndConfectionaryStores)
+            }
+            "Industrial and commercial supplies (not elsewhere classified)" => {
+                Ok(Self::IndustrialAndCommercialSuppliesnotElsewhereClassified)
+            }
+            "Insurance" => Ok(Self::Insurance),
+            "Internet services" => Ok(Self::InternetServices),
+            "Landscaping, garden, and horticultural services" => {
+                Ok(Self::LandscapingGardenAndHorticulturalServices)
+            }
+            "Laundry and drycleaning" => Ok(Self::LaundryAndDrycleaning),
+            "Legal services" => Ok(Self::LegalServices),
+            "Lending services" => Ok(Self::LendingServices),
+            "Libraries" => Ok(Self::Libraries),
+            "Liquor stores" => Ok(Self::LiquorStores),
+            "Local government" => Ok(Self::LocalGovernment),
+            "Management consulting" => Ok(Self::ManagementConsulting),
+            "Marinas, marine supplies, and marine services" => {
+                Ok(Self::MarinasMarineSuppliesAndMarineServices)
+            }
+            "Masonry, stonework, tiling, plastering, and insulation services" => {
+                Ok(Self::MasonryStoneworkTilingPlasteringAndInsulationServices)
+            }
+            "Meal kit stores" => Ok(Self::MealKitStores),
+            "Meat supplies" => Ok(Self::MeatSupplies),
+            "Media and entertainment streaming services" => {
+                Ok(Self::MediaAndEntertainmentStreamingServices)
+            }
+            "Medical products and supplies (not elsewhere classified)" => {
+                Ok(Self::MedicalProductsAndSuppliesnotElsewhereClassified)
+            }
+            "Medical services (not elsewhere classified)" => {
+                Ok(Self::MedicalServicesnotElsewhereClassified)
+            }
+            "Membership organisations (not elsewhere classified)" => {
+                Ok(Self::MembershipOrganisationsnotElsewhereClassified)
+            }
+            "Motor parks, campgrounds, holiday parks, recreational camps" => {
+                Ok(Self::MotorParksCampgroundsHolidayParksRecreationalCamps)
+            }
+            "Musical equipment, recordings, and supplies" => {
+                Ok(Self::MusicalEquipmentRecordingsAndSupplies)
+            }
+            "National government services" => Ok(Self::NationalGovernmentServices),
+            "Newspapers, magazines, and literary subscriptions" => {
+                Ok(Self::NewspapersMagazinesAndLiterarySubscriptions)
+            }
+            "Nurseries and garden supplies" => Ok(Self::NurseriesAndGardenSupplies),
+            "Optometrists and eyewear" => Ok(Self::OptometristsAndEyewear),
+            "Painting supplies and services" => Ok(Self::PaintingSuppliesAndServices),
+            "Parking services" => Ok(Self::ParkingServices),
+            "Performing art training" => Ok(Self::PerformingArtTraining),
+            "Personal software (not elsewhere classified)" => {
+                Ok(Self::PersonalSoftwarenotElsewhereClassified)
+            }
+            "Pets and related supplies, accommodation, and services" => {
+                Ok(Self::PetsAndRelatedSuppliesAccommodationAndServices)
+            }
+            "Pharmacies" => Ok(Self::Pharmacies),
+            "Photography equipment and services" => Ok(Self::PhotographyEquipmentAndServices),
+            "Physiotherapy and massage therapy" => Ok(Self::PhysiotherapyAndMassageTherapy),
+            "Plumbing and gasfitting supplies and services" => {
+                Ok(Self::PlumbingAndGasfittingSuppliesAndServices)
+            }
+            "Political organisations" => Ok(Self::PoliticalOrganisations),
+            "Postal services" => Ok(Self::PostalServices),
+            "Primary and secondary schools" => Ok(Self::PrimaryAndSecondarySchools),
+            "Printing, publishing, and signmaking services" => {
+                Ok(Self::PrintingPublishingAndSignmakingServices)
+            }
+            "Professional services (not elsewhere classified)" => {
+                Ok(Self::ProfessionalServicesnotElsewhereClassified)
+            }
+            "Psychology, psychiatric, counselling, and other mental health services" => {
+                Ok(Self::PsychologyPsychiatricCounsellingAndOtherMentalHealthServices)
+            }
+            "Real estate services" => Ok(Self::RealEstateServices),
+            "Religious organisations" => Ok(Self::ReligiousOrganisations),
+            "Rent for permanent accommodation" => Ok(Self::RentForPermanentAccommodation),
+            "Repair and servicing (not elsewhere classified)" => {
+                Ok(Self::RepairAndServicingnotElsewhereClassified)
+            }
+            "Retirement accommodation" => Ok(Self::RetirementAccommodation),
+            "Roofing services" => Ok(Self::RoofingServices),
+            "Secondhand and opportunity stores" => Ok(Self::SecondhandAndOpportunityStores),
+            "Security stores and services" => Ok(Self::SecurityStoresAndServices),
+            "Shoe and leather repair, keycutting, or engraving" => {
+                Ok(Self::ShoeAndLeatherRepairKeycuttingOrEngraving)
+            }
+            "Shoe stores" => Ok(Self::ShoeStores),
+            "Specialty food stores" => Ok(Self::SpecialtyFoodStores),
+            "Specialty retail stores (not elsewhere classified)" => {
+                Ok(Self::SpecialtyRetailStoresnotElsewhereClassified)
+            }
+            "Sports and athletic clubs" => Ok(Self::SportsAndAthleticClubs),
+            "Sports equipment and supplies" => Ok(Self::SportsEquipmentAndSupplies),
+            "Stationery and office supplies" => Ok(Self::StationeryAndOfficeSupplies),
+            "Storage facilities" => Ok(Self::StorageFacilities),
+            "Supermarkets and grocery stores" => Ok(Self::SupermarketsAndGroceryStores),
+            "Swimming pools, supplies, and services" => Ok(Self::SwimmingPoolsSuppliesAndServices),
+            "Tax payments" => Ok(Self::TaxPayments),
+            "Taxi, rideshare, and on-demand transport services" => {
+                Ok(Self::TaxiRideshareAndOndemandTransportServices)
+            }
+            "Telecommunication services" => Ok(Self::TelecommunicationServices),
+            "Testing laboratories (non medical)" => Ok(Self::TestingLaboratoriesnonMedical),
+            "Theatre, concerts, and other artistic performances" => {
+                Ok(Self::TheatreConcertsAndOtherArtisticPerformances)
+            }
+            "Toll fees" => Ok(Self::TollFees),
+            "Towing services" => Ok(Self::TowingServices),
+            "Trade services (not elsewhere classified)" => {
+                Ok(Self::TradeServicesnotElsewhereClassified)
+            }
+            "Train and rail transport services" => Ok(Self::TrainAndRailTransportServices),
+            "Transport services (not elsewhere classified)" => {
+                Ok(Self::TransportServicesnotElsewhereClassified)
+            }
+            "Travel agencies and tour operators" => Ok(Self::TravelAgenciesAndTourOperators),
+            "Truck, trailer, machinery, and equipment rentals" => {
+                Ok(Self::TruckTrailerMachineryAndEquipmentRentals)
+            }
+            "Tyre stores" => Ok(Self::TyreStores),
+            "Uniforms and commercial clothing" => Ok(Self::UniformsAndCommercialClothing),
+            "Universities, professional schools, and other tertiary education" => {
+                Ok(Self::UniversitiesProfessionalSchoolsAndOtherTertiaryEducation)
+            }
+            "Variety stores" => Ok(Self::VarietyStores),
+            "Vehicle dealers (not elsewhere classified)" => {
+                Ok(Self::VehicleDealersnotElsewhereClassified)
+            }
+            "Veterinary services" => Ok(Self::VeterinaryServices),
+            "Waste and recycling services" => Ok(Self::WasteAndRecyclingServices),
+            "Watch, clock, and jewellery stores and services" => {
+                Ok(Self::WatchClockAndJewelleryStoresAndServices)
+            }
+            "Water and sanitation services" => Ok(Self::WaterAndSanitationServices),
+            "Welding, fabrication, and metal services" => {
+                Ok(Self::WeldingFabricationAndMetalServices)
+            }
+            "Welfare and charity" => Ok(Self::WelfareAndCharity),
+            "Wineries, breweries, and distilleries" => Ok(Self::WineriesBreweriesAndDistilleries),
+            _ => {
+                const VARIANTS: &[&str] = &[
+                    "Accountancy, bookkeeping, auditing, and tax services",
+                    "Advertising and marketing services",
+                    "Agricultural supplies",
+                    "Air transport services",
+                    "Airports",
+                    "Antique stores and repair",
+                    "Apparel and accessory stores",
+                    "Appliance and furniture rentals",
+                    "Appliance repair and services",
+                    "Architect, engineering, and surveying services",
+                    "Art and craft supplies",
+                    "Art stores, dealers, and galleries",
+                    "Attractions, museums, zoos, amusement parks, circuses, exhibits",
+                    "Automotive body repair and painting services",
+                    "Automotive parts and accessories",
+                    "Automotive repair and servicing",
+                    "Bakeries",
+                    "Bars, pubs, nightclubs",
+                    "Bicycle stores, rentals, and repairs",
+                    "Boat dealers",
+                    "Boat rentals",
+                    "Boat transport services",
+                    "Body corporate",
+                    "Book stores",
+                    "Building and carpentry services",
+                    "Building supplies",
+                    "Bus and shuttle transport services",
+                    "Business services (not elsewhere classified)",
+                    "Business software and cloud services",
+                    "Cafes and restaurants",
+                    "Car and motorcycle rentals",
+                    "Car, truck, and motorcycle dealers",
+                    "Cash withdrawals",
+                    "Casino, lottery, and other gambling services",
+                    "Caterers",
+                    "Chemical products and services",
+                    "Child and infant clothing",
+                    "Child support",
+                    "Childcare services",
+                    "Chiropodists and podiatrists",
+                    "Chiropractors and osteopaths",
+                    "Cigarette, vape, and other smoking products",
+                    "Cinemas",
+                    "Cleaning, sanitation, and pest control services",
+                    "Clothing alteration and repair",
+                    "Clothing rental",
+                    "Clothing stores",
+                    "Computer equipment",
+                    "Concrete services",
+                    "Consumer electronics repair and services",
+                    "Convenience stores",
+                    "Cosmetic supplies",
+                    "Cosmetic, health spas, and relaxation massage services",
+                    "Courier and freight delivery services",
+                    "Curtains, blinds, and window coverings",
+                    "Dating and matchmaking services",
+                    "Debt repayments",
+                    "Dental and medical laboratories",
+                    "Dental services",
+                    "Digital gaming products and services",
+                    "Doctors and physicians",
+                    "Duty free stores",
+                    "Education (not elsewhere classified)",
+                    "Electric vehicle charging services",
+                    "Electrical supplies and services",
+                    "Electricity and gas services",
+                    "Electricity services",
+                    "Electronic and appliance stores",
+                    "Employment and career services",
+                    "Entertainment (not elsewhere classified)",
+                    "Event venue and equipment rental",
+                    "Events and tickets (not elsewhere classified)",
+                    "Fabric, sewing, knitting, and related supplies",
+                    "Fast food stores",
+                    "Financial advice and wealth management",
+                    "Financial asset brokers, exchanges, and managed funds",
+                    "Financial services (not elsewhere classified)",
+                    "Fireplaces and supplies",
+                    "Fish and seafood supplies",
+                    "Floor covering stores",
+                    "Floral supplies and services",
+                    "Foreign exchange and money transfer services",
+                    "Fuel stations",
+                    "Funeral, death, and memorial services",
+                    "Gas services",
+                    "General retail stores",
+                    "Gift and souvenir stores",
+                    "Golf courses",
+                    "Gyms, fitness, aquatic facilities, yoga, pilates",
+                    "Haircuts and treatments",
+                    "Hardware equipment and supplies",
+                    "Heating, cooling, and ventilation equipment and services",
+                    "Hobby, toy, and physical game stores",
+                    "Home furnishing and repair stores",
+                    "Hospices",
+                    "Hospitals and emergency care",
+                    "Hotels, motels, and other temporary accommodation",
+                    "IT and software development services",
+                    "Ice cream, gelato, nut, and confectionary stores",
+                    "Industrial and commercial supplies (not elsewhere classified)",
+                    "Insurance",
+                    "Internet services",
+                    "Landscaping, garden, and horticultural services",
+                    "Laundry and drycleaning",
+                    "Legal services",
+                    "Lending services",
+                    "Libraries",
+                    "Liquor stores",
+                    "Local government",
+                    "Management consulting",
+                    "Marinas, marine supplies, and marine services",
+                    "Masonry, stonework, tiling, plastering, and insulation services",
+                    "Meal kit stores",
+                    "Meat supplies",
+                    "Media and entertainment streaming services",
+                    "Medical products and supplies (not elsewhere classified)",
+                    "Medical services (not elsewhere classified)",
+                    "Membership organisations (not elsewhere classified)",
+                    "Motor parks, campgrounds, holiday parks, recreational camps",
+                    "Musical equipment, recordings, and supplies",
+                    "National government services",
+                    "Newspapers, magazines, and literary subscriptions",
+                    "Nurseries and garden supplies",
+                    "Optometrists and eyewear",
+                    "Painting supplies and services",
+                    "Parking services",
+                    "Performing art training",
+                    "Personal software (not elsewhere classified)",
+                    "Pets and related supplies, accommodation, and services",
+                    "Pharmacies",
+                    "Photography equipment and services",
+                    "Physiotherapy and massage therapy",
+                    "Plumbing and gasfitting supplies and services",
+                    "Political organisations",
+                    "Postal services",
+                    "Primary and secondary schools",
+                    "Printing, publishing, and signmaking services",
+                    "Professional services (not elsewhere classified)",
+                    "Psychology, psychiatric, counselling, and other mental health services",
+                    "Real estate services",
+                    "Religious organisations",
+                    "Rent for permanent accommodation",
+                    "Repair and servicing (not elsewhere classified)",
+                    "Retirement accommodation",
+                    "Roofing services",
+                    "Secondhand and opportunity stores",
+                    "Security stores and services",
+                    "Shoe and leather repair, keycutting, or engraving",
+                    "Shoe stores",
+                    "Specialty food stores",
+                    "Specialty retail stores (not elsewhere classified)",
+                    "Sports and athletic clubs",
+                    "Sports equipment and supplies",
+                    "Stationery and office supplies",
+                    "Storage facilities",
+                    "Supermarkets and grocery stores",
+                    "Swimming pools, supplies, and services",
+                    "Tax payments",
+                    "Taxi, rideshare, and on-demand transport services",
+                    "Telecommunication services",
+                    "Testing laboratories (non medical)",
+                    "Theatre, concerts, and other artistic performances",
+                    "Toll fees",
+                    "Towing services",
+                    "Trade services (not elsewhere classified)",
+                    "Train and rail transport services",
+                    "Transport services (not elsewhere classified)",
+                    "Travel agencies and tour operators",
+                    "Truck, trailer, machinery, and equipment rentals",
+                    "Tyre stores",
+                    "Uniforms and commercial clothing",
+                    "Universities, professional schools, and other tertiary education",
+                    "Variety stores",
+                    "Vehicle dealers (not elsewhere classified)",
+                    "Veterinary services",
+                    "Waste and recycling services",
+                    "Watch, clock, and jewellery stores and services",
+                    "Water and sanitation services",
+                    "Welding, fabrication, and metal services",
+                    "Welfare and charity",
+                    "Wineries, breweries, and distilleries",
+                ];
+                Err(serde::de::Error::unknown_variant(s, VARIANTS))
+            }
         }
     }
 }

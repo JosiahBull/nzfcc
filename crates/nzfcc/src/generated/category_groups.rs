@@ -3,39 +3,27 @@
 
 /// An enum of the possible NZFCC category groups.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-#[cfg_attr(feature = "serde", serde(deny_unknown_fields))]
 #[non_exhaustive]
 pub enum CategoryGroup {
     /// The "Professional Services" group.
-    #[cfg_attr(feature = "serde", serde(rename = "Professional Services"))]
     ProfessionalServices,
     /// The "Household" group.
-    #[cfg_attr(feature = "serde", serde(rename = "Household"))]
     Household,
     /// The "Lifestyle" group.
-    #[cfg_attr(feature = "serde", serde(rename = "Lifestyle"))]
     Lifestyle,
     /// The "Appearance" group.
-    #[cfg_attr(feature = "serde", serde(rename = "Appearance"))]
     Appearance,
     /// The "Transport" group.
-    #[cfg_attr(feature = "serde", serde(rename = "Transport"))]
     Transport,
     /// The "Food" group.
-    #[cfg_attr(feature = "serde", serde(rename = "Food"))]
     Food,
     /// The "Housing" group.
-    #[cfg_attr(feature = "serde", serde(rename = "Housing"))]
     Housing,
     /// The "Education" group.
-    #[cfg_attr(feature = "serde", serde(rename = "Education"))]
     Education,
     /// The "Health" group.
-    #[cfg_attr(feature = "serde", serde(rename = "Health"))]
     Health,
     /// The "Utilities" group.
-    #[cfg_attr(feature = "serde", serde(rename = "Utilities"))]
     Utilities,
 }
 
@@ -281,6 +269,64 @@ impl CategoryGroup {
             Self::Education => CODES_EDUCATION,
             Self::Health => CODES_HEALTH,
             Self::Utilities => CODES_UTILITIES,
+        }
+    }
+}
+
+#[cfg(feature = "serde")]
+impl serde::Serialize for CategoryGroup {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::Serializer,
+    {
+        serializer.serialize_str(match self {
+            Self::ProfessionalServices => "Professional Services",
+            Self::Household => "Household",
+            Self::Lifestyle => "Lifestyle",
+            Self::Appearance => "Appearance",
+            Self::Transport => "Transport",
+            Self::Food => "Food",
+            Self::Housing => "Housing",
+            Self::Education => "Education",
+            Self::Health => "Health",
+            Self::Utilities => "Utilities",
+        })
+    }
+}
+
+#[cfg(feature = "serde")]
+impl<'de> serde::Deserialize<'de> for CategoryGroup {
+    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    where
+        D: serde::Deserializer<'de>,
+    {
+        let s = <&str>::deserialize(deserializer)?;
+        match s {
+            "Professional Services" => Ok(Self::ProfessionalServices),
+            "Household" => Ok(Self::Household),
+            "Lifestyle" => Ok(Self::Lifestyle),
+            "Appearance" => Ok(Self::Appearance),
+            "Transport" => Ok(Self::Transport),
+            "Food" => Ok(Self::Food),
+            "Housing" => Ok(Self::Housing),
+            "Education" => Ok(Self::Education),
+            "Health" => Ok(Self::Health),
+            "Utilities" => Ok(Self::Utilities),
+            _ => Err(serde::de::Error::unknown_variant(
+                s,
+                &[
+                    "Professional Services",
+                    "Household",
+                    "Lifestyle",
+                    "Appearance",
+                    "Transport",
+                    "Food",
+                    "Housing",
+                    "Education",
+                    "Health",
+                    "Utilities",
+                ],
+            )),
         }
     }
 }

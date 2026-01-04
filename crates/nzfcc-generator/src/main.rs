@@ -40,10 +40,6 @@ fn construct_group_enum(groups: &[Group], categories: &[Category]) -> String {
     enum_def.push_str("// Run: cargo run -p nzfcc-generator to regenerate\n\n");
     enum_def.push_str("/// An enum of the possible NZFCC category groups.\n");
     enum_def.push_str("#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]\n");
-    enum_def.push_str(
-        "#[cfg_attr(feature = \"serde\", derive(serde::Serialize, serde::Deserialize))]\n",
-    );
-    enum_def.push_str("#[cfg_attr(feature = \"serde\", serde(deny_unknown_fields))]\n");
     enum_def.push_str("#[non_exhaustive]\n");
     enum_def.push_str("pub enum CategoryGroup {\n");
     for Group { name, .. } in groups {
@@ -53,10 +49,6 @@ fn construct_group_enum(groups: &[Group], categories: &[Category]) -> String {
             .filter(|c| !c.is_whitespace())
             .collect::<String>();
         enum_def.push_str(&format!("    /// The \"{}\" group.\n", name));
-        enum_def.push_str(&format!(
-            "    #[cfg_attr(feature = \"serde\", serde(rename = \"{}\"))]\n",
-            name
-        ));
         enum_def.push_str(&format!("    {},\n", enum_name));
     }
     enum_def.push_str("}\n");
@@ -133,6 +125,64 @@ fn construct_group_enum(groups: &[Group], categories: &[Category]) -> String {
     enum_def.push_str("    }\n");
     enum_def.push_str("}\n");
 
+    // Manually implement Serialize
+    enum_def.push_str("\n");
+    enum_def.push_str("#[cfg(feature = \"serde\")]\n");
+    enum_def.push_str("impl serde::Serialize for CategoryGroup {\n");
+    enum_def.push_str("    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>\n");
+    enum_def.push_str("    where\n");
+    enum_def.push_str("        S: serde::Serializer,\n");
+    enum_def.push_str("    {\n");
+    enum_def.push_str("        serializer.serialize_str(match self {\n");
+    for Group { name, .. } in groups {
+        let enum_name = name
+            .chars()
+            .filter(|c| c.is_alphanumeric())
+            .filter(|c| !c.is_whitespace())
+            .collect::<String>();
+        enum_def.push_str(&format!(
+            "            Self::{} => \"{}\",\n",
+            enum_name, name
+        ));
+    }
+    enum_def.push_str("        })\n");
+    enum_def.push_str("    }\n");
+    enum_def.push_str("}\n");
+
+    // Manually implement Deserialize
+    enum_def.push_str("\n");
+    enum_def.push_str("#[cfg(feature = \"serde\")]\n");
+    enum_def.push_str("impl<'de> serde::Deserialize<'de> for CategoryGroup {\n");
+    enum_def.push_str("    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>\n");
+    enum_def.push_str("    where\n");
+    enum_def.push_str("        D: serde::Deserializer<'de>,\n");
+    enum_def.push_str("    {\n");
+    enum_def.push_str("        let s = <&str>::deserialize(deserializer)?;\n");
+    enum_def.push_str("        match s {\n");
+    for Group { name, .. } in groups {
+        let enum_name = name
+            .chars()
+            .filter(|c| c.is_alphanumeric())
+            .filter(|c| !c.is_whitespace())
+            .collect::<String>();
+        enum_def.push_str(&format!(
+            "            \"{}\" => Ok(Self::{}),\n",
+            name, enum_name
+        ));
+    }
+    enum_def.push_str("            _ => Err(serde::de::Error::unknown_variant(s, &[\n");
+    for (i, Group { name, .. }) in groups.iter().enumerate() {
+        if i == groups.len() - 1 {
+            enum_def.push_str(&format!("                \"{}\",\n", name));
+        } else {
+            enum_def.push_str(&format!("                \"{}\",\n", name));
+        }
+    }
+    enum_def.push_str("            ])),\n");
+    enum_def.push_str("        }\n");
+    enum_def.push_str("    }\n");
+    enum_def.push_str("}\n");
+
     enum_def
 }
 
@@ -142,10 +192,6 @@ fn construct_nzfcc_code_enum(categories: &[Category]) -> String {
     enum_def.push_str("// Run: cargo run -p nzfcc-generator to regenerate\n\n");
     enum_def.push_str("/// All possible New Zealand Financial Category Codes (NZFCC) codes, as defined by the NZFCC org [https://nzfcc.org/explore/](https://nzfcc.org/explore/).\n");
     enum_def.push_str("#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]\n");
-    enum_def.push_str(
-        "#[cfg_attr(feature = \"serde\", derive(serde::Serialize, serde::Deserialize))]\n",
-    );
-    enum_def.push_str("#[cfg_attr(feature = \"serde\", serde(deny_unknown_fields))]\n");
     enum_def.push_str("#[non_exhaustive]\n");
     enum_def.push_str("pub enum NzfccCode {\n");
     for Category { name, .. } in categories {
@@ -160,10 +206,6 @@ fn construct_nzfcc_code_enum(categories: &[Category]) -> String {
             .collect::<String>();
 
         enum_def.push_str(&format!("    /// The \"{}\" category.\n", name));
-        enum_def.push_str(&format!(
-            "    #[cfg_attr(feature = \"serde\", serde(rename = \"{}\"))]\n",
-            name
-        ));
         enum_def.push_str(&format!("    {},\n", enum_name));
     }
     enum_def.push_str("}\n");
@@ -228,6 +270,73 @@ fn construct_nzfcc_code_enum(categories: &[Category]) -> String {
     enum_def.push_str("    }\n");
     enum_def.push_str("}\n");
 
+    // Manually implement Serialize
+    enum_def.push_str("\n");
+    enum_def.push_str("#[cfg(feature = \"serde\")]\n");
+    enum_def.push_str("impl serde::Serialize for NzfccCode {\n");
+    enum_def.push_str("    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>\n");
+    enum_def.push_str("    where\n");
+    enum_def.push_str("        S: serde::Serializer,\n");
+    enum_def.push_str("    {\n");
+    enum_def.push_str("        serializer.serialize_str(match self {\n");
+    for Category { name, .. } in categories {
+        let enum_name = name
+            .split_whitespace()
+            .flat_map(|word| {
+                let mut chars = word.chars();
+                let first = chars.next().map(|c| c.to_ascii_uppercase());
+                first.into_iter().chain(chars)
+            })
+            .filter(|c| c.is_alphanumeric())
+            .collect::<String>();
+        enum_def.push_str(&format!(
+            "            Self::{} => \"{}\",\n",
+            enum_name, name
+        ));
+    }
+    enum_def.push_str("        })\n");
+    enum_def.push_str("    }\n");
+    enum_def.push_str("}\n");
+
+    // Manually implement Deserialize
+    enum_def.push_str("\n");
+    enum_def.push_str("#[cfg(feature = \"serde\")]\n");
+    enum_def.push_str("impl<'de> serde::Deserialize<'de> for NzfccCode {\n");
+    enum_def.push_str("    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>\n");
+    enum_def.push_str("    where\n");
+    enum_def.push_str("        D: serde::Deserializer<'de>,\n");
+    enum_def.push_str("    {\n");
+    enum_def.push_str("        let s = <&str>::deserialize(deserializer)?;\n");
+    enum_def.push_str("        match s {\n");
+    for Category { name, .. } in categories {
+        let enum_name = name
+            .split_whitespace()
+            .flat_map(|word| {
+                let mut chars = word.chars();
+                let first = chars.next().map(|c| c.to_ascii_uppercase());
+                first.into_iter().chain(chars)
+            })
+            .filter(|c| c.is_alphanumeric())
+            .collect::<String>();
+        enum_def.push_str(&format!(
+            "            \"{}\" => Ok(Self::{}),\n",
+            name, enum_name
+        ));
+    }
+
+    // Generate the list of all valid variant names for error messages
+    enum_def.push_str("            _ => {\n");
+    enum_def.push_str("                const VARIANTS: &[&str] = &[\n");
+    for Category { name, .. } in categories {
+        enum_def.push_str(&format!("                    \"{}\",\n", name));
+    }
+    enum_def.push_str("                ];\n");
+    enum_def.push_str("                Err(serde::de::Error::unknown_variant(s, VARIANTS))\n");
+    enum_def.push_str("            }\n");
+    enum_def.push_str("        }\n");
+    enum_def.push_str("    }\n");
+    enum_def.push_str("}\n");
+
     enum_def
 }
 
@@ -250,7 +359,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let categories_json_path = workspace_root.join("categories.json");
     let formatted_json = serde_json::to_string_pretty(&categories)?;
     std::fs::write(&categories_json_path, formatted_json)?;
-    println!("  ✓ Saved categories.json to repository");
+    println!("Saved categories.json to repository");
 
     // Find all unique group names
     let mut seen_groups = HashSet::new();
@@ -277,12 +386,12 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let category_groups_path = output_dir.join("category_groups.rs");
     let mut f = File::create(&category_groups_path)?;
     f.write_all(group_enum.as_bytes())?;
-    println!("  ✓ category_groups.rs");
+    println!("Wrote category_groups.rs");
 
     let nzfcc_codes_path = output_dir.join("nzfcc_codes.rs");
     let mut f = File::create(&nzfcc_codes_path)?;
     f.write_all(nzfcc_enum.as_bytes())?;
-    println!("  ✓ nzfcc_codes.rs");
+    println!("Wrote nzfcc_codes.rs");
 
     // Run cargo fmt on the generated files
     println!("Formatting generated files...");
@@ -295,20 +404,20 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     match fmt_status {
         Ok(status) if status.success() => {
-            println!("  ✓ Formatted successfully");
+            println!("Formatted successfully");
         }
         Ok(status) => {
-            eprintln!("  ⚠ cargo fmt exited with status: {}", status);
+            eprintln!("cargo fmt exited with status: {}", status);
         }
         Err(e) => {
-            eprintln!("  ⚠ Failed to run cargo fmt: {}", e);
-            eprintln!("    Generated files may not be formatted");
+            eprintln!("Failed to run cargo fmt: {}", e);
+            eprintln!("Generated files may not be formatted");
         }
     }
 
-    println!("\n✓ Code generation complete!");
-    println!("  Generated {} category groups", filtered_groups.len());
-    println!("  Generated {} NZFCC codes", categories.len());
+    println!("\nCode generation complete!");
+    println!("Generated {} category groups", filtered_groups.len());
+    println!("Generated {} NZFCC codes", categories.len());
 
     Ok(())
 }
