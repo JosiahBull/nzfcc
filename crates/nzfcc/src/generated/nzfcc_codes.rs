@@ -2,8 +2,9 @@
 // Run: cargo run -p nzfcc-generator to regenerate
 
 /// All possible New Zealand Financial Category Codes (NZFCC) codes, as defined by the NZFCC org [https://nzfcc.org/explore/](https://nzfcc.org/explore/).
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord)]
 #[non_exhaustive]
+#[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 pub enum NzfccCode {
     /// The "Accountancy, bookkeeping, auditing, and tax services" category.
     AccountancyBookkeepingAuditingAndTaxServices,
@@ -1566,5 +1567,1929 @@ impl<'de> serde::Deserialize<'de> for NzfccCode {
                 Err(serde::de::Error::unknown_variant(s, VARIANTS))
             }
         }
+    }
+}
+
+impl std::fmt::Display for NzfccCode {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.write_str(match self {
+            Self::AccountancyBookkeepingAuditingAndTaxServices => {
+                "Accountancy, bookkeeping, auditing, and tax services"
+            }
+            Self::AdvertisingAndMarketingServices => "Advertising and marketing services",
+            Self::AgriculturalSupplies => "Agricultural supplies",
+            Self::AirTransportServices => "Air transport services",
+            Self::Airports => "Airports",
+            Self::AntiqueStoresAndRepair => "Antique stores and repair",
+            Self::ApparelAndAccessoryStores => "Apparel and accessory stores",
+            Self::ApplianceAndFurnitureRentals => "Appliance and furniture rentals",
+            Self::ApplianceRepairAndServices => "Appliance repair and services",
+            Self::ArchitectEngineeringAndSurveyingServices => {
+                "Architect, engineering, and surveying services"
+            }
+            Self::ArtAndCraftSupplies => "Art and craft supplies",
+            Self::ArtStoresDealersAndGalleries => "Art stores, dealers, and galleries",
+            Self::AttractionsMuseumsZoosAmusementParksCircusesExhibits => {
+                "Attractions, museums, zoos, amusement parks, circuses, exhibits"
+            }
+            Self::AutomotiveBodyRepairAndPaintingServices => {
+                "Automotive body repair and painting services"
+            }
+            Self::AutomotivePartsAndAccessories => "Automotive parts and accessories",
+            Self::AutomotiveRepairAndServicing => "Automotive repair and servicing",
+            Self::Bakeries => "Bakeries",
+            Self::BarsPubsNightclubs => "Bars, pubs, nightclubs",
+            Self::BicycleStoresRentalsAndRepairs => "Bicycle stores, rentals, and repairs",
+            Self::BoatDealers => "Boat dealers",
+            Self::BoatRentals => "Boat rentals",
+            Self::BoatTransportServices => "Boat transport services",
+            Self::BodyCorporate => "Body corporate",
+            Self::BookStores => "Book stores",
+            Self::BuildingAndCarpentryServices => "Building and carpentry services",
+            Self::BuildingSupplies => "Building supplies",
+            Self::BusAndShuttleTransportServices => "Bus and shuttle transport services",
+            Self::BusinessServicesnotElsewhereClassified => {
+                "Business services (not elsewhere classified)"
+            }
+            Self::BusinessSoftwareAndCloudServices => "Business software and cloud services",
+            Self::CafesAndRestaurants => "Cafes and restaurants",
+            Self::CarAndMotorcycleRentals => "Car and motorcycle rentals",
+            Self::CarTruckAndMotorcycleDealers => "Car, truck, and motorcycle dealers",
+            Self::CashWithdrawals => "Cash withdrawals",
+            Self::CasinoLotteryAndOtherGamblingServices => {
+                "Casino, lottery, and other gambling services"
+            }
+            Self::Caterers => "Caterers",
+            Self::ChemicalProductsAndServices => "Chemical products and services",
+            Self::ChildAndInfantClothing => "Child and infant clothing",
+            Self::ChildSupport => "Child support",
+            Self::ChildcareServices => "Childcare services",
+            Self::ChiropodistsAndPodiatrists => "Chiropodists and podiatrists",
+            Self::ChiropractorsAndOsteopaths => "Chiropractors and osteopaths",
+            Self::CigaretteVapeAndOtherSmokingProducts => {
+                "Cigarette, vape, and other smoking products"
+            }
+            Self::Cinemas => "Cinemas",
+            Self::CleaningSanitationAndPestControlServices => {
+                "Cleaning, sanitation, and pest control services"
+            }
+            Self::ClothingAlterationAndRepair => "Clothing alteration and repair",
+            Self::ClothingRental => "Clothing rental",
+            Self::ClothingStores => "Clothing stores",
+            Self::ComputerEquipment => "Computer equipment",
+            Self::ConcreteServices => "Concrete services",
+            Self::ConsumerElectronicsRepairAndServices => {
+                "Consumer electronics repair and services"
+            }
+            Self::ConvenienceStores => "Convenience stores",
+            Self::CosmeticSupplies => "Cosmetic supplies",
+            Self::CosmeticHealthSpasAndRelaxationMassageServices => {
+                "Cosmetic, health spas, and relaxation massage services"
+            }
+            Self::CourierAndFreightDeliveryServices => "Courier and freight delivery services",
+            Self::CurtainsBlindsAndWindowCoverings => "Curtains, blinds, and window coverings",
+            Self::DatingAndMatchmakingServices => "Dating and matchmaking services",
+            Self::DebtRepayments => "Debt repayments",
+            Self::DentalAndMedicalLaboratories => "Dental and medical laboratories",
+            Self::DentalServices => "Dental services",
+            Self::DigitalGamingProductsAndServices => "Digital gaming products and services",
+            Self::DoctorsAndPhysicians => "Doctors and physicians",
+            Self::DutyFreeStores => "Duty free stores",
+            Self::EducationnotElsewhereClassified => "Education (not elsewhere classified)",
+            Self::ElectricVehicleChargingServices => "Electric vehicle charging services",
+            Self::ElectricalSuppliesAndServices => "Electrical supplies and services",
+            Self::ElectricityAndGasServices => "Electricity and gas services",
+            Self::ElectricityServices => "Electricity services",
+            Self::ElectronicAndApplianceStores => "Electronic and appliance stores",
+            Self::EmploymentAndCareerServices => "Employment and career services",
+            Self::EntertainmentnotElsewhereClassified => "Entertainment (not elsewhere classified)",
+            Self::EventVenueAndEquipmentRental => "Event venue and equipment rental",
+            Self::EventsAndTicketsnotElsewhereClassified => {
+                "Events and tickets (not elsewhere classified)"
+            }
+            Self::FabricSewingKnittingAndRelatedSupplies => {
+                "Fabric, sewing, knitting, and related supplies"
+            }
+            Self::FastFoodStores => "Fast food stores",
+            Self::FinancialAdviceAndWealthManagement => "Financial advice and wealth management",
+            Self::FinancialAssetBrokersExchangesAndManagedFunds => {
+                "Financial asset brokers, exchanges, and managed funds"
+            }
+            Self::FinancialServicesnotElsewhereClassified => {
+                "Financial services (not elsewhere classified)"
+            }
+            Self::FireplacesAndSupplies => "Fireplaces and supplies",
+            Self::FishAndSeafoodSupplies => "Fish and seafood supplies",
+            Self::FloorCoveringStores => "Floor covering stores",
+            Self::FloralSuppliesAndServices => "Floral supplies and services",
+            Self::ForeignExchangeAndMoneyTransferServices => {
+                "Foreign exchange and money transfer services"
+            }
+            Self::FuelStations => "Fuel stations",
+            Self::FuneralDeathAndMemorialServices => "Funeral, death, and memorial services",
+            Self::GasServices => "Gas services",
+            Self::GeneralRetailStores => "General retail stores",
+            Self::GiftAndSouvenirStores => "Gift and souvenir stores",
+            Self::GolfCourses => "Golf courses",
+            Self::GymsFitnessAquaticFacilitiesYogaPilates => {
+                "Gyms, fitness, aquatic facilities, yoga, pilates"
+            }
+            Self::HaircutsAndTreatments => "Haircuts and treatments",
+            Self::HardwareEquipmentAndSupplies => "Hardware equipment and supplies",
+            Self::HeatingCoolingAndVentilationEquipmentAndServices => {
+                "Heating, cooling, and ventilation equipment and services"
+            }
+            Self::HobbyToyAndPhysicalGameStores => "Hobby, toy, and physical game stores",
+            Self::HomeFurnishingAndRepairStores => "Home furnishing and repair stores",
+            Self::Hospices => "Hospices",
+            Self::HospitalsAndEmergencyCare => "Hospitals and emergency care",
+            Self::HotelsMotelsAndOtherTemporaryAccommodation => {
+                "Hotels, motels, and other temporary accommodation"
+            }
+            Self::ITAndSoftwareDevelopmentServices => "IT and software development services",
+            Self::IceCreamGelatoNutAndConfectionaryStores => {
+                "Ice cream, gelato, nut, and confectionary stores"
+            }
+            Self::IndustrialAndCommercialSuppliesnotElsewhereClassified => {
+                "Industrial and commercial supplies (not elsewhere classified)"
+            }
+            Self::Insurance => "Insurance",
+            Self::InternetServices => "Internet services",
+            Self::LandscapingGardenAndHorticulturalServices => {
+                "Landscaping, garden, and horticultural services"
+            }
+            Self::LaundryAndDrycleaning => "Laundry and drycleaning",
+            Self::LegalServices => "Legal services",
+            Self::LendingServices => "Lending services",
+            Self::Libraries => "Libraries",
+            Self::LiquorStores => "Liquor stores",
+            Self::LocalGovernment => "Local government",
+            Self::ManagementConsulting => "Management consulting",
+            Self::MarinasMarineSuppliesAndMarineServices => {
+                "Marinas, marine supplies, and marine services"
+            }
+            Self::MasonryStoneworkTilingPlasteringAndInsulationServices => {
+                "Masonry, stonework, tiling, plastering, and insulation services"
+            }
+            Self::MealKitStores => "Meal kit stores",
+            Self::MeatSupplies => "Meat supplies",
+            Self::MediaAndEntertainmentStreamingServices => {
+                "Media and entertainment streaming services"
+            }
+            Self::MedicalProductsAndSuppliesnotElsewhereClassified => {
+                "Medical products and supplies (not elsewhere classified)"
+            }
+            Self::MedicalServicesnotElsewhereClassified => {
+                "Medical services (not elsewhere classified)"
+            }
+            Self::MembershipOrganisationsnotElsewhereClassified => {
+                "Membership organisations (not elsewhere classified)"
+            }
+            Self::MotorParksCampgroundsHolidayParksRecreationalCamps => {
+                "Motor parks, campgrounds, holiday parks, recreational camps"
+            }
+            Self::MusicalEquipmentRecordingsAndSupplies => {
+                "Musical equipment, recordings, and supplies"
+            }
+            Self::NationalGovernmentServices => "National government services",
+            Self::NewspapersMagazinesAndLiterarySubscriptions => {
+                "Newspapers, magazines, and literary subscriptions"
+            }
+            Self::NurseriesAndGardenSupplies => "Nurseries and garden supplies",
+            Self::OptometristsAndEyewear => "Optometrists and eyewear",
+            Self::PaintingSuppliesAndServices => "Painting supplies and services",
+            Self::ParkingServices => "Parking services",
+            Self::PerformingArtTraining => "Performing art training",
+            Self::PersonalSoftwarenotElsewhereClassified => {
+                "Personal software (not elsewhere classified)"
+            }
+            Self::PetsAndRelatedSuppliesAccommodationAndServices => {
+                "Pets and related supplies, accommodation, and services"
+            }
+            Self::Pharmacies => "Pharmacies",
+            Self::PhotographyEquipmentAndServices => "Photography equipment and services",
+            Self::PhysiotherapyAndMassageTherapy => "Physiotherapy and massage therapy",
+            Self::PlumbingAndGasfittingSuppliesAndServices => {
+                "Plumbing and gasfitting supplies and services"
+            }
+            Self::PoliticalOrganisations => "Political organisations",
+            Self::PostalServices => "Postal services",
+            Self::PrimaryAndSecondarySchools => "Primary and secondary schools",
+            Self::PrintingPublishingAndSignmakingServices => {
+                "Printing, publishing, and signmaking services"
+            }
+            Self::ProfessionalServicesnotElsewhereClassified => {
+                "Professional services (not elsewhere classified)"
+            }
+            Self::PsychologyPsychiatricCounsellingAndOtherMentalHealthServices => {
+                "Psychology, psychiatric, counselling, and other mental health services"
+            }
+            Self::RealEstateServices => "Real estate services",
+            Self::ReligiousOrganisations => "Religious organisations",
+            Self::RentForPermanentAccommodation => "Rent for permanent accommodation",
+            Self::RepairAndServicingnotElsewhereClassified => {
+                "Repair and servicing (not elsewhere classified)"
+            }
+            Self::RetirementAccommodation => "Retirement accommodation",
+            Self::RoofingServices => "Roofing services",
+            Self::SecondhandAndOpportunityStores => "Secondhand and opportunity stores",
+            Self::SecurityStoresAndServices => "Security stores and services",
+            Self::ShoeAndLeatherRepairKeycuttingOrEngraving => {
+                "Shoe and leather repair, keycutting, or engraving"
+            }
+            Self::ShoeStores => "Shoe stores",
+            Self::SpecialtyFoodStores => "Specialty food stores",
+            Self::SpecialtyRetailStoresnotElsewhereClassified => {
+                "Specialty retail stores (not elsewhere classified)"
+            }
+            Self::SportsAndAthleticClubs => "Sports and athletic clubs",
+            Self::SportsEquipmentAndSupplies => "Sports equipment and supplies",
+            Self::StationeryAndOfficeSupplies => "Stationery and office supplies",
+            Self::StorageFacilities => "Storage facilities",
+            Self::SupermarketsAndGroceryStores => "Supermarkets and grocery stores",
+            Self::SwimmingPoolsSuppliesAndServices => "Swimming pools, supplies, and services",
+            Self::TaxPayments => "Tax payments",
+            Self::TaxiRideshareAndOndemandTransportServices => {
+                "Taxi, rideshare, and on-demand transport services"
+            }
+            Self::TelecommunicationServices => "Telecommunication services",
+            Self::TestingLaboratoriesnonMedical => "Testing laboratories (non medical)",
+            Self::TheatreConcertsAndOtherArtisticPerformances => {
+                "Theatre, concerts, and other artistic performances"
+            }
+            Self::TollFees => "Toll fees",
+            Self::TowingServices => "Towing services",
+            Self::TradeServicesnotElsewhereClassified => {
+                "Trade services (not elsewhere classified)"
+            }
+            Self::TrainAndRailTransportServices => "Train and rail transport services",
+            Self::TransportServicesnotElsewhereClassified => {
+                "Transport services (not elsewhere classified)"
+            }
+            Self::TravelAgenciesAndTourOperators => "Travel agencies and tour operators",
+            Self::TruckTrailerMachineryAndEquipmentRentals => {
+                "Truck, trailer, machinery, and equipment rentals"
+            }
+            Self::TyreStores => "Tyre stores",
+            Self::UniformsAndCommercialClothing => "Uniforms and commercial clothing",
+            Self::UniversitiesProfessionalSchoolsAndOtherTertiaryEducation => {
+                "Universities, professional schools, and other tertiary education"
+            }
+            Self::VarietyStores => "Variety stores",
+            Self::VehicleDealersnotElsewhereClassified => {
+                "Vehicle dealers (not elsewhere classified)"
+            }
+            Self::VeterinaryServices => "Veterinary services",
+            Self::WasteAndRecyclingServices => "Waste and recycling services",
+            Self::WatchClockAndJewelleryStoresAndServices => {
+                "Watch, clock, and jewellery stores and services"
+            }
+            Self::WaterAndSanitationServices => "Water and sanitation services",
+            Self::WeldingFabricationAndMetalServices => "Welding, fabrication, and metal services",
+            Self::WelfareAndCharity => "Welfare and charity",
+            Self::WineriesBreweriesAndDistilleries => "Wineries, breweries, and distilleries",
+        })
+    }
+}
+
+/// Error returned when parsing an NzfccCode from a string fails.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct ParseNzfccCodeError {
+    input: String,
+}
+
+impl std::fmt::Display for ParseNzfccCodeError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "unknown NZFCC code: '{}'", self.input)
+    }
+}
+
+impl std::error::Error for ParseNzfccCodeError {}
+
+impl std::str::FromStr for NzfccCode {
+    type Err = ParseNzfccCodeError;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        match s {
+            "Accountancy, bookkeeping, auditing, and tax services" => {
+                Ok(Self::AccountancyBookkeepingAuditingAndTaxServices)
+            }
+            "Advertising and marketing services" => Ok(Self::AdvertisingAndMarketingServices),
+            "Agricultural supplies" => Ok(Self::AgriculturalSupplies),
+            "Air transport services" => Ok(Self::AirTransportServices),
+            "Airports" => Ok(Self::Airports),
+            "Antique stores and repair" => Ok(Self::AntiqueStoresAndRepair),
+            "Apparel and accessory stores" => Ok(Self::ApparelAndAccessoryStores),
+            "Appliance and furniture rentals" => Ok(Self::ApplianceAndFurnitureRentals),
+            "Appliance repair and services" => Ok(Self::ApplianceRepairAndServices),
+            "Architect, engineering, and surveying services" => {
+                Ok(Self::ArchitectEngineeringAndSurveyingServices)
+            }
+            "Art and craft supplies" => Ok(Self::ArtAndCraftSupplies),
+            "Art stores, dealers, and galleries" => Ok(Self::ArtStoresDealersAndGalleries),
+            "Attractions, museums, zoos, amusement parks, circuses, exhibits" => {
+                Ok(Self::AttractionsMuseumsZoosAmusementParksCircusesExhibits)
+            }
+            "Automotive body repair and painting services" => {
+                Ok(Self::AutomotiveBodyRepairAndPaintingServices)
+            }
+            "Automotive parts and accessories" => Ok(Self::AutomotivePartsAndAccessories),
+            "Automotive repair and servicing" => Ok(Self::AutomotiveRepairAndServicing),
+            "Bakeries" => Ok(Self::Bakeries),
+            "Bars, pubs, nightclubs" => Ok(Self::BarsPubsNightclubs),
+            "Bicycle stores, rentals, and repairs" => Ok(Self::BicycleStoresRentalsAndRepairs),
+            "Boat dealers" => Ok(Self::BoatDealers),
+            "Boat rentals" => Ok(Self::BoatRentals),
+            "Boat transport services" => Ok(Self::BoatTransportServices),
+            "Body corporate" => Ok(Self::BodyCorporate),
+            "Book stores" => Ok(Self::BookStores),
+            "Building and carpentry services" => Ok(Self::BuildingAndCarpentryServices),
+            "Building supplies" => Ok(Self::BuildingSupplies),
+            "Bus and shuttle transport services" => Ok(Self::BusAndShuttleTransportServices),
+            "Business services (not elsewhere classified)" => {
+                Ok(Self::BusinessServicesnotElsewhereClassified)
+            }
+            "Business software and cloud services" => Ok(Self::BusinessSoftwareAndCloudServices),
+            "Cafes and restaurants" => Ok(Self::CafesAndRestaurants),
+            "Car and motorcycle rentals" => Ok(Self::CarAndMotorcycleRentals),
+            "Car, truck, and motorcycle dealers" => Ok(Self::CarTruckAndMotorcycleDealers),
+            "Cash withdrawals" => Ok(Self::CashWithdrawals),
+            "Casino, lottery, and other gambling services" => {
+                Ok(Self::CasinoLotteryAndOtherGamblingServices)
+            }
+            "Caterers" => Ok(Self::Caterers),
+            "Chemical products and services" => Ok(Self::ChemicalProductsAndServices),
+            "Child and infant clothing" => Ok(Self::ChildAndInfantClothing),
+            "Child support" => Ok(Self::ChildSupport),
+            "Childcare services" => Ok(Self::ChildcareServices),
+            "Chiropodists and podiatrists" => Ok(Self::ChiropodistsAndPodiatrists),
+            "Chiropractors and osteopaths" => Ok(Self::ChiropractorsAndOsteopaths),
+            "Cigarette, vape, and other smoking products" => {
+                Ok(Self::CigaretteVapeAndOtherSmokingProducts)
+            }
+            "Cinemas" => Ok(Self::Cinemas),
+            "Cleaning, sanitation, and pest control services" => {
+                Ok(Self::CleaningSanitationAndPestControlServices)
+            }
+            "Clothing alteration and repair" => Ok(Self::ClothingAlterationAndRepair),
+            "Clothing rental" => Ok(Self::ClothingRental),
+            "Clothing stores" => Ok(Self::ClothingStores),
+            "Computer equipment" => Ok(Self::ComputerEquipment),
+            "Concrete services" => Ok(Self::ConcreteServices),
+            "Consumer electronics repair and services" => {
+                Ok(Self::ConsumerElectronicsRepairAndServices)
+            }
+            "Convenience stores" => Ok(Self::ConvenienceStores),
+            "Cosmetic supplies" => Ok(Self::CosmeticSupplies),
+            "Cosmetic, health spas, and relaxation massage services" => {
+                Ok(Self::CosmeticHealthSpasAndRelaxationMassageServices)
+            }
+            "Courier and freight delivery services" => Ok(Self::CourierAndFreightDeliveryServices),
+            "Curtains, blinds, and window coverings" => Ok(Self::CurtainsBlindsAndWindowCoverings),
+            "Dating and matchmaking services" => Ok(Self::DatingAndMatchmakingServices),
+            "Debt repayments" => Ok(Self::DebtRepayments),
+            "Dental and medical laboratories" => Ok(Self::DentalAndMedicalLaboratories),
+            "Dental services" => Ok(Self::DentalServices),
+            "Digital gaming products and services" => Ok(Self::DigitalGamingProductsAndServices),
+            "Doctors and physicians" => Ok(Self::DoctorsAndPhysicians),
+            "Duty free stores" => Ok(Self::DutyFreeStores),
+            "Education (not elsewhere classified)" => Ok(Self::EducationnotElsewhereClassified),
+            "Electric vehicle charging services" => Ok(Self::ElectricVehicleChargingServices),
+            "Electrical supplies and services" => Ok(Self::ElectricalSuppliesAndServices),
+            "Electricity and gas services" => Ok(Self::ElectricityAndGasServices),
+            "Electricity services" => Ok(Self::ElectricityServices),
+            "Electronic and appliance stores" => Ok(Self::ElectronicAndApplianceStores),
+            "Employment and career services" => Ok(Self::EmploymentAndCareerServices),
+            "Entertainment (not elsewhere classified)" => {
+                Ok(Self::EntertainmentnotElsewhereClassified)
+            }
+            "Event venue and equipment rental" => Ok(Self::EventVenueAndEquipmentRental),
+            "Events and tickets (not elsewhere classified)" => {
+                Ok(Self::EventsAndTicketsnotElsewhereClassified)
+            }
+            "Fabric, sewing, knitting, and related supplies" => {
+                Ok(Self::FabricSewingKnittingAndRelatedSupplies)
+            }
+            "Fast food stores" => Ok(Self::FastFoodStores),
+            "Financial advice and wealth management" => {
+                Ok(Self::FinancialAdviceAndWealthManagement)
+            }
+            "Financial asset brokers, exchanges, and managed funds" => {
+                Ok(Self::FinancialAssetBrokersExchangesAndManagedFunds)
+            }
+            "Financial services (not elsewhere classified)" => {
+                Ok(Self::FinancialServicesnotElsewhereClassified)
+            }
+            "Fireplaces and supplies" => Ok(Self::FireplacesAndSupplies),
+            "Fish and seafood supplies" => Ok(Self::FishAndSeafoodSupplies),
+            "Floor covering stores" => Ok(Self::FloorCoveringStores),
+            "Floral supplies and services" => Ok(Self::FloralSuppliesAndServices),
+            "Foreign exchange and money transfer services" => {
+                Ok(Self::ForeignExchangeAndMoneyTransferServices)
+            }
+            "Fuel stations" => Ok(Self::FuelStations),
+            "Funeral, death, and memorial services" => Ok(Self::FuneralDeathAndMemorialServices),
+            "Gas services" => Ok(Self::GasServices),
+            "General retail stores" => Ok(Self::GeneralRetailStores),
+            "Gift and souvenir stores" => Ok(Self::GiftAndSouvenirStores),
+            "Golf courses" => Ok(Self::GolfCourses),
+            "Gyms, fitness, aquatic facilities, yoga, pilates" => {
+                Ok(Self::GymsFitnessAquaticFacilitiesYogaPilates)
+            }
+            "Haircuts and treatments" => Ok(Self::HaircutsAndTreatments),
+            "Hardware equipment and supplies" => Ok(Self::HardwareEquipmentAndSupplies),
+            "Heating, cooling, and ventilation equipment and services" => {
+                Ok(Self::HeatingCoolingAndVentilationEquipmentAndServices)
+            }
+            "Hobby, toy, and physical game stores" => Ok(Self::HobbyToyAndPhysicalGameStores),
+            "Home furnishing and repair stores" => Ok(Self::HomeFurnishingAndRepairStores),
+            "Hospices" => Ok(Self::Hospices),
+            "Hospitals and emergency care" => Ok(Self::HospitalsAndEmergencyCare),
+            "Hotels, motels, and other temporary accommodation" => {
+                Ok(Self::HotelsMotelsAndOtherTemporaryAccommodation)
+            }
+            "IT and software development services" => Ok(Self::ITAndSoftwareDevelopmentServices),
+            "Ice cream, gelato, nut, and confectionary stores" => {
+                Ok(Self::IceCreamGelatoNutAndConfectionaryStores)
+            }
+            "Industrial and commercial supplies (not elsewhere classified)" => {
+                Ok(Self::IndustrialAndCommercialSuppliesnotElsewhereClassified)
+            }
+            "Insurance" => Ok(Self::Insurance),
+            "Internet services" => Ok(Self::InternetServices),
+            "Landscaping, garden, and horticultural services" => {
+                Ok(Self::LandscapingGardenAndHorticulturalServices)
+            }
+            "Laundry and drycleaning" => Ok(Self::LaundryAndDrycleaning),
+            "Legal services" => Ok(Self::LegalServices),
+            "Lending services" => Ok(Self::LendingServices),
+            "Libraries" => Ok(Self::Libraries),
+            "Liquor stores" => Ok(Self::LiquorStores),
+            "Local government" => Ok(Self::LocalGovernment),
+            "Management consulting" => Ok(Self::ManagementConsulting),
+            "Marinas, marine supplies, and marine services" => {
+                Ok(Self::MarinasMarineSuppliesAndMarineServices)
+            }
+            "Masonry, stonework, tiling, plastering, and insulation services" => {
+                Ok(Self::MasonryStoneworkTilingPlasteringAndInsulationServices)
+            }
+            "Meal kit stores" => Ok(Self::MealKitStores),
+            "Meat supplies" => Ok(Self::MeatSupplies),
+            "Media and entertainment streaming services" => {
+                Ok(Self::MediaAndEntertainmentStreamingServices)
+            }
+            "Medical products and supplies (not elsewhere classified)" => {
+                Ok(Self::MedicalProductsAndSuppliesnotElsewhereClassified)
+            }
+            "Medical services (not elsewhere classified)" => {
+                Ok(Self::MedicalServicesnotElsewhereClassified)
+            }
+            "Membership organisations (not elsewhere classified)" => {
+                Ok(Self::MembershipOrganisationsnotElsewhereClassified)
+            }
+            "Motor parks, campgrounds, holiday parks, recreational camps" => {
+                Ok(Self::MotorParksCampgroundsHolidayParksRecreationalCamps)
+            }
+            "Musical equipment, recordings, and supplies" => {
+                Ok(Self::MusicalEquipmentRecordingsAndSupplies)
+            }
+            "National government services" => Ok(Self::NationalGovernmentServices),
+            "Newspapers, magazines, and literary subscriptions" => {
+                Ok(Self::NewspapersMagazinesAndLiterarySubscriptions)
+            }
+            "Nurseries and garden supplies" => Ok(Self::NurseriesAndGardenSupplies),
+            "Optometrists and eyewear" => Ok(Self::OptometristsAndEyewear),
+            "Painting supplies and services" => Ok(Self::PaintingSuppliesAndServices),
+            "Parking services" => Ok(Self::ParkingServices),
+            "Performing art training" => Ok(Self::PerformingArtTraining),
+            "Personal software (not elsewhere classified)" => {
+                Ok(Self::PersonalSoftwarenotElsewhereClassified)
+            }
+            "Pets and related supplies, accommodation, and services" => {
+                Ok(Self::PetsAndRelatedSuppliesAccommodationAndServices)
+            }
+            "Pharmacies" => Ok(Self::Pharmacies),
+            "Photography equipment and services" => Ok(Self::PhotographyEquipmentAndServices),
+            "Physiotherapy and massage therapy" => Ok(Self::PhysiotherapyAndMassageTherapy),
+            "Plumbing and gasfitting supplies and services" => {
+                Ok(Self::PlumbingAndGasfittingSuppliesAndServices)
+            }
+            "Political organisations" => Ok(Self::PoliticalOrganisations),
+            "Postal services" => Ok(Self::PostalServices),
+            "Primary and secondary schools" => Ok(Self::PrimaryAndSecondarySchools),
+            "Printing, publishing, and signmaking services" => {
+                Ok(Self::PrintingPublishingAndSignmakingServices)
+            }
+            "Professional services (not elsewhere classified)" => {
+                Ok(Self::ProfessionalServicesnotElsewhereClassified)
+            }
+            "Psychology, psychiatric, counselling, and other mental health services" => {
+                Ok(Self::PsychologyPsychiatricCounsellingAndOtherMentalHealthServices)
+            }
+            "Real estate services" => Ok(Self::RealEstateServices),
+            "Religious organisations" => Ok(Self::ReligiousOrganisations),
+            "Rent for permanent accommodation" => Ok(Self::RentForPermanentAccommodation),
+            "Repair and servicing (not elsewhere classified)" => {
+                Ok(Self::RepairAndServicingnotElsewhereClassified)
+            }
+            "Retirement accommodation" => Ok(Self::RetirementAccommodation),
+            "Roofing services" => Ok(Self::RoofingServices),
+            "Secondhand and opportunity stores" => Ok(Self::SecondhandAndOpportunityStores),
+            "Security stores and services" => Ok(Self::SecurityStoresAndServices),
+            "Shoe and leather repair, keycutting, or engraving" => {
+                Ok(Self::ShoeAndLeatherRepairKeycuttingOrEngraving)
+            }
+            "Shoe stores" => Ok(Self::ShoeStores),
+            "Specialty food stores" => Ok(Self::SpecialtyFoodStores),
+            "Specialty retail stores (not elsewhere classified)" => {
+                Ok(Self::SpecialtyRetailStoresnotElsewhereClassified)
+            }
+            "Sports and athletic clubs" => Ok(Self::SportsAndAthleticClubs),
+            "Sports equipment and supplies" => Ok(Self::SportsEquipmentAndSupplies),
+            "Stationery and office supplies" => Ok(Self::StationeryAndOfficeSupplies),
+            "Storage facilities" => Ok(Self::StorageFacilities),
+            "Supermarkets and grocery stores" => Ok(Self::SupermarketsAndGroceryStores),
+            "Swimming pools, supplies, and services" => Ok(Self::SwimmingPoolsSuppliesAndServices),
+            "Tax payments" => Ok(Self::TaxPayments),
+            "Taxi, rideshare, and on-demand transport services" => {
+                Ok(Self::TaxiRideshareAndOndemandTransportServices)
+            }
+            "Telecommunication services" => Ok(Self::TelecommunicationServices),
+            "Testing laboratories (non medical)" => Ok(Self::TestingLaboratoriesnonMedical),
+            "Theatre, concerts, and other artistic performances" => {
+                Ok(Self::TheatreConcertsAndOtherArtisticPerformances)
+            }
+            "Toll fees" => Ok(Self::TollFees),
+            "Towing services" => Ok(Self::TowingServices),
+            "Trade services (not elsewhere classified)" => {
+                Ok(Self::TradeServicesnotElsewhereClassified)
+            }
+            "Train and rail transport services" => Ok(Self::TrainAndRailTransportServices),
+            "Transport services (not elsewhere classified)" => {
+                Ok(Self::TransportServicesnotElsewhereClassified)
+            }
+            "Travel agencies and tour operators" => Ok(Self::TravelAgenciesAndTourOperators),
+            "Truck, trailer, machinery, and equipment rentals" => {
+                Ok(Self::TruckTrailerMachineryAndEquipmentRentals)
+            }
+            "Tyre stores" => Ok(Self::TyreStores),
+            "Uniforms and commercial clothing" => Ok(Self::UniformsAndCommercialClothing),
+            "Universities, professional schools, and other tertiary education" => {
+                Ok(Self::UniversitiesProfessionalSchoolsAndOtherTertiaryEducation)
+            }
+            "Variety stores" => Ok(Self::VarietyStores),
+            "Vehicle dealers (not elsewhere classified)" => {
+                Ok(Self::VehicleDealersnotElsewhereClassified)
+            }
+            "Veterinary services" => Ok(Self::VeterinaryServices),
+            "Waste and recycling services" => Ok(Self::WasteAndRecyclingServices),
+            "Watch, clock, and jewellery stores and services" => {
+                Ok(Self::WatchClockAndJewelleryStoresAndServices)
+            }
+            "Water and sanitation services" => Ok(Self::WaterAndSanitationServices),
+            "Welding, fabrication, and metal services" => {
+                Ok(Self::WeldingFabricationAndMetalServices)
+            }
+            "Welfare and charity" => Ok(Self::WelfareAndCharity),
+            "Wineries, breweries, and distilleries" => Ok(Self::WineriesBreweriesAndDistilleries),
+            _ => Err(ParseNzfccCodeError {
+                input: s.to_string(),
+            }),
+        }
+    }
+}
+
+impl TryFrom<String> for NzfccCode {
+    type Error = ParseNzfccCodeError;
+
+    fn try_from(s: String) -> Result<Self, Self::Error> {
+        s.parse()
+    }
+}
+
+impl TryFrom<&str> for NzfccCode {
+    type Error = ParseNzfccCodeError;
+
+    fn try_from(s: &str) -> Result<Self, Self::Error> {
+        s.parse()
+    }
+}
+
+impl NzfccCode {
+    /// Returns a slice containing all possible NzfccCode values.
+    pub const fn values() -> &'static [Self] {
+        &[
+            Self::AccountancyBookkeepingAuditingAndTaxServices,
+            Self::AdvertisingAndMarketingServices,
+            Self::AgriculturalSupplies,
+            Self::AirTransportServices,
+            Self::Airports,
+            Self::AntiqueStoresAndRepair,
+            Self::ApparelAndAccessoryStores,
+            Self::ApplianceAndFurnitureRentals,
+            Self::ApplianceRepairAndServices,
+            Self::ArchitectEngineeringAndSurveyingServices,
+            Self::ArtAndCraftSupplies,
+            Self::ArtStoresDealersAndGalleries,
+            Self::AttractionsMuseumsZoosAmusementParksCircusesExhibits,
+            Self::AutomotiveBodyRepairAndPaintingServices,
+            Self::AutomotivePartsAndAccessories,
+            Self::AutomotiveRepairAndServicing,
+            Self::Bakeries,
+            Self::BarsPubsNightclubs,
+            Self::BicycleStoresRentalsAndRepairs,
+            Self::BoatDealers,
+            Self::BoatRentals,
+            Self::BoatTransportServices,
+            Self::BodyCorporate,
+            Self::BookStores,
+            Self::BuildingAndCarpentryServices,
+            Self::BuildingSupplies,
+            Self::BusAndShuttleTransportServices,
+            Self::BusinessServicesnotElsewhereClassified,
+            Self::BusinessSoftwareAndCloudServices,
+            Self::CafesAndRestaurants,
+            Self::CarAndMotorcycleRentals,
+            Self::CarTruckAndMotorcycleDealers,
+            Self::CashWithdrawals,
+            Self::CasinoLotteryAndOtherGamblingServices,
+            Self::Caterers,
+            Self::ChemicalProductsAndServices,
+            Self::ChildAndInfantClothing,
+            Self::ChildSupport,
+            Self::ChildcareServices,
+            Self::ChiropodistsAndPodiatrists,
+            Self::ChiropractorsAndOsteopaths,
+            Self::CigaretteVapeAndOtherSmokingProducts,
+            Self::Cinemas,
+            Self::CleaningSanitationAndPestControlServices,
+            Self::ClothingAlterationAndRepair,
+            Self::ClothingRental,
+            Self::ClothingStores,
+            Self::ComputerEquipment,
+            Self::ConcreteServices,
+            Self::ConsumerElectronicsRepairAndServices,
+            Self::ConvenienceStores,
+            Self::CosmeticSupplies,
+            Self::CosmeticHealthSpasAndRelaxationMassageServices,
+            Self::CourierAndFreightDeliveryServices,
+            Self::CurtainsBlindsAndWindowCoverings,
+            Self::DatingAndMatchmakingServices,
+            Self::DebtRepayments,
+            Self::DentalAndMedicalLaboratories,
+            Self::DentalServices,
+            Self::DigitalGamingProductsAndServices,
+            Self::DoctorsAndPhysicians,
+            Self::DutyFreeStores,
+            Self::EducationnotElsewhereClassified,
+            Self::ElectricVehicleChargingServices,
+            Self::ElectricalSuppliesAndServices,
+            Self::ElectricityAndGasServices,
+            Self::ElectricityServices,
+            Self::ElectronicAndApplianceStores,
+            Self::EmploymentAndCareerServices,
+            Self::EntertainmentnotElsewhereClassified,
+            Self::EventVenueAndEquipmentRental,
+            Self::EventsAndTicketsnotElsewhereClassified,
+            Self::FabricSewingKnittingAndRelatedSupplies,
+            Self::FastFoodStores,
+            Self::FinancialAdviceAndWealthManagement,
+            Self::FinancialAssetBrokersExchangesAndManagedFunds,
+            Self::FinancialServicesnotElsewhereClassified,
+            Self::FireplacesAndSupplies,
+            Self::FishAndSeafoodSupplies,
+            Self::FloorCoveringStores,
+            Self::FloralSuppliesAndServices,
+            Self::ForeignExchangeAndMoneyTransferServices,
+            Self::FuelStations,
+            Self::FuneralDeathAndMemorialServices,
+            Self::GasServices,
+            Self::GeneralRetailStores,
+            Self::GiftAndSouvenirStores,
+            Self::GolfCourses,
+            Self::GymsFitnessAquaticFacilitiesYogaPilates,
+            Self::HaircutsAndTreatments,
+            Self::HardwareEquipmentAndSupplies,
+            Self::HeatingCoolingAndVentilationEquipmentAndServices,
+            Self::HobbyToyAndPhysicalGameStores,
+            Self::HomeFurnishingAndRepairStores,
+            Self::Hospices,
+            Self::HospitalsAndEmergencyCare,
+            Self::HotelsMotelsAndOtherTemporaryAccommodation,
+            Self::ITAndSoftwareDevelopmentServices,
+            Self::IceCreamGelatoNutAndConfectionaryStores,
+            Self::IndustrialAndCommercialSuppliesnotElsewhereClassified,
+            Self::Insurance,
+            Self::InternetServices,
+            Self::LandscapingGardenAndHorticulturalServices,
+            Self::LaundryAndDrycleaning,
+            Self::LegalServices,
+            Self::LendingServices,
+            Self::Libraries,
+            Self::LiquorStores,
+            Self::LocalGovernment,
+            Self::ManagementConsulting,
+            Self::MarinasMarineSuppliesAndMarineServices,
+            Self::MasonryStoneworkTilingPlasteringAndInsulationServices,
+            Self::MealKitStores,
+            Self::MeatSupplies,
+            Self::MediaAndEntertainmentStreamingServices,
+            Self::MedicalProductsAndSuppliesnotElsewhereClassified,
+            Self::MedicalServicesnotElsewhereClassified,
+            Self::MembershipOrganisationsnotElsewhereClassified,
+            Self::MotorParksCampgroundsHolidayParksRecreationalCamps,
+            Self::MusicalEquipmentRecordingsAndSupplies,
+            Self::NationalGovernmentServices,
+            Self::NewspapersMagazinesAndLiterarySubscriptions,
+            Self::NurseriesAndGardenSupplies,
+            Self::OptometristsAndEyewear,
+            Self::PaintingSuppliesAndServices,
+            Self::ParkingServices,
+            Self::PerformingArtTraining,
+            Self::PersonalSoftwarenotElsewhereClassified,
+            Self::PetsAndRelatedSuppliesAccommodationAndServices,
+            Self::Pharmacies,
+            Self::PhotographyEquipmentAndServices,
+            Self::PhysiotherapyAndMassageTherapy,
+            Self::PlumbingAndGasfittingSuppliesAndServices,
+            Self::PoliticalOrganisations,
+            Self::PostalServices,
+            Self::PrimaryAndSecondarySchools,
+            Self::PrintingPublishingAndSignmakingServices,
+            Self::ProfessionalServicesnotElsewhereClassified,
+            Self::PsychologyPsychiatricCounsellingAndOtherMentalHealthServices,
+            Self::RealEstateServices,
+            Self::ReligiousOrganisations,
+            Self::RentForPermanentAccommodation,
+            Self::RepairAndServicingnotElsewhereClassified,
+            Self::RetirementAccommodation,
+            Self::RoofingServices,
+            Self::SecondhandAndOpportunityStores,
+            Self::SecurityStoresAndServices,
+            Self::ShoeAndLeatherRepairKeycuttingOrEngraving,
+            Self::ShoeStores,
+            Self::SpecialtyFoodStores,
+            Self::SpecialtyRetailStoresnotElsewhereClassified,
+            Self::SportsAndAthleticClubs,
+            Self::SportsEquipmentAndSupplies,
+            Self::StationeryAndOfficeSupplies,
+            Self::StorageFacilities,
+            Self::SupermarketsAndGroceryStores,
+            Self::SwimmingPoolsSuppliesAndServices,
+            Self::TaxPayments,
+            Self::TaxiRideshareAndOndemandTransportServices,
+            Self::TelecommunicationServices,
+            Self::TestingLaboratoriesnonMedical,
+            Self::TheatreConcertsAndOtherArtisticPerformances,
+            Self::TollFees,
+            Self::TowingServices,
+            Self::TradeServicesnotElsewhereClassified,
+            Self::TrainAndRailTransportServices,
+            Self::TransportServicesnotElsewhereClassified,
+            Self::TravelAgenciesAndTourOperators,
+            Self::TruckTrailerMachineryAndEquipmentRentals,
+            Self::TyreStores,
+            Self::UniformsAndCommercialClothing,
+            Self::UniversitiesProfessionalSchoolsAndOtherTertiaryEducation,
+            Self::VarietyStores,
+            Self::VehicleDealersnotElsewhereClassified,
+            Self::VeterinaryServices,
+            Self::WasteAndRecyclingServices,
+            Self::WatchClockAndJewelleryStoresAndServices,
+            Self::WaterAndSanitationServices,
+            Self::WeldingFabricationAndMetalServices,
+            Self::WelfareAndCharity,
+            Self::WineriesBreweriesAndDistilleries,
+        ]
+    }
+
+    /// Returns the variant name as a static string (e.g., "CafesAndRestaurants").
+    /// This is the Rust enum variant name, not the display name.
+    pub const fn variant_name(&self) -> &'static str {
+        match self {
+            Self::AccountancyBookkeepingAuditingAndTaxServices => {
+                "AccountancyBookkeepingAuditingAndTaxServices"
+            }
+            Self::AdvertisingAndMarketingServices => "AdvertisingAndMarketingServices",
+            Self::AgriculturalSupplies => "AgriculturalSupplies",
+            Self::AirTransportServices => "AirTransportServices",
+            Self::Airports => "Airports",
+            Self::AntiqueStoresAndRepair => "AntiqueStoresAndRepair",
+            Self::ApparelAndAccessoryStores => "ApparelAndAccessoryStores",
+            Self::ApplianceAndFurnitureRentals => "ApplianceAndFurnitureRentals",
+            Self::ApplianceRepairAndServices => "ApplianceRepairAndServices",
+            Self::ArchitectEngineeringAndSurveyingServices => {
+                "ArchitectEngineeringAndSurveyingServices"
+            }
+            Self::ArtAndCraftSupplies => "ArtAndCraftSupplies",
+            Self::ArtStoresDealersAndGalleries => "ArtStoresDealersAndGalleries",
+            Self::AttractionsMuseumsZoosAmusementParksCircusesExhibits => {
+                "AttractionsMuseumsZoosAmusementParksCircusesExhibits"
+            }
+            Self::AutomotiveBodyRepairAndPaintingServices => {
+                "AutomotiveBodyRepairAndPaintingServices"
+            }
+            Self::AutomotivePartsAndAccessories => "AutomotivePartsAndAccessories",
+            Self::AutomotiveRepairAndServicing => "AutomotiveRepairAndServicing",
+            Self::Bakeries => "Bakeries",
+            Self::BarsPubsNightclubs => "BarsPubsNightclubs",
+            Self::BicycleStoresRentalsAndRepairs => "BicycleStoresRentalsAndRepairs",
+            Self::BoatDealers => "BoatDealers",
+            Self::BoatRentals => "BoatRentals",
+            Self::BoatTransportServices => "BoatTransportServices",
+            Self::BodyCorporate => "BodyCorporate",
+            Self::BookStores => "BookStores",
+            Self::BuildingAndCarpentryServices => "BuildingAndCarpentryServices",
+            Self::BuildingSupplies => "BuildingSupplies",
+            Self::BusAndShuttleTransportServices => "BusAndShuttleTransportServices",
+            Self::BusinessServicesnotElsewhereClassified => {
+                "BusinessServicesnotElsewhereClassified"
+            }
+            Self::BusinessSoftwareAndCloudServices => "BusinessSoftwareAndCloudServices",
+            Self::CafesAndRestaurants => "CafesAndRestaurants",
+            Self::CarAndMotorcycleRentals => "CarAndMotorcycleRentals",
+            Self::CarTruckAndMotorcycleDealers => "CarTruckAndMotorcycleDealers",
+            Self::CashWithdrawals => "CashWithdrawals",
+            Self::CasinoLotteryAndOtherGamblingServices => "CasinoLotteryAndOtherGamblingServices",
+            Self::Caterers => "Caterers",
+            Self::ChemicalProductsAndServices => "ChemicalProductsAndServices",
+            Self::ChildAndInfantClothing => "ChildAndInfantClothing",
+            Self::ChildSupport => "ChildSupport",
+            Self::ChildcareServices => "ChildcareServices",
+            Self::ChiropodistsAndPodiatrists => "ChiropodistsAndPodiatrists",
+            Self::ChiropractorsAndOsteopaths => "ChiropractorsAndOsteopaths",
+            Self::CigaretteVapeAndOtherSmokingProducts => "CigaretteVapeAndOtherSmokingProducts",
+            Self::Cinemas => "Cinemas",
+            Self::CleaningSanitationAndPestControlServices => {
+                "CleaningSanitationAndPestControlServices"
+            }
+            Self::ClothingAlterationAndRepair => "ClothingAlterationAndRepair",
+            Self::ClothingRental => "ClothingRental",
+            Self::ClothingStores => "ClothingStores",
+            Self::ComputerEquipment => "ComputerEquipment",
+            Self::ConcreteServices => "ConcreteServices",
+            Self::ConsumerElectronicsRepairAndServices => "ConsumerElectronicsRepairAndServices",
+            Self::ConvenienceStores => "ConvenienceStores",
+            Self::CosmeticSupplies => "CosmeticSupplies",
+            Self::CosmeticHealthSpasAndRelaxationMassageServices => {
+                "CosmeticHealthSpasAndRelaxationMassageServices"
+            }
+            Self::CourierAndFreightDeliveryServices => "CourierAndFreightDeliveryServices",
+            Self::CurtainsBlindsAndWindowCoverings => "CurtainsBlindsAndWindowCoverings",
+            Self::DatingAndMatchmakingServices => "DatingAndMatchmakingServices",
+            Self::DebtRepayments => "DebtRepayments",
+            Self::DentalAndMedicalLaboratories => "DentalAndMedicalLaboratories",
+            Self::DentalServices => "DentalServices",
+            Self::DigitalGamingProductsAndServices => "DigitalGamingProductsAndServices",
+            Self::DoctorsAndPhysicians => "DoctorsAndPhysicians",
+            Self::DutyFreeStores => "DutyFreeStores",
+            Self::EducationnotElsewhereClassified => "EducationnotElsewhereClassified",
+            Self::ElectricVehicleChargingServices => "ElectricVehicleChargingServices",
+            Self::ElectricalSuppliesAndServices => "ElectricalSuppliesAndServices",
+            Self::ElectricityAndGasServices => "ElectricityAndGasServices",
+            Self::ElectricityServices => "ElectricityServices",
+            Self::ElectronicAndApplianceStores => "ElectronicAndApplianceStores",
+            Self::EmploymentAndCareerServices => "EmploymentAndCareerServices",
+            Self::EntertainmentnotElsewhereClassified => "EntertainmentnotElsewhereClassified",
+            Self::EventVenueAndEquipmentRental => "EventVenueAndEquipmentRental",
+            Self::EventsAndTicketsnotElsewhereClassified => {
+                "EventsAndTicketsnotElsewhereClassified"
+            }
+            Self::FabricSewingKnittingAndRelatedSupplies => {
+                "FabricSewingKnittingAndRelatedSupplies"
+            }
+            Self::FastFoodStores => "FastFoodStores",
+            Self::FinancialAdviceAndWealthManagement => "FinancialAdviceAndWealthManagement",
+            Self::FinancialAssetBrokersExchangesAndManagedFunds => {
+                "FinancialAssetBrokersExchangesAndManagedFunds"
+            }
+            Self::FinancialServicesnotElsewhereClassified => {
+                "FinancialServicesnotElsewhereClassified"
+            }
+            Self::FireplacesAndSupplies => "FireplacesAndSupplies",
+            Self::FishAndSeafoodSupplies => "FishAndSeafoodSupplies",
+            Self::FloorCoveringStores => "FloorCoveringStores",
+            Self::FloralSuppliesAndServices => "FloralSuppliesAndServices",
+            Self::ForeignExchangeAndMoneyTransferServices => {
+                "ForeignExchangeAndMoneyTransferServices"
+            }
+            Self::FuelStations => "FuelStations",
+            Self::FuneralDeathAndMemorialServices => "FuneralDeathAndMemorialServices",
+            Self::GasServices => "GasServices",
+            Self::GeneralRetailStores => "GeneralRetailStores",
+            Self::GiftAndSouvenirStores => "GiftAndSouvenirStores",
+            Self::GolfCourses => "GolfCourses",
+            Self::GymsFitnessAquaticFacilitiesYogaPilates => {
+                "GymsFitnessAquaticFacilitiesYogaPilates"
+            }
+            Self::HaircutsAndTreatments => "HaircutsAndTreatments",
+            Self::HardwareEquipmentAndSupplies => "HardwareEquipmentAndSupplies",
+            Self::HeatingCoolingAndVentilationEquipmentAndServices => {
+                "HeatingCoolingAndVentilationEquipmentAndServices"
+            }
+            Self::HobbyToyAndPhysicalGameStores => "HobbyToyAndPhysicalGameStores",
+            Self::HomeFurnishingAndRepairStores => "HomeFurnishingAndRepairStores",
+            Self::Hospices => "Hospices",
+            Self::HospitalsAndEmergencyCare => "HospitalsAndEmergencyCare",
+            Self::HotelsMotelsAndOtherTemporaryAccommodation => {
+                "HotelsMotelsAndOtherTemporaryAccommodation"
+            }
+            Self::ITAndSoftwareDevelopmentServices => "ITAndSoftwareDevelopmentServices",
+            Self::IceCreamGelatoNutAndConfectionaryStores => {
+                "IceCreamGelatoNutAndConfectionaryStores"
+            }
+            Self::IndustrialAndCommercialSuppliesnotElsewhereClassified => {
+                "IndustrialAndCommercialSuppliesnotElsewhereClassified"
+            }
+            Self::Insurance => "Insurance",
+            Self::InternetServices => "InternetServices",
+            Self::LandscapingGardenAndHorticulturalServices => {
+                "LandscapingGardenAndHorticulturalServices"
+            }
+            Self::LaundryAndDrycleaning => "LaundryAndDrycleaning",
+            Self::LegalServices => "LegalServices",
+            Self::LendingServices => "LendingServices",
+            Self::Libraries => "Libraries",
+            Self::LiquorStores => "LiquorStores",
+            Self::LocalGovernment => "LocalGovernment",
+            Self::ManagementConsulting => "ManagementConsulting",
+            Self::MarinasMarineSuppliesAndMarineServices => {
+                "MarinasMarineSuppliesAndMarineServices"
+            }
+            Self::MasonryStoneworkTilingPlasteringAndInsulationServices => {
+                "MasonryStoneworkTilingPlasteringAndInsulationServices"
+            }
+            Self::MealKitStores => "MealKitStores",
+            Self::MeatSupplies => "MeatSupplies",
+            Self::MediaAndEntertainmentStreamingServices => {
+                "MediaAndEntertainmentStreamingServices"
+            }
+            Self::MedicalProductsAndSuppliesnotElsewhereClassified => {
+                "MedicalProductsAndSuppliesnotElsewhereClassified"
+            }
+            Self::MedicalServicesnotElsewhereClassified => "MedicalServicesnotElsewhereClassified",
+            Self::MembershipOrganisationsnotElsewhereClassified => {
+                "MembershipOrganisationsnotElsewhereClassified"
+            }
+            Self::MotorParksCampgroundsHolidayParksRecreationalCamps => {
+                "MotorParksCampgroundsHolidayParksRecreationalCamps"
+            }
+            Self::MusicalEquipmentRecordingsAndSupplies => "MusicalEquipmentRecordingsAndSupplies",
+            Self::NationalGovernmentServices => "NationalGovernmentServices",
+            Self::NewspapersMagazinesAndLiterarySubscriptions => {
+                "NewspapersMagazinesAndLiterarySubscriptions"
+            }
+            Self::NurseriesAndGardenSupplies => "NurseriesAndGardenSupplies",
+            Self::OptometristsAndEyewear => "OptometristsAndEyewear",
+            Self::PaintingSuppliesAndServices => "PaintingSuppliesAndServices",
+            Self::ParkingServices => "ParkingServices",
+            Self::PerformingArtTraining => "PerformingArtTraining",
+            Self::PersonalSoftwarenotElsewhereClassified => {
+                "PersonalSoftwarenotElsewhereClassified"
+            }
+            Self::PetsAndRelatedSuppliesAccommodationAndServices => {
+                "PetsAndRelatedSuppliesAccommodationAndServices"
+            }
+            Self::Pharmacies => "Pharmacies",
+            Self::PhotographyEquipmentAndServices => "PhotographyEquipmentAndServices",
+            Self::PhysiotherapyAndMassageTherapy => "PhysiotherapyAndMassageTherapy",
+            Self::PlumbingAndGasfittingSuppliesAndServices => {
+                "PlumbingAndGasfittingSuppliesAndServices"
+            }
+            Self::PoliticalOrganisations => "PoliticalOrganisations",
+            Self::PostalServices => "PostalServices",
+            Self::PrimaryAndSecondarySchools => "PrimaryAndSecondarySchools",
+            Self::PrintingPublishingAndSignmakingServices => {
+                "PrintingPublishingAndSignmakingServices"
+            }
+            Self::ProfessionalServicesnotElsewhereClassified => {
+                "ProfessionalServicesnotElsewhereClassified"
+            }
+            Self::PsychologyPsychiatricCounsellingAndOtherMentalHealthServices => {
+                "PsychologyPsychiatricCounsellingAndOtherMentalHealthServices"
+            }
+            Self::RealEstateServices => "RealEstateServices",
+            Self::ReligiousOrganisations => "ReligiousOrganisations",
+            Self::RentForPermanentAccommodation => "RentForPermanentAccommodation",
+            Self::RepairAndServicingnotElsewhereClassified => {
+                "RepairAndServicingnotElsewhereClassified"
+            }
+            Self::RetirementAccommodation => "RetirementAccommodation",
+            Self::RoofingServices => "RoofingServices",
+            Self::SecondhandAndOpportunityStores => "SecondhandAndOpportunityStores",
+            Self::SecurityStoresAndServices => "SecurityStoresAndServices",
+            Self::ShoeAndLeatherRepairKeycuttingOrEngraving => {
+                "ShoeAndLeatherRepairKeycuttingOrEngraving"
+            }
+            Self::ShoeStores => "ShoeStores",
+            Self::SpecialtyFoodStores => "SpecialtyFoodStores",
+            Self::SpecialtyRetailStoresnotElsewhereClassified => {
+                "SpecialtyRetailStoresnotElsewhereClassified"
+            }
+            Self::SportsAndAthleticClubs => "SportsAndAthleticClubs",
+            Self::SportsEquipmentAndSupplies => "SportsEquipmentAndSupplies",
+            Self::StationeryAndOfficeSupplies => "StationeryAndOfficeSupplies",
+            Self::StorageFacilities => "StorageFacilities",
+            Self::SupermarketsAndGroceryStores => "SupermarketsAndGroceryStores",
+            Self::SwimmingPoolsSuppliesAndServices => "SwimmingPoolsSuppliesAndServices",
+            Self::TaxPayments => "TaxPayments",
+            Self::TaxiRideshareAndOndemandTransportServices => {
+                "TaxiRideshareAndOndemandTransportServices"
+            }
+            Self::TelecommunicationServices => "TelecommunicationServices",
+            Self::TestingLaboratoriesnonMedical => "TestingLaboratoriesnonMedical",
+            Self::TheatreConcertsAndOtherArtisticPerformances => {
+                "TheatreConcertsAndOtherArtisticPerformances"
+            }
+            Self::TollFees => "TollFees",
+            Self::TowingServices => "TowingServices",
+            Self::TradeServicesnotElsewhereClassified => "TradeServicesnotElsewhereClassified",
+            Self::TrainAndRailTransportServices => "TrainAndRailTransportServices",
+            Self::TransportServicesnotElsewhereClassified => {
+                "TransportServicesnotElsewhereClassified"
+            }
+            Self::TravelAgenciesAndTourOperators => "TravelAgenciesAndTourOperators",
+            Self::TruckTrailerMachineryAndEquipmentRentals => {
+                "TruckTrailerMachineryAndEquipmentRentals"
+            }
+            Self::TyreStores => "TyreStores",
+            Self::UniformsAndCommercialClothing => "UniformsAndCommercialClothing",
+            Self::UniversitiesProfessionalSchoolsAndOtherTertiaryEducation => {
+                "UniversitiesProfessionalSchoolsAndOtherTertiaryEducation"
+            }
+            Self::VarietyStores => "VarietyStores",
+            Self::VehicleDealersnotElsewhereClassified => "VehicleDealersnotElsewhereClassified",
+            Self::VeterinaryServices => "VeterinaryServices",
+            Self::WasteAndRecyclingServices => "WasteAndRecyclingServices",
+            Self::WatchClockAndJewelleryStoresAndServices => {
+                "WatchClockAndJewelleryStoresAndServices"
+            }
+            Self::WaterAndSanitationServices => "WaterAndSanitationServices",
+            Self::WeldingFabricationAndMetalServices => "WeldingFabricationAndMetalServices",
+            Self::WelfareAndCharity => "WelfareAndCharity",
+            Self::WineriesBreweriesAndDistilleries => "WineriesBreweriesAndDistilleries",
+        }
+    }
+
+    /// Returns an iterator over all NzfccCode values.
+    pub fn iter() -> impl Iterator<Item = Self> {
+        Self::values().iter().copied()
+    }
+}
+
+impl AsRef<str> for NzfccCode {
+    fn as_ref(&self) -> &str {
+        match self {
+            Self::AccountancyBookkeepingAuditingAndTaxServices => {
+                "Accountancy, bookkeeping, auditing, and tax services"
+            }
+            Self::AdvertisingAndMarketingServices => "Advertising and marketing services",
+            Self::AgriculturalSupplies => "Agricultural supplies",
+            Self::AirTransportServices => "Air transport services",
+            Self::Airports => "Airports",
+            Self::AntiqueStoresAndRepair => "Antique stores and repair",
+            Self::ApparelAndAccessoryStores => "Apparel and accessory stores",
+            Self::ApplianceAndFurnitureRentals => "Appliance and furniture rentals",
+            Self::ApplianceRepairAndServices => "Appliance repair and services",
+            Self::ArchitectEngineeringAndSurveyingServices => {
+                "Architect, engineering, and surveying services"
+            }
+            Self::ArtAndCraftSupplies => "Art and craft supplies",
+            Self::ArtStoresDealersAndGalleries => "Art stores, dealers, and galleries",
+            Self::AttractionsMuseumsZoosAmusementParksCircusesExhibits => {
+                "Attractions, museums, zoos, amusement parks, circuses, exhibits"
+            }
+            Self::AutomotiveBodyRepairAndPaintingServices => {
+                "Automotive body repair and painting services"
+            }
+            Self::AutomotivePartsAndAccessories => "Automotive parts and accessories",
+            Self::AutomotiveRepairAndServicing => "Automotive repair and servicing",
+            Self::Bakeries => "Bakeries",
+            Self::BarsPubsNightclubs => "Bars, pubs, nightclubs",
+            Self::BicycleStoresRentalsAndRepairs => "Bicycle stores, rentals, and repairs",
+            Self::BoatDealers => "Boat dealers",
+            Self::BoatRentals => "Boat rentals",
+            Self::BoatTransportServices => "Boat transport services",
+            Self::BodyCorporate => "Body corporate",
+            Self::BookStores => "Book stores",
+            Self::BuildingAndCarpentryServices => "Building and carpentry services",
+            Self::BuildingSupplies => "Building supplies",
+            Self::BusAndShuttleTransportServices => "Bus and shuttle transport services",
+            Self::BusinessServicesnotElsewhereClassified => {
+                "Business services (not elsewhere classified)"
+            }
+            Self::BusinessSoftwareAndCloudServices => "Business software and cloud services",
+            Self::CafesAndRestaurants => "Cafes and restaurants",
+            Self::CarAndMotorcycleRentals => "Car and motorcycle rentals",
+            Self::CarTruckAndMotorcycleDealers => "Car, truck, and motorcycle dealers",
+            Self::CashWithdrawals => "Cash withdrawals",
+            Self::CasinoLotteryAndOtherGamblingServices => {
+                "Casino, lottery, and other gambling services"
+            }
+            Self::Caterers => "Caterers",
+            Self::ChemicalProductsAndServices => "Chemical products and services",
+            Self::ChildAndInfantClothing => "Child and infant clothing",
+            Self::ChildSupport => "Child support",
+            Self::ChildcareServices => "Childcare services",
+            Self::ChiropodistsAndPodiatrists => "Chiropodists and podiatrists",
+            Self::ChiropractorsAndOsteopaths => "Chiropractors and osteopaths",
+            Self::CigaretteVapeAndOtherSmokingProducts => {
+                "Cigarette, vape, and other smoking products"
+            }
+            Self::Cinemas => "Cinemas",
+            Self::CleaningSanitationAndPestControlServices => {
+                "Cleaning, sanitation, and pest control services"
+            }
+            Self::ClothingAlterationAndRepair => "Clothing alteration and repair",
+            Self::ClothingRental => "Clothing rental",
+            Self::ClothingStores => "Clothing stores",
+            Self::ComputerEquipment => "Computer equipment",
+            Self::ConcreteServices => "Concrete services",
+            Self::ConsumerElectronicsRepairAndServices => {
+                "Consumer electronics repair and services"
+            }
+            Self::ConvenienceStores => "Convenience stores",
+            Self::CosmeticSupplies => "Cosmetic supplies",
+            Self::CosmeticHealthSpasAndRelaxationMassageServices => {
+                "Cosmetic, health spas, and relaxation massage services"
+            }
+            Self::CourierAndFreightDeliveryServices => "Courier and freight delivery services",
+            Self::CurtainsBlindsAndWindowCoverings => "Curtains, blinds, and window coverings",
+            Self::DatingAndMatchmakingServices => "Dating and matchmaking services",
+            Self::DebtRepayments => "Debt repayments",
+            Self::DentalAndMedicalLaboratories => "Dental and medical laboratories",
+            Self::DentalServices => "Dental services",
+            Self::DigitalGamingProductsAndServices => "Digital gaming products and services",
+            Self::DoctorsAndPhysicians => "Doctors and physicians",
+            Self::DutyFreeStores => "Duty free stores",
+            Self::EducationnotElsewhereClassified => "Education (not elsewhere classified)",
+            Self::ElectricVehicleChargingServices => "Electric vehicle charging services",
+            Self::ElectricalSuppliesAndServices => "Electrical supplies and services",
+            Self::ElectricityAndGasServices => "Electricity and gas services",
+            Self::ElectricityServices => "Electricity services",
+            Self::ElectronicAndApplianceStores => "Electronic and appliance stores",
+            Self::EmploymentAndCareerServices => "Employment and career services",
+            Self::EntertainmentnotElsewhereClassified => "Entertainment (not elsewhere classified)",
+            Self::EventVenueAndEquipmentRental => "Event venue and equipment rental",
+            Self::EventsAndTicketsnotElsewhereClassified => {
+                "Events and tickets (not elsewhere classified)"
+            }
+            Self::FabricSewingKnittingAndRelatedSupplies => {
+                "Fabric, sewing, knitting, and related supplies"
+            }
+            Self::FastFoodStores => "Fast food stores",
+            Self::FinancialAdviceAndWealthManagement => "Financial advice and wealth management",
+            Self::FinancialAssetBrokersExchangesAndManagedFunds => {
+                "Financial asset brokers, exchanges, and managed funds"
+            }
+            Self::FinancialServicesnotElsewhereClassified => {
+                "Financial services (not elsewhere classified)"
+            }
+            Self::FireplacesAndSupplies => "Fireplaces and supplies",
+            Self::FishAndSeafoodSupplies => "Fish and seafood supplies",
+            Self::FloorCoveringStores => "Floor covering stores",
+            Self::FloralSuppliesAndServices => "Floral supplies and services",
+            Self::ForeignExchangeAndMoneyTransferServices => {
+                "Foreign exchange and money transfer services"
+            }
+            Self::FuelStations => "Fuel stations",
+            Self::FuneralDeathAndMemorialServices => "Funeral, death, and memorial services",
+            Self::GasServices => "Gas services",
+            Self::GeneralRetailStores => "General retail stores",
+            Self::GiftAndSouvenirStores => "Gift and souvenir stores",
+            Self::GolfCourses => "Golf courses",
+            Self::GymsFitnessAquaticFacilitiesYogaPilates => {
+                "Gyms, fitness, aquatic facilities, yoga, pilates"
+            }
+            Self::HaircutsAndTreatments => "Haircuts and treatments",
+            Self::HardwareEquipmentAndSupplies => "Hardware equipment and supplies",
+            Self::HeatingCoolingAndVentilationEquipmentAndServices => {
+                "Heating, cooling, and ventilation equipment and services"
+            }
+            Self::HobbyToyAndPhysicalGameStores => "Hobby, toy, and physical game stores",
+            Self::HomeFurnishingAndRepairStores => "Home furnishing and repair stores",
+            Self::Hospices => "Hospices",
+            Self::HospitalsAndEmergencyCare => "Hospitals and emergency care",
+            Self::HotelsMotelsAndOtherTemporaryAccommodation => {
+                "Hotels, motels, and other temporary accommodation"
+            }
+            Self::ITAndSoftwareDevelopmentServices => "IT and software development services",
+            Self::IceCreamGelatoNutAndConfectionaryStores => {
+                "Ice cream, gelato, nut, and confectionary stores"
+            }
+            Self::IndustrialAndCommercialSuppliesnotElsewhereClassified => {
+                "Industrial and commercial supplies (not elsewhere classified)"
+            }
+            Self::Insurance => "Insurance",
+            Self::InternetServices => "Internet services",
+            Self::LandscapingGardenAndHorticulturalServices => {
+                "Landscaping, garden, and horticultural services"
+            }
+            Self::LaundryAndDrycleaning => "Laundry and drycleaning",
+            Self::LegalServices => "Legal services",
+            Self::LendingServices => "Lending services",
+            Self::Libraries => "Libraries",
+            Self::LiquorStores => "Liquor stores",
+            Self::LocalGovernment => "Local government",
+            Self::ManagementConsulting => "Management consulting",
+            Self::MarinasMarineSuppliesAndMarineServices => {
+                "Marinas, marine supplies, and marine services"
+            }
+            Self::MasonryStoneworkTilingPlasteringAndInsulationServices => {
+                "Masonry, stonework, tiling, plastering, and insulation services"
+            }
+            Self::MealKitStores => "Meal kit stores",
+            Self::MeatSupplies => "Meat supplies",
+            Self::MediaAndEntertainmentStreamingServices => {
+                "Media and entertainment streaming services"
+            }
+            Self::MedicalProductsAndSuppliesnotElsewhereClassified => {
+                "Medical products and supplies (not elsewhere classified)"
+            }
+            Self::MedicalServicesnotElsewhereClassified => {
+                "Medical services (not elsewhere classified)"
+            }
+            Self::MembershipOrganisationsnotElsewhereClassified => {
+                "Membership organisations (not elsewhere classified)"
+            }
+            Self::MotorParksCampgroundsHolidayParksRecreationalCamps => {
+                "Motor parks, campgrounds, holiday parks, recreational camps"
+            }
+            Self::MusicalEquipmentRecordingsAndSupplies => {
+                "Musical equipment, recordings, and supplies"
+            }
+            Self::NationalGovernmentServices => "National government services",
+            Self::NewspapersMagazinesAndLiterarySubscriptions => {
+                "Newspapers, magazines, and literary subscriptions"
+            }
+            Self::NurseriesAndGardenSupplies => "Nurseries and garden supplies",
+            Self::OptometristsAndEyewear => "Optometrists and eyewear",
+            Self::PaintingSuppliesAndServices => "Painting supplies and services",
+            Self::ParkingServices => "Parking services",
+            Self::PerformingArtTraining => "Performing art training",
+            Self::PersonalSoftwarenotElsewhereClassified => {
+                "Personal software (not elsewhere classified)"
+            }
+            Self::PetsAndRelatedSuppliesAccommodationAndServices => {
+                "Pets and related supplies, accommodation, and services"
+            }
+            Self::Pharmacies => "Pharmacies",
+            Self::PhotographyEquipmentAndServices => "Photography equipment and services",
+            Self::PhysiotherapyAndMassageTherapy => "Physiotherapy and massage therapy",
+            Self::PlumbingAndGasfittingSuppliesAndServices => {
+                "Plumbing and gasfitting supplies and services"
+            }
+            Self::PoliticalOrganisations => "Political organisations",
+            Self::PostalServices => "Postal services",
+            Self::PrimaryAndSecondarySchools => "Primary and secondary schools",
+            Self::PrintingPublishingAndSignmakingServices => {
+                "Printing, publishing, and signmaking services"
+            }
+            Self::ProfessionalServicesnotElsewhereClassified => {
+                "Professional services (not elsewhere classified)"
+            }
+            Self::PsychologyPsychiatricCounsellingAndOtherMentalHealthServices => {
+                "Psychology, psychiatric, counselling, and other mental health services"
+            }
+            Self::RealEstateServices => "Real estate services",
+            Self::ReligiousOrganisations => "Religious organisations",
+            Self::RentForPermanentAccommodation => "Rent for permanent accommodation",
+            Self::RepairAndServicingnotElsewhereClassified => {
+                "Repair and servicing (not elsewhere classified)"
+            }
+            Self::RetirementAccommodation => "Retirement accommodation",
+            Self::RoofingServices => "Roofing services",
+            Self::SecondhandAndOpportunityStores => "Secondhand and opportunity stores",
+            Self::SecurityStoresAndServices => "Security stores and services",
+            Self::ShoeAndLeatherRepairKeycuttingOrEngraving => {
+                "Shoe and leather repair, keycutting, or engraving"
+            }
+            Self::ShoeStores => "Shoe stores",
+            Self::SpecialtyFoodStores => "Specialty food stores",
+            Self::SpecialtyRetailStoresnotElsewhereClassified => {
+                "Specialty retail stores (not elsewhere classified)"
+            }
+            Self::SportsAndAthleticClubs => "Sports and athletic clubs",
+            Self::SportsEquipmentAndSupplies => "Sports equipment and supplies",
+            Self::StationeryAndOfficeSupplies => "Stationery and office supplies",
+            Self::StorageFacilities => "Storage facilities",
+            Self::SupermarketsAndGroceryStores => "Supermarkets and grocery stores",
+            Self::SwimmingPoolsSuppliesAndServices => "Swimming pools, supplies, and services",
+            Self::TaxPayments => "Tax payments",
+            Self::TaxiRideshareAndOndemandTransportServices => {
+                "Taxi, rideshare, and on-demand transport services"
+            }
+            Self::TelecommunicationServices => "Telecommunication services",
+            Self::TestingLaboratoriesnonMedical => "Testing laboratories (non medical)",
+            Self::TheatreConcertsAndOtherArtisticPerformances => {
+                "Theatre, concerts, and other artistic performances"
+            }
+            Self::TollFees => "Toll fees",
+            Self::TowingServices => "Towing services",
+            Self::TradeServicesnotElsewhereClassified => {
+                "Trade services (not elsewhere classified)"
+            }
+            Self::TrainAndRailTransportServices => "Train and rail transport services",
+            Self::TransportServicesnotElsewhereClassified => {
+                "Transport services (not elsewhere classified)"
+            }
+            Self::TravelAgenciesAndTourOperators => "Travel agencies and tour operators",
+            Self::TruckTrailerMachineryAndEquipmentRentals => {
+                "Truck, trailer, machinery, and equipment rentals"
+            }
+            Self::TyreStores => "Tyre stores",
+            Self::UniformsAndCommercialClothing => "Uniforms and commercial clothing",
+            Self::UniversitiesProfessionalSchoolsAndOtherTertiaryEducation => {
+                "Universities, professional schools, and other tertiary education"
+            }
+            Self::VarietyStores => "Variety stores",
+            Self::VehicleDealersnotElsewhereClassified => {
+                "Vehicle dealers (not elsewhere classified)"
+            }
+            Self::VeterinaryServices => "Veterinary services",
+            Self::WasteAndRecyclingServices => "Waste and recycling services",
+            Self::WatchClockAndJewelleryStoresAndServices => {
+                "Watch, clock, and jewellery stores and services"
+            }
+            Self::WaterAndSanitationServices => "Water and sanitation services",
+            Self::WeldingFabricationAndMetalServices => "Welding, fabrication, and metal services",
+            Self::WelfareAndCharity => "Welfare and charity",
+            Self::WineriesBreweriesAndDistilleries => "Wineries, breweries, and distilleries",
+        }
+    }
+}
+
+impl From<NzfccCode> for &'static str {
+    fn from(code: NzfccCode) -> Self {
+        match code {
+            NzfccCode::AccountancyBookkeepingAuditingAndTaxServices => {
+                "Accountancy, bookkeeping, auditing, and tax services"
+            }
+            NzfccCode::AdvertisingAndMarketingServices => "Advertising and marketing services",
+            NzfccCode::AgriculturalSupplies => "Agricultural supplies",
+            NzfccCode::AirTransportServices => "Air transport services",
+            NzfccCode::Airports => "Airports",
+            NzfccCode::AntiqueStoresAndRepair => "Antique stores and repair",
+            NzfccCode::ApparelAndAccessoryStores => "Apparel and accessory stores",
+            NzfccCode::ApplianceAndFurnitureRentals => "Appliance and furniture rentals",
+            NzfccCode::ApplianceRepairAndServices => "Appliance repair and services",
+            NzfccCode::ArchitectEngineeringAndSurveyingServices => {
+                "Architect, engineering, and surveying services"
+            }
+            NzfccCode::ArtAndCraftSupplies => "Art and craft supplies",
+            NzfccCode::ArtStoresDealersAndGalleries => "Art stores, dealers, and galleries",
+            NzfccCode::AttractionsMuseumsZoosAmusementParksCircusesExhibits => {
+                "Attractions, museums, zoos, amusement parks, circuses, exhibits"
+            }
+            NzfccCode::AutomotiveBodyRepairAndPaintingServices => {
+                "Automotive body repair and painting services"
+            }
+            NzfccCode::AutomotivePartsAndAccessories => "Automotive parts and accessories",
+            NzfccCode::AutomotiveRepairAndServicing => "Automotive repair and servicing",
+            NzfccCode::Bakeries => "Bakeries",
+            NzfccCode::BarsPubsNightclubs => "Bars, pubs, nightclubs",
+            NzfccCode::BicycleStoresRentalsAndRepairs => "Bicycle stores, rentals, and repairs",
+            NzfccCode::BoatDealers => "Boat dealers",
+            NzfccCode::BoatRentals => "Boat rentals",
+            NzfccCode::BoatTransportServices => "Boat transport services",
+            NzfccCode::BodyCorporate => "Body corporate",
+            NzfccCode::BookStores => "Book stores",
+            NzfccCode::BuildingAndCarpentryServices => "Building and carpentry services",
+            NzfccCode::BuildingSupplies => "Building supplies",
+            NzfccCode::BusAndShuttleTransportServices => "Bus and shuttle transport services",
+            NzfccCode::BusinessServicesnotElsewhereClassified => {
+                "Business services (not elsewhere classified)"
+            }
+            NzfccCode::BusinessSoftwareAndCloudServices => "Business software and cloud services",
+            NzfccCode::CafesAndRestaurants => "Cafes and restaurants",
+            NzfccCode::CarAndMotorcycleRentals => "Car and motorcycle rentals",
+            NzfccCode::CarTruckAndMotorcycleDealers => "Car, truck, and motorcycle dealers",
+            NzfccCode::CashWithdrawals => "Cash withdrawals",
+            NzfccCode::CasinoLotteryAndOtherGamblingServices => {
+                "Casino, lottery, and other gambling services"
+            }
+            NzfccCode::Caterers => "Caterers",
+            NzfccCode::ChemicalProductsAndServices => "Chemical products and services",
+            NzfccCode::ChildAndInfantClothing => "Child and infant clothing",
+            NzfccCode::ChildSupport => "Child support",
+            NzfccCode::ChildcareServices => "Childcare services",
+            NzfccCode::ChiropodistsAndPodiatrists => "Chiropodists and podiatrists",
+            NzfccCode::ChiropractorsAndOsteopaths => "Chiropractors and osteopaths",
+            NzfccCode::CigaretteVapeAndOtherSmokingProducts => {
+                "Cigarette, vape, and other smoking products"
+            }
+            NzfccCode::Cinemas => "Cinemas",
+            NzfccCode::CleaningSanitationAndPestControlServices => {
+                "Cleaning, sanitation, and pest control services"
+            }
+            NzfccCode::ClothingAlterationAndRepair => "Clothing alteration and repair",
+            NzfccCode::ClothingRental => "Clothing rental",
+            NzfccCode::ClothingStores => "Clothing stores",
+            NzfccCode::ComputerEquipment => "Computer equipment",
+            NzfccCode::ConcreteServices => "Concrete services",
+            NzfccCode::ConsumerElectronicsRepairAndServices => {
+                "Consumer electronics repair and services"
+            }
+            NzfccCode::ConvenienceStores => "Convenience stores",
+            NzfccCode::CosmeticSupplies => "Cosmetic supplies",
+            NzfccCode::CosmeticHealthSpasAndRelaxationMassageServices => {
+                "Cosmetic, health spas, and relaxation massage services"
+            }
+            NzfccCode::CourierAndFreightDeliveryServices => "Courier and freight delivery services",
+            NzfccCode::CurtainsBlindsAndWindowCoverings => "Curtains, blinds, and window coverings",
+            NzfccCode::DatingAndMatchmakingServices => "Dating and matchmaking services",
+            NzfccCode::DebtRepayments => "Debt repayments",
+            NzfccCode::DentalAndMedicalLaboratories => "Dental and medical laboratories",
+            NzfccCode::DentalServices => "Dental services",
+            NzfccCode::DigitalGamingProductsAndServices => "Digital gaming products and services",
+            NzfccCode::DoctorsAndPhysicians => "Doctors and physicians",
+            NzfccCode::DutyFreeStores => "Duty free stores",
+            NzfccCode::EducationnotElsewhereClassified => "Education (not elsewhere classified)",
+            NzfccCode::ElectricVehicleChargingServices => "Electric vehicle charging services",
+            NzfccCode::ElectricalSuppliesAndServices => "Electrical supplies and services",
+            NzfccCode::ElectricityAndGasServices => "Electricity and gas services",
+            NzfccCode::ElectricityServices => "Electricity services",
+            NzfccCode::ElectronicAndApplianceStores => "Electronic and appliance stores",
+            NzfccCode::EmploymentAndCareerServices => "Employment and career services",
+            NzfccCode::EntertainmentnotElsewhereClassified => {
+                "Entertainment (not elsewhere classified)"
+            }
+            NzfccCode::EventVenueAndEquipmentRental => "Event venue and equipment rental",
+            NzfccCode::EventsAndTicketsnotElsewhereClassified => {
+                "Events and tickets (not elsewhere classified)"
+            }
+            NzfccCode::FabricSewingKnittingAndRelatedSupplies => {
+                "Fabric, sewing, knitting, and related supplies"
+            }
+            NzfccCode::FastFoodStores => "Fast food stores",
+            NzfccCode::FinancialAdviceAndWealthManagement => {
+                "Financial advice and wealth management"
+            }
+            NzfccCode::FinancialAssetBrokersExchangesAndManagedFunds => {
+                "Financial asset brokers, exchanges, and managed funds"
+            }
+            NzfccCode::FinancialServicesnotElsewhereClassified => {
+                "Financial services (not elsewhere classified)"
+            }
+            NzfccCode::FireplacesAndSupplies => "Fireplaces and supplies",
+            NzfccCode::FishAndSeafoodSupplies => "Fish and seafood supplies",
+            NzfccCode::FloorCoveringStores => "Floor covering stores",
+            NzfccCode::FloralSuppliesAndServices => "Floral supplies and services",
+            NzfccCode::ForeignExchangeAndMoneyTransferServices => {
+                "Foreign exchange and money transfer services"
+            }
+            NzfccCode::FuelStations => "Fuel stations",
+            NzfccCode::FuneralDeathAndMemorialServices => "Funeral, death, and memorial services",
+            NzfccCode::GasServices => "Gas services",
+            NzfccCode::GeneralRetailStores => "General retail stores",
+            NzfccCode::GiftAndSouvenirStores => "Gift and souvenir stores",
+            NzfccCode::GolfCourses => "Golf courses",
+            NzfccCode::GymsFitnessAquaticFacilitiesYogaPilates => {
+                "Gyms, fitness, aquatic facilities, yoga, pilates"
+            }
+            NzfccCode::HaircutsAndTreatments => "Haircuts and treatments",
+            NzfccCode::HardwareEquipmentAndSupplies => "Hardware equipment and supplies",
+            NzfccCode::HeatingCoolingAndVentilationEquipmentAndServices => {
+                "Heating, cooling, and ventilation equipment and services"
+            }
+            NzfccCode::HobbyToyAndPhysicalGameStores => "Hobby, toy, and physical game stores",
+            NzfccCode::HomeFurnishingAndRepairStores => "Home furnishing and repair stores",
+            NzfccCode::Hospices => "Hospices",
+            NzfccCode::HospitalsAndEmergencyCare => "Hospitals and emergency care",
+            NzfccCode::HotelsMotelsAndOtherTemporaryAccommodation => {
+                "Hotels, motels, and other temporary accommodation"
+            }
+            NzfccCode::ITAndSoftwareDevelopmentServices => "IT and software development services",
+            NzfccCode::IceCreamGelatoNutAndConfectionaryStores => {
+                "Ice cream, gelato, nut, and confectionary stores"
+            }
+            NzfccCode::IndustrialAndCommercialSuppliesnotElsewhereClassified => {
+                "Industrial and commercial supplies (not elsewhere classified)"
+            }
+            NzfccCode::Insurance => "Insurance",
+            NzfccCode::InternetServices => "Internet services",
+            NzfccCode::LandscapingGardenAndHorticulturalServices => {
+                "Landscaping, garden, and horticultural services"
+            }
+            NzfccCode::LaundryAndDrycleaning => "Laundry and drycleaning",
+            NzfccCode::LegalServices => "Legal services",
+            NzfccCode::LendingServices => "Lending services",
+            NzfccCode::Libraries => "Libraries",
+            NzfccCode::LiquorStores => "Liquor stores",
+            NzfccCode::LocalGovernment => "Local government",
+            NzfccCode::ManagementConsulting => "Management consulting",
+            NzfccCode::MarinasMarineSuppliesAndMarineServices => {
+                "Marinas, marine supplies, and marine services"
+            }
+            NzfccCode::MasonryStoneworkTilingPlasteringAndInsulationServices => {
+                "Masonry, stonework, tiling, plastering, and insulation services"
+            }
+            NzfccCode::MealKitStores => "Meal kit stores",
+            NzfccCode::MeatSupplies => "Meat supplies",
+            NzfccCode::MediaAndEntertainmentStreamingServices => {
+                "Media and entertainment streaming services"
+            }
+            NzfccCode::MedicalProductsAndSuppliesnotElsewhereClassified => {
+                "Medical products and supplies (not elsewhere classified)"
+            }
+            NzfccCode::MedicalServicesnotElsewhereClassified => {
+                "Medical services (not elsewhere classified)"
+            }
+            NzfccCode::MembershipOrganisationsnotElsewhereClassified => {
+                "Membership organisations (not elsewhere classified)"
+            }
+            NzfccCode::MotorParksCampgroundsHolidayParksRecreationalCamps => {
+                "Motor parks, campgrounds, holiday parks, recreational camps"
+            }
+            NzfccCode::MusicalEquipmentRecordingsAndSupplies => {
+                "Musical equipment, recordings, and supplies"
+            }
+            NzfccCode::NationalGovernmentServices => "National government services",
+            NzfccCode::NewspapersMagazinesAndLiterarySubscriptions => {
+                "Newspapers, magazines, and literary subscriptions"
+            }
+            NzfccCode::NurseriesAndGardenSupplies => "Nurseries and garden supplies",
+            NzfccCode::OptometristsAndEyewear => "Optometrists and eyewear",
+            NzfccCode::PaintingSuppliesAndServices => "Painting supplies and services",
+            NzfccCode::ParkingServices => "Parking services",
+            NzfccCode::PerformingArtTraining => "Performing art training",
+            NzfccCode::PersonalSoftwarenotElsewhereClassified => {
+                "Personal software (not elsewhere classified)"
+            }
+            NzfccCode::PetsAndRelatedSuppliesAccommodationAndServices => {
+                "Pets and related supplies, accommodation, and services"
+            }
+            NzfccCode::Pharmacies => "Pharmacies",
+            NzfccCode::PhotographyEquipmentAndServices => "Photography equipment and services",
+            NzfccCode::PhysiotherapyAndMassageTherapy => "Physiotherapy and massage therapy",
+            NzfccCode::PlumbingAndGasfittingSuppliesAndServices => {
+                "Plumbing and gasfitting supplies and services"
+            }
+            NzfccCode::PoliticalOrganisations => "Political organisations",
+            NzfccCode::PostalServices => "Postal services",
+            NzfccCode::PrimaryAndSecondarySchools => "Primary and secondary schools",
+            NzfccCode::PrintingPublishingAndSignmakingServices => {
+                "Printing, publishing, and signmaking services"
+            }
+            NzfccCode::ProfessionalServicesnotElsewhereClassified => {
+                "Professional services (not elsewhere classified)"
+            }
+            NzfccCode::PsychologyPsychiatricCounsellingAndOtherMentalHealthServices => {
+                "Psychology, psychiatric, counselling, and other mental health services"
+            }
+            NzfccCode::RealEstateServices => "Real estate services",
+            NzfccCode::ReligiousOrganisations => "Religious organisations",
+            NzfccCode::RentForPermanentAccommodation => "Rent for permanent accommodation",
+            NzfccCode::RepairAndServicingnotElsewhereClassified => {
+                "Repair and servicing (not elsewhere classified)"
+            }
+            NzfccCode::RetirementAccommodation => "Retirement accommodation",
+            NzfccCode::RoofingServices => "Roofing services",
+            NzfccCode::SecondhandAndOpportunityStores => "Secondhand and opportunity stores",
+            NzfccCode::SecurityStoresAndServices => "Security stores and services",
+            NzfccCode::ShoeAndLeatherRepairKeycuttingOrEngraving => {
+                "Shoe and leather repair, keycutting, or engraving"
+            }
+            NzfccCode::ShoeStores => "Shoe stores",
+            NzfccCode::SpecialtyFoodStores => "Specialty food stores",
+            NzfccCode::SpecialtyRetailStoresnotElsewhereClassified => {
+                "Specialty retail stores (not elsewhere classified)"
+            }
+            NzfccCode::SportsAndAthleticClubs => "Sports and athletic clubs",
+            NzfccCode::SportsEquipmentAndSupplies => "Sports equipment and supplies",
+            NzfccCode::StationeryAndOfficeSupplies => "Stationery and office supplies",
+            NzfccCode::StorageFacilities => "Storage facilities",
+            NzfccCode::SupermarketsAndGroceryStores => "Supermarkets and grocery stores",
+            NzfccCode::SwimmingPoolsSuppliesAndServices => "Swimming pools, supplies, and services",
+            NzfccCode::TaxPayments => "Tax payments",
+            NzfccCode::TaxiRideshareAndOndemandTransportServices => {
+                "Taxi, rideshare, and on-demand transport services"
+            }
+            NzfccCode::TelecommunicationServices => "Telecommunication services",
+            NzfccCode::TestingLaboratoriesnonMedical => "Testing laboratories (non medical)",
+            NzfccCode::TheatreConcertsAndOtherArtisticPerformances => {
+                "Theatre, concerts, and other artistic performances"
+            }
+            NzfccCode::TollFees => "Toll fees",
+            NzfccCode::TowingServices => "Towing services",
+            NzfccCode::TradeServicesnotElsewhereClassified => {
+                "Trade services (not elsewhere classified)"
+            }
+            NzfccCode::TrainAndRailTransportServices => "Train and rail transport services",
+            NzfccCode::TransportServicesnotElsewhereClassified => {
+                "Transport services (not elsewhere classified)"
+            }
+            NzfccCode::TravelAgenciesAndTourOperators => "Travel agencies and tour operators",
+            NzfccCode::TruckTrailerMachineryAndEquipmentRentals => {
+                "Truck, trailer, machinery, and equipment rentals"
+            }
+            NzfccCode::TyreStores => "Tyre stores",
+            NzfccCode::UniformsAndCommercialClothing => "Uniforms and commercial clothing",
+            NzfccCode::UniversitiesProfessionalSchoolsAndOtherTertiaryEducation => {
+                "Universities, professional schools, and other tertiary education"
+            }
+            NzfccCode::VarietyStores => "Variety stores",
+            NzfccCode::VehicleDealersnotElsewhereClassified => {
+                "Vehicle dealers (not elsewhere classified)"
+            }
+            NzfccCode::VeterinaryServices => "Veterinary services",
+            NzfccCode::WasteAndRecyclingServices => "Waste and recycling services",
+            NzfccCode::WatchClockAndJewelleryStoresAndServices => {
+                "Watch, clock, and jewellery stores and services"
+            }
+            NzfccCode::WaterAndSanitationServices => "Water and sanitation services",
+            NzfccCode::WeldingFabricationAndMetalServices => {
+                "Welding, fabrication, and metal services"
+            }
+            NzfccCode::WelfareAndCharity => "Welfare and charity",
+            NzfccCode::WineriesBreweriesAndDistilleries => "Wineries, breweries, and distilleries",
+        }
+    }
+}
+
+#[cfg(feature = "clap")]
+impl clap::ValueEnum for NzfccCode {
+    fn value_variants<'a>() -> &'a [Self] {
+        Self::values()
+    }
+
+    fn to_possible_value(&self) -> Option<clap::builder::PossibleValue> {
+        Some(clap::builder::PossibleValue::new(match self {
+            Self::AccountancyBookkeepingAuditingAndTaxServices => {
+                "Accountancy, bookkeeping, auditing, and tax services"
+            }
+            Self::AdvertisingAndMarketingServices => "Advertising and marketing services",
+            Self::AgriculturalSupplies => "Agricultural supplies",
+            Self::AirTransportServices => "Air transport services",
+            Self::Airports => "Airports",
+            Self::AntiqueStoresAndRepair => "Antique stores and repair",
+            Self::ApparelAndAccessoryStores => "Apparel and accessory stores",
+            Self::ApplianceAndFurnitureRentals => "Appliance and furniture rentals",
+            Self::ApplianceRepairAndServices => "Appliance repair and services",
+            Self::ArchitectEngineeringAndSurveyingServices => {
+                "Architect, engineering, and surveying services"
+            }
+            Self::ArtAndCraftSupplies => "Art and craft supplies",
+            Self::ArtStoresDealersAndGalleries => "Art stores, dealers, and galleries",
+            Self::AttractionsMuseumsZoosAmusementParksCircusesExhibits => {
+                "Attractions, museums, zoos, amusement parks, circuses, exhibits"
+            }
+            Self::AutomotiveBodyRepairAndPaintingServices => {
+                "Automotive body repair and painting services"
+            }
+            Self::AutomotivePartsAndAccessories => "Automotive parts and accessories",
+            Self::AutomotiveRepairAndServicing => "Automotive repair and servicing",
+            Self::Bakeries => "Bakeries",
+            Self::BarsPubsNightclubs => "Bars, pubs, nightclubs",
+            Self::BicycleStoresRentalsAndRepairs => "Bicycle stores, rentals, and repairs",
+            Self::BoatDealers => "Boat dealers",
+            Self::BoatRentals => "Boat rentals",
+            Self::BoatTransportServices => "Boat transport services",
+            Self::BodyCorporate => "Body corporate",
+            Self::BookStores => "Book stores",
+            Self::BuildingAndCarpentryServices => "Building and carpentry services",
+            Self::BuildingSupplies => "Building supplies",
+            Self::BusAndShuttleTransportServices => "Bus and shuttle transport services",
+            Self::BusinessServicesnotElsewhereClassified => {
+                "Business services (not elsewhere classified)"
+            }
+            Self::BusinessSoftwareAndCloudServices => "Business software and cloud services",
+            Self::CafesAndRestaurants => "Cafes and restaurants",
+            Self::CarAndMotorcycleRentals => "Car and motorcycle rentals",
+            Self::CarTruckAndMotorcycleDealers => "Car, truck, and motorcycle dealers",
+            Self::CashWithdrawals => "Cash withdrawals",
+            Self::CasinoLotteryAndOtherGamblingServices => {
+                "Casino, lottery, and other gambling services"
+            }
+            Self::Caterers => "Caterers",
+            Self::ChemicalProductsAndServices => "Chemical products and services",
+            Self::ChildAndInfantClothing => "Child and infant clothing",
+            Self::ChildSupport => "Child support",
+            Self::ChildcareServices => "Childcare services",
+            Self::ChiropodistsAndPodiatrists => "Chiropodists and podiatrists",
+            Self::ChiropractorsAndOsteopaths => "Chiropractors and osteopaths",
+            Self::CigaretteVapeAndOtherSmokingProducts => {
+                "Cigarette, vape, and other smoking products"
+            }
+            Self::Cinemas => "Cinemas",
+            Self::CleaningSanitationAndPestControlServices => {
+                "Cleaning, sanitation, and pest control services"
+            }
+            Self::ClothingAlterationAndRepair => "Clothing alteration and repair",
+            Self::ClothingRental => "Clothing rental",
+            Self::ClothingStores => "Clothing stores",
+            Self::ComputerEquipment => "Computer equipment",
+            Self::ConcreteServices => "Concrete services",
+            Self::ConsumerElectronicsRepairAndServices => {
+                "Consumer electronics repair and services"
+            }
+            Self::ConvenienceStores => "Convenience stores",
+            Self::CosmeticSupplies => "Cosmetic supplies",
+            Self::CosmeticHealthSpasAndRelaxationMassageServices => {
+                "Cosmetic, health spas, and relaxation massage services"
+            }
+            Self::CourierAndFreightDeliveryServices => "Courier and freight delivery services",
+            Self::CurtainsBlindsAndWindowCoverings => "Curtains, blinds, and window coverings",
+            Self::DatingAndMatchmakingServices => "Dating and matchmaking services",
+            Self::DebtRepayments => "Debt repayments",
+            Self::DentalAndMedicalLaboratories => "Dental and medical laboratories",
+            Self::DentalServices => "Dental services",
+            Self::DigitalGamingProductsAndServices => "Digital gaming products and services",
+            Self::DoctorsAndPhysicians => "Doctors and physicians",
+            Self::DutyFreeStores => "Duty free stores",
+            Self::EducationnotElsewhereClassified => "Education (not elsewhere classified)",
+            Self::ElectricVehicleChargingServices => "Electric vehicle charging services",
+            Self::ElectricalSuppliesAndServices => "Electrical supplies and services",
+            Self::ElectricityAndGasServices => "Electricity and gas services",
+            Self::ElectricityServices => "Electricity services",
+            Self::ElectronicAndApplianceStores => "Electronic and appliance stores",
+            Self::EmploymentAndCareerServices => "Employment and career services",
+            Self::EntertainmentnotElsewhereClassified => "Entertainment (not elsewhere classified)",
+            Self::EventVenueAndEquipmentRental => "Event venue and equipment rental",
+            Self::EventsAndTicketsnotElsewhereClassified => {
+                "Events and tickets (not elsewhere classified)"
+            }
+            Self::FabricSewingKnittingAndRelatedSupplies => {
+                "Fabric, sewing, knitting, and related supplies"
+            }
+            Self::FastFoodStores => "Fast food stores",
+            Self::FinancialAdviceAndWealthManagement => "Financial advice and wealth management",
+            Self::FinancialAssetBrokersExchangesAndManagedFunds => {
+                "Financial asset brokers, exchanges, and managed funds"
+            }
+            Self::FinancialServicesnotElsewhereClassified => {
+                "Financial services (not elsewhere classified)"
+            }
+            Self::FireplacesAndSupplies => "Fireplaces and supplies",
+            Self::FishAndSeafoodSupplies => "Fish and seafood supplies",
+            Self::FloorCoveringStores => "Floor covering stores",
+            Self::FloralSuppliesAndServices => "Floral supplies and services",
+            Self::ForeignExchangeAndMoneyTransferServices => {
+                "Foreign exchange and money transfer services"
+            }
+            Self::FuelStations => "Fuel stations",
+            Self::FuneralDeathAndMemorialServices => "Funeral, death, and memorial services",
+            Self::GasServices => "Gas services",
+            Self::GeneralRetailStores => "General retail stores",
+            Self::GiftAndSouvenirStores => "Gift and souvenir stores",
+            Self::GolfCourses => "Golf courses",
+            Self::GymsFitnessAquaticFacilitiesYogaPilates => {
+                "Gyms, fitness, aquatic facilities, yoga, pilates"
+            }
+            Self::HaircutsAndTreatments => "Haircuts and treatments",
+            Self::HardwareEquipmentAndSupplies => "Hardware equipment and supplies",
+            Self::HeatingCoolingAndVentilationEquipmentAndServices => {
+                "Heating, cooling, and ventilation equipment and services"
+            }
+            Self::HobbyToyAndPhysicalGameStores => "Hobby, toy, and physical game stores",
+            Self::HomeFurnishingAndRepairStores => "Home furnishing and repair stores",
+            Self::Hospices => "Hospices",
+            Self::HospitalsAndEmergencyCare => "Hospitals and emergency care",
+            Self::HotelsMotelsAndOtherTemporaryAccommodation => {
+                "Hotels, motels, and other temporary accommodation"
+            }
+            Self::ITAndSoftwareDevelopmentServices => "IT and software development services",
+            Self::IceCreamGelatoNutAndConfectionaryStores => {
+                "Ice cream, gelato, nut, and confectionary stores"
+            }
+            Self::IndustrialAndCommercialSuppliesnotElsewhereClassified => {
+                "Industrial and commercial supplies (not elsewhere classified)"
+            }
+            Self::Insurance => "Insurance",
+            Self::InternetServices => "Internet services",
+            Self::LandscapingGardenAndHorticulturalServices => {
+                "Landscaping, garden, and horticultural services"
+            }
+            Self::LaundryAndDrycleaning => "Laundry and drycleaning",
+            Self::LegalServices => "Legal services",
+            Self::LendingServices => "Lending services",
+            Self::Libraries => "Libraries",
+            Self::LiquorStores => "Liquor stores",
+            Self::LocalGovernment => "Local government",
+            Self::ManagementConsulting => "Management consulting",
+            Self::MarinasMarineSuppliesAndMarineServices => {
+                "Marinas, marine supplies, and marine services"
+            }
+            Self::MasonryStoneworkTilingPlasteringAndInsulationServices => {
+                "Masonry, stonework, tiling, plastering, and insulation services"
+            }
+            Self::MealKitStores => "Meal kit stores",
+            Self::MeatSupplies => "Meat supplies",
+            Self::MediaAndEntertainmentStreamingServices => {
+                "Media and entertainment streaming services"
+            }
+            Self::MedicalProductsAndSuppliesnotElsewhereClassified => {
+                "Medical products and supplies (not elsewhere classified)"
+            }
+            Self::MedicalServicesnotElsewhereClassified => {
+                "Medical services (not elsewhere classified)"
+            }
+            Self::MembershipOrganisationsnotElsewhereClassified => {
+                "Membership organisations (not elsewhere classified)"
+            }
+            Self::MotorParksCampgroundsHolidayParksRecreationalCamps => {
+                "Motor parks, campgrounds, holiday parks, recreational camps"
+            }
+            Self::MusicalEquipmentRecordingsAndSupplies => {
+                "Musical equipment, recordings, and supplies"
+            }
+            Self::NationalGovernmentServices => "National government services",
+            Self::NewspapersMagazinesAndLiterarySubscriptions => {
+                "Newspapers, magazines, and literary subscriptions"
+            }
+            Self::NurseriesAndGardenSupplies => "Nurseries and garden supplies",
+            Self::OptometristsAndEyewear => "Optometrists and eyewear",
+            Self::PaintingSuppliesAndServices => "Painting supplies and services",
+            Self::ParkingServices => "Parking services",
+            Self::PerformingArtTraining => "Performing art training",
+            Self::PersonalSoftwarenotElsewhereClassified => {
+                "Personal software (not elsewhere classified)"
+            }
+            Self::PetsAndRelatedSuppliesAccommodationAndServices => {
+                "Pets and related supplies, accommodation, and services"
+            }
+            Self::Pharmacies => "Pharmacies",
+            Self::PhotographyEquipmentAndServices => "Photography equipment and services",
+            Self::PhysiotherapyAndMassageTherapy => "Physiotherapy and massage therapy",
+            Self::PlumbingAndGasfittingSuppliesAndServices => {
+                "Plumbing and gasfitting supplies and services"
+            }
+            Self::PoliticalOrganisations => "Political organisations",
+            Self::PostalServices => "Postal services",
+            Self::PrimaryAndSecondarySchools => "Primary and secondary schools",
+            Self::PrintingPublishingAndSignmakingServices => {
+                "Printing, publishing, and signmaking services"
+            }
+            Self::ProfessionalServicesnotElsewhereClassified => {
+                "Professional services (not elsewhere classified)"
+            }
+            Self::PsychologyPsychiatricCounsellingAndOtherMentalHealthServices => {
+                "Psychology, psychiatric, counselling, and other mental health services"
+            }
+            Self::RealEstateServices => "Real estate services",
+            Self::ReligiousOrganisations => "Religious organisations",
+            Self::RentForPermanentAccommodation => "Rent for permanent accommodation",
+            Self::RepairAndServicingnotElsewhereClassified => {
+                "Repair and servicing (not elsewhere classified)"
+            }
+            Self::RetirementAccommodation => "Retirement accommodation",
+            Self::RoofingServices => "Roofing services",
+            Self::SecondhandAndOpportunityStores => "Secondhand and opportunity stores",
+            Self::SecurityStoresAndServices => "Security stores and services",
+            Self::ShoeAndLeatherRepairKeycuttingOrEngraving => {
+                "Shoe and leather repair, keycutting, or engraving"
+            }
+            Self::ShoeStores => "Shoe stores",
+            Self::SpecialtyFoodStores => "Specialty food stores",
+            Self::SpecialtyRetailStoresnotElsewhereClassified => {
+                "Specialty retail stores (not elsewhere classified)"
+            }
+            Self::SportsAndAthleticClubs => "Sports and athletic clubs",
+            Self::SportsEquipmentAndSupplies => "Sports equipment and supplies",
+            Self::StationeryAndOfficeSupplies => "Stationery and office supplies",
+            Self::StorageFacilities => "Storage facilities",
+            Self::SupermarketsAndGroceryStores => "Supermarkets and grocery stores",
+            Self::SwimmingPoolsSuppliesAndServices => "Swimming pools, supplies, and services",
+            Self::TaxPayments => "Tax payments",
+            Self::TaxiRideshareAndOndemandTransportServices => {
+                "Taxi, rideshare, and on-demand transport services"
+            }
+            Self::TelecommunicationServices => "Telecommunication services",
+            Self::TestingLaboratoriesnonMedical => "Testing laboratories (non medical)",
+            Self::TheatreConcertsAndOtherArtisticPerformances => {
+                "Theatre, concerts, and other artistic performances"
+            }
+            Self::TollFees => "Toll fees",
+            Self::TowingServices => "Towing services",
+            Self::TradeServicesnotElsewhereClassified => {
+                "Trade services (not elsewhere classified)"
+            }
+            Self::TrainAndRailTransportServices => "Train and rail transport services",
+            Self::TransportServicesnotElsewhereClassified => {
+                "Transport services (not elsewhere classified)"
+            }
+            Self::TravelAgenciesAndTourOperators => "Travel agencies and tour operators",
+            Self::TruckTrailerMachineryAndEquipmentRentals => {
+                "Truck, trailer, machinery, and equipment rentals"
+            }
+            Self::TyreStores => "Tyre stores",
+            Self::UniformsAndCommercialClothing => "Uniforms and commercial clothing",
+            Self::UniversitiesProfessionalSchoolsAndOtherTertiaryEducation => {
+                "Universities, professional schools, and other tertiary education"
+            }
+            Self::VarietyStores => "Variety stores",
+            Self::VehicleDealersnotElsewhereClassified => {
+                "Vehicle dealers (not elsewhere classified)"
+            }
+            Self::VeterinaryServices => "Veterinary services",
+            Self::WasteAndRecyclingServices => "Waste and recycling services",
+            Self::WatchClockAndJewelleryStoresAndServices => {
+                "Watch, clock, and jewellery stores and services"
+            }
+            Self::WaterAndSanitationServices => "Water and sanitation services",
+            Self::WeldingFabricationAndMetalServices => "Welding, fabrication, and metal services",
+            Self::WelfareAndCharity => "Welfare and charity",
+            Self::WineriesBreweriesAndDistilleries => "Wineries, breweries, and distilleries",
+        }))
     }
 }

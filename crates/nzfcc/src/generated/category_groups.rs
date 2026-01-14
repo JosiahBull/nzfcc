@@ -2,8 +2,9 @@
 // Run: cargo run -p nzfcc-generator to regenerate
 
 /// An enum of the possible NZFCC category groups.
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord)]
 #[non_exhaustive]
+#[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
 pub enum CategoryGroup {
     /// The "Professional Services" group.
     ProfessionalServices,
@@ -328,5 +329,170 @@ impl<'de> serde::Deserialize<'de> for CategoryGroup {
                 ],
             )),
         }
+    }
+}
+
+impl std::fmt::Display for CategoryGroup {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.write_str(match self {
+            Self::ProfessionalServices => "Professional Services",
+            Self::Household => "Household",
+            Self::Lifestyle => "Lifestyle",
+            Self::Appearance => "Appearance",
+            Self::Transport => "Transport",
+            Self::Food => "Food",
+            Self::Housing => "Housing",
+            Self::Education => "Education",
+            Self::Health => "Health",
+            Self::Utilities => "Utilities",
+        })
+    }
+}
+
+/// Error returned when parsing a CategoryGroup from a string fails.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct ParseCategoryGroupError {
+    input: String,
+}
+
+impl std::fmt::Display for ParseCategoryGroupError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "unknown category group: '{}'", self.input)
+    }
+}
+
+impl std::error::Error for ParseCategoryGroupError {}
+
+impl std::str::FromStr for CategoryGroup {
+    type Err = ParseCategoryGroupError;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        match s {
+            "Professional Services" => Ok(Self::ProfessionalServices),
+            "Household" => Ok(Self::Household),
+            "Lifestyle" => Ok(Self::Lifestyle),
+            "Appearance" => Ok(Self::Appearance),
+            "Transport" => Ok(Self::Transport),
+            "Food" => Ok(Self::Food),
+            "Housing" => Ok(Self::Housing),
+            "Education" => Ok(Self::Education),
+            "Health" => Ok(Self::Health),
+            "Utilities" => Ok(Self::Utilities),
+            _ => Err(ParseCategoryGroupError {
+                input: s.to_string(),
+            }),
+        }
+    }
+}
+
+impl TryFrom<String> for CategoryGroup {
+    type Error = ParseCategoryGroupError;
+
+    fn try_from(s: String) -> Result<Self, Self::Error> {
+        s.parse()
+    }
+}
+
+impl TryFrom<&str> for CategoryGroup {
+    type Error = ParseCategoryGroupError;
+
+    fn try_from(s: &str) -> Result<Self, Self::Error> {
+        s.parse()
+    }
+}
+
+impl CategoryGroup {
+    /// Returns a slice containing all possible CategoryGroup values.
+    pub const fn values() -> &'static [Self] {
+        &[
+            Self::ProfessionalServices,
+            Self::Household,
+            Self::Lifestyle,
+            Self::Appearance,
+            Self::Transport,
+            Self::Food,
+            Self::Housing,
+            Self::Education,
+            Self::Health,
+            Self::Utilities,
+        ]
+    }
+
+    /// Returns the variant name as a static string (e.g., "ProfessionalServices").
+    /// This is the Rust enum variant name, not the display name.
+    pub const fn variant_name(&self) -> &'static str {
+        match self {
+            Self::ProfessionalServices => "ProfessionalServices",
+            Self::Household => "Household",
+            Self::Lifestyle => "Lifestyle",
+            Self::Appearance => "Appearance",
+            Self::Transport => "Transport",
+            Self::Food => "Food",
+            Self::Housing => "Housing",
+            Self::Education => "Education",
+            Self::Health => "Health",
+            Self::Utilities => "Utilities",
+        }
+    }
+
+    /// Returns an iterator over all CategoryGroup values.
+    pub fn iter() -> impl Iterator<Item = Self> {
+        Self::values().iter().copied()
+    }
+}
+
+impl AsRef<str> for CategoryGroup {
+    fn as_ref(&self) -> &str {
+        match self {
+            Self::ProfessionalServices => "Professional Services",
+            Self::Household => "Household",
+            Self::Lifestyle => "Lifestyle",
+            Self::Appearance => "Appearance",
+            Self::Transport => "Transport",
+            Self::Food => "Food",
+            Self::Housing => "Housing",
+            Self::Education => "Education",
+            Self::Health => "Health",
+            Self::Utilities => "Utilities",
+        }
+    }
+}
+
+impl From<CategoryGroup> for &'static str {
+    fn from(group: CategoryGroup) -> Self {
+        match group {
+            CategoryGroup::ProfessionalServices => "Professional Services",
+            CategoryGroup::Household => "Household",
+            CategoryGroup::Lifestyle => "Lifestyle",
+            CategoryGroup::Appearance => "Appearance",
+            CategoryGroup::Transport => "Transport",
+            CategoryGroup::Food => "Food",
+            CategoryGroup::Housing => "Housing",
+            CategoryGroup::Education => "Education",
+            CategoryGroup::Health => "Health",
+            CategoryGroup::Utilities => "Utilities",
+        }
+    }
+}
+
+#[cfg(feature = "clap")]
+impl clap::ValueEnum for CategoryGroup {
+    fn value_variants<'a>() -> &'a [Self] {
+        Self::values()
+    }
+
+    fn to_possible_value(&self) -> Option<clap::builder::PossibleValue> {
+        Some(clap::builder::PossibleValue::new(match self {
+            Self::ProfessionalServices => "Professional Services",
+            Self::Household => "Household",
+            Self::Lifestyle => "Lifestyle",
+            Self::Appearance => "Appearance",
+            Self::Transport => "Transport",
+            Self::Food => "Food",
+            Self::Housing => "Housing",
+            Self::Education => "Education",
+            Self::Health => "Health",
+            Self::Utilities => "Utilities",
+        }))
     }
 }

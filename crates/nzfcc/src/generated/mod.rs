@@ -4,5 +4,5 @@
 mod category_groups;
 mod nzfcc_codes;
 
-pub use category_groups::CategoryGroup;
-pub use nzfcc_codes::NzfccCode;
+pub use category_groups::{CategoryGroup, ParseCategoryGroupError};
+pub use nzfcc_codes::{NzfccCode, ParseNzfccCodeError};
